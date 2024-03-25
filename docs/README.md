@@ -1,4 +1,4 @@
-# Brandeis Robotics Lab Notebook
+# Lab Notebook
 
 Welcome! This is our Lab Notebook. Over the 6 years that we have been doing Robotics at Brandeis, we all have been maintaining this material. It is more than a Lab Notebook. It contains an infinite (almost) amount of information, with contributions especially from students but also from the instructors, teaching assistants, research assistants and others. As such it has grown organically and there is no doubt old informationn here.
 
@@ -21,9 +21,11 @@ date: month-year
 ```
 ## Contents
 
-* [BRU: Robot Utilitiies](bru/README.md)
+* [Robot Utilitiies](bru/README.md)
 * [Rover Cluster](cluster/README.md)
 * [FAQ](faq/README.md)
 * [Lab Robots](lab-robots/README.md)
 * [Infrastrcture](infrastructure/README.md)
-* [Student Project Reports](reports/README.md)
+* [Student Projects](reports/README.md)
+* [Software](packages/README.md)
+* [CR](cr-package/README.md)

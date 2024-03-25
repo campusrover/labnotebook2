@@ -9,13 +9,10 @@ This section of the Lab Notebook contains pages related to the ongoing campus ro
 * cr_ros_3 is a more stable version of cr_ros_2 which also works on TB3 with a number of tweeks under the hood which help the package to run smoothly and be easy to pick up and develop on. (Fall 2019)
 * rover_4_core is low-level code that is intended to run on a new custom model of robot hardware, but it could be interfaced and produce the same information as a TB3. A companion package to cr_ros_3. Development was cut short. (Spring 2020)
 
-* [Architecture](architecture.md)
-* [CR-3 Project](cr-3-project.md)
-* [campus-rover-4](campus-rover-4/*)
-* [demos](demos/*)
-* [voice](voice/*)
-* [mutant](mutant/*)
-* [navigation](navigation/*)
-* [package-delivery](package-delivery/*)
-* [web application](web-application/*)
+# Contents 
+- [Architecture](architecture.md)
+- [CR-3 Project](cr-3-project.md)
+- [campus-rover-4](campus-rover-4/*)
+- Demos
+    - demos/*.md
 
