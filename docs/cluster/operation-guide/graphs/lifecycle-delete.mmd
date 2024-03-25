@@ -1,0 +1,6 @@
+graph TB
+    delete-user(Delete User)
+    delete-storage(Delete storage on K8s)
+    delete-desktop(Delete cloud desktop)
+    
+    delete-user --> delete-desktop --> delete-storage

@@ -1,0 +1,6 @@
+site_name: "Notebook"
+plugins:
+  - search
+  - literate-nav:
+      nav_file: README.md
+      implicit_index: true
