@@ -12,7 +12,6 @@ This section of the Lab Notebook contains pages related to the ongoing campus ro
 # Contents 
 - [Architecture](architecture.md)
 - [CR-3 Project](cr-3-project.md)
-- [campus-rover-4](campus-rover-4/*)
 - Demos
     - demos/*.md
 
