@@ -1,0 +1,724 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.3">
+    
+    
+      
+        <title>Issues with Lidar placement and callibration - Notebook</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.50c56a3b.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#issues-with-lidar-placement-and-callibration" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Notebook" class="md-header__button md-logo" aria-label="Notebook" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 0 1 7 7h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v1a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-1H2a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h1a7 7 0 0 1 7-7h1V5.73c-.6-.34-1-.99-1-1.73a2 2 0 0 1 2-2M7.5 13A2.5 2.5 0 0 0 5 15.5 2.5 2.5 0 0 0 7.5 18a2.5 2.5 0 0 0 2.5-2.5A2.5 2.5 0 0 0 7.5 13m9 0a2.5 2.5 0 0 0-2.5 2.5 2.5 2.5 0 0 0 2.5 2.5 2.5 2.5 0 0 0 2.5-2.5 2.5 2.5 0 0 0-2.5-2.5Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Notebook
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Issues with Lidar placement and callibration
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../welcome/" class="md-tabs__link">
+        
+  
+    
+  
+  Welcome
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../cluster/" class="md-tabs__link">
+        
+  
+    
+  
+  Rover Cluster
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../" class="md-tabs__link">
+        
+  
+    
+  
+  FAQ
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../lab-robots/" class="md-tabs__link">
+        
+  
+    
+  
+  Lab Robots
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../infrastructure/" class="md-tabs__link">
+        
+  
+    
+  
+  Infrastrcture
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../reports/" class="md-tabs__link">
+        
+  
+    
+  
+  Student Projects
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../packages/" class="md-tabs__link">
+        
+  
+    
+  
+  Software
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../cr-package/" class="md-tabs__link">
+        
+  
+    
+  
+  CR
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../reports/past-gen-letters/" class="md-tabs__link">
+        
+  
+    
+  
+  Reports
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Notebook" class="md-nav__button md-logo" aria-label="Notebook" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 0 1 7 7h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v1a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-1H2a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h1a7 7 0 0 1 7-7h1V5.73c-.6-.34-1-.99-1-1.73a2 2 0 0 1 2-2M7.5 13A2.5 2.5 0 0 0 5 15.5 2.5 2.5 0 0 0 7.5 18a2.5 2.5 0 0 0 2.5-2.5A2.5 2.5 0 0 0 7.5 13m9 0a2.5 2.5 0 0 0-2.5 2.5 2.5 2.5 0 0 0 2.5 2.5 2.5 2.5 0 0 0 2.5-2.5 2.5 2.5 0 0 0-2.5-2.5Z"/></svg>
+
+    </a>
+    Notebook
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../welcome/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Welcome
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cluster/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Rover Cluster
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FAQ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../lab-robots/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab Robots
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../infrastructure/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Infrastrcture
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reports/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Student Projects
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../packages/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Software
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cr-package/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CR
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../reports/past-gen-letters/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Reports
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_9" id="__nav_9_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            Reports
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reports/sample_project_1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sample Project Template
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--new"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="issues-with-lidar-placement-and-callibration">Issues with Lidar placement and callibration</h1>
+<h2 id="source">Source</h2>
+<p>A long thread on a Robotics list which yielded a lot of sophisticated and important insights.</p>
+<h3 id="question">Question</h3>
+<p>When it comes to mounting a lidar on a robot, what are some of the considerations? My robot runs ROS and I've mounted the Lidar and set up the various transforms ("tf"s) correctly  --  I believe. </p>
+<p>When I display the Lidar data while moving the robot forward and backwards, it is fairly stable. In other words, I think that the odometry data reporting the motion of the robot, correctly "compensates" for the movement so that the lidar data as displayed stays more or less in the same place.</p>
+<p>However when I turn the robot in place, the Lidar data drifts a little and then compensates somewhat. I also was able to create a decent Slam map with this setup. Although not as reliable as I would like.</p>
+<p>It turns out that the place where the lidar is mounted is near the casters, and as a result, in an in place turn, the lidar doesn't simply rotate in place, but instead moves a lot. Because, it is not over the center of rotation, in fact its as far away from it as it could be.</p>
+<p>My question is: does the math which is used to compute the lidar data during an in place turn compensate for the placement. Does it use the various transforms (which reflect the relative placement of the lidar) or does it just use the odometry of the robot as a whole?</p>
+<p>(Hard to explain, but I hope you follow)</p>
+<p>Yes, I could rebuild my robot to do the more intuitive thing and place the lidar over the center of turn. But I would want to avoid all that work if it it's not really needed.</p>
+<h3 id="answer-1">Answer 1</h3>
+<p>TF should negate any physical offsets - but it really depends on the SLAM package using TF correctly. The widely used ones (karto, cartographer, slam_toolbox) all should do this.</p>
+<p>That said, you might also have timing issues - which TF won't handle (since the timing reported to it will be wrong!). If your odometry or laser are lagging/etc relative to one another, that could cause some issues.</p>
+<h3 id="answer-2">Answer 2</h3>
+<p>Note that the effect is visible without slam. In rviz as the robot moves forward, the "image" of the wall or obstacle stays more or less in place relative to the odom. However if I rotate or turn, then the image moves around and when the rotation stops it settles back down.</p>
+<p>Is the timing problem exacerbated by having the lidar offset from the center of rotation? I could imagine that if the lidar is over the center of rotation then the timing is less critical... but I'm just going by gut feel. </p>
+<p>When you watch the physical robot rotate in place, the lidar follows a pretty wide circular arc around the center of rotation. You can easily imagine that this causes havoc with the calculations that produce the /scan topic.</p>
+<p>My big question is, is it worth rearranging things to bring the lidar back to the center of rotation. I think my answer is yes.</p>
+<h3 id="answer-3">Answer 3</h3>
+<p>Almost every real robot out there has the laser offset from the center of the robot, so it's pretty much a solved problem (with TF and proper drivers giving correct timestamps).</p>
+<p>If the timing is wrong, the change in offset really doesn't help much, since small angular errors result in LARGE x/y offsets when a scan point is several meters away from a robot (and this will be the majority of your error, far larger than the small offset from your non-centered laser).</p>
+<p>Your comment that "when the rotation stops it settles back down", really makes me think it is a timing related issue. One way to get a better idea is to go into RVIZ, and set the "decay time" of the laser scanner display to something like 60 seconds. Then do your driving around - this will layer all the scans on top of each other and give you a better idea of how accurate the odometry/laser relationship is. In particular - if you just do a bit of rotation, does the final scan when you stop rotating line up with the first scan before you started rotating? If so, it's almost certainly timing related.</p>
+<h3 id="answer-4">Answer 4</h3>
+<p>There are a few parts to the answer. And I’ll mostly deal with what happens in a two wheel, differential drive robot.</p>
+<p>It’s not clear what you mean by LIDAR data drifting. If, as I suspect, you mean visualizing the LIDAR with rviz, then what you may be seeing is the averaging effect. In rviz, the display component for LIDAR has an option to include the last “N” points, as I recall, showing up as the Decay Time parameter for the plugin. So, the LIDAR data is likely just fine, and you’re seeing the effect of history disappearing over time. Crank down the Decay Time parameter to, say, 1 and see if things look better.</p>
+<p>Otherwise, the problem with LIDAR usually only shows up in something like a SLAM algorithm, and then it’s because the odometry and LIDAR disagree with each other. And this usually has nothing to do with LIDAR, which is typically pretty truthful.</p>
+<p>In SLAM, the algorithm gets two competing truths (typically), odometry and LIDAR. And, besides the normal problems with wheel odometry, which have been bitched about repeatedly in this group, there is also the geometry problem that typically shows up in the motor driver.</p>
+<p>Whether using gazebo (simulation) or real motor drivers, both typically rely on knowing the distance between the two wheels, and the wheel circumference. With those two constants and the wheel encoder counts (and some constants such has how many encoder ticks there are per revolution), simple math computes how far the left and right wheels moved during some small change in time, which allows computing the angle of revolution for that same time period. </p>
+<p>You can really see when the circumference is wrong by moving the robot back and forth with SLAM happening and the resulting map showing. If you find that the map shows a wall while the robot is moving and the LIDAR shows that what it thinks is the wall changes as the robot moves, then you have the wheel circumference constant wrong. </p>
+<p>That is, with a wall ahead of the robot, move the robot in a straight line forward. The map wall will stay in place in the rviz map display, but if the LIDAR dots corresponding to the wall move closer or farther than the map wall while movement is happeningl, the wheel circumference constant is wrong. Just adjust your wheel circumference until moving forwards and backwards shows the LIDAR points corresponding to the wall ahead of the robot staying atop the map’s wall.</p>
+<p>An error in the distance between the two wheels shows up as an error when the robot rotates. For example, if you have a wall ahead of the robot again and you rotate in place, if you see the wall stays stable in the rviz map display but the LIDAR points corresponding to the wall change the angle of the wall as the robot rotates in place, then you have the wheel circumference wrong. Change the circumference value, usually in the URDF and often repeated in other YAML files as well, and try the experiment again.</p>
+<p>My saying that the wall in the map stays stable also implies that in rviz you are setting your global frame to the map frame.</p>
+<p>When you get both the circumference and inter wheel distance correct, the SLAM map will closely match the LIDAR points even while the robot moves. It won’t be perfect while the robot moves, partly which I’ll explain next, but it does mean that when the robot slows down or stops, SLAM will fix the error very quickly.</p>
+<p>I’m sure people will talk about the time stamp of data as well. In ROS, sensor data is given a time stamp. This should faithfully record when the sensor reading took place. If you have multiple computers in your robot, the sense of time on all computers must match within, at most, say a couple of milliseconds. Less than a millisecond discrepancy between all the computers is better. </p>
+<p>Note that if you are getting sensor data from an Arduino over, say, ROS serial, you will have to deal with the getting the time stamp adjusted before the sensor data gets posted as a ROS message. Since the Arduino didn’t tag the time, and the Arduino is unlikely to know the time to high accuracy, you have to figure out the latency in reading the data over a serial port, and the serialization, deserialization and message conversion delays.</p>
+<p>When various components work with sensor data, they often predict what the sensor values will be in some future after the readings actually took place. That’s because the sensor values are coming in with some delay (lag), and the algorithms, especially SLAM, want to predict the current state of the robot. SLAM is monitoring the commanded movement of the robot (the cmd_vel sent to the motors) and when odometry and LIDAR data comes in, it needs to predict where the odometry and LIDAR points would be NOW, not when they were last observed. If the timestamp of the sensor data is wrong, the guess is wrong and SLAM gets very sloppy.</p>
+<p>To cope with bad time and unexpectant latencies, especially the notorious big scheduling delays in a Linux system (think of what preemptive time sharing really does to your threads when they think they know what the current time is), one simple filter ROS usually provides is to ignore any data that is too “old”. There are configuration parameters, for instance, for SLAM that say to just ignore data that is older than some relatively small time from now (on order of, say 10 milliseconds might by typical).</p>
+<p>This is especially a problem with multiple computers in a robot, but even with a single computer. Remember that Linux is trying to run on order of 100 threads at the same time. On a Raspberry Pi, it’s tying to give each of those 100 threads the illusion that they are running in real time by giving them a tiny slice of time to run before going on to the next thread. A thread can ask for “what time is it now” and as soon as it gets the answer, before the very next instruction in that thread executes, tens or hundreds of milliseconds may have gone by.</p>
+<p>Finally, as for positioning of the LIDAR, ROS provides a marvelous mathematical modeling package in the TF system. If you have pretty good modeling of fixed components, like LIDARs mounted solidly to the robot and you get the offsets correct to within a millimeter or two from 0,0,0 in the base_link frame of reference, you needn’t worry about where you put the LIDAR. Make sure you correctly account for all the rotations as well, though. For instance, with the casters on my robot, the plate holding the LIDAR isn’t exactly level with the floor, and my URDF needs to include the rotation of the LIDAR.</p>
+<p>My LIDAR is NOT mounted at the center of rotation and rviz shows things just fine. And I’m about to replace my single LIDAR with 4 LIDARS mounted at the 4 corners of my robot’s frame at different heights. It will be no problem for rviz and SLAM to deal with this.</p>
+<p>Finally there is an issue with computation speed and robot speed. The faster you robot moves, the faster it needs to get sensor data. SLAM works best when it gets, say, 20 to 100 sensor readings a second for a robot moving on order of a couple of meters per second. SLAM wants to robot to not have moved very far before it does its thing between sensor frame readings. If your odometry and LIDAR readings are coming in at, say, 5 frames per second, and your computer is slow and loaded (such as trying to do everything on a single Raspberry Pi), and you robot is moving at the equivalent of a couple of miles per hour, all bets are off.</p>
+<h2 id="answer-5">Answer 5</h2>
+<p>Actually, This is a very good question because </p>
+<p>Some robots use multiple LIDAR units and obviously only one of them can be the center point of a turn. and</p>
+<p>If the robot used four wheel "Ackerman steering" (as almost every car) the center of rotation is not within the footprint of the robot. but on the ground some distance to the side of the robot.
+So mounting the Lidar in the center of rotation is physically impossible in the above cases.   I hope the software "works".</p>
+<p>It could be that you have wheel slip.  In fact I'd guess this is the problem and you should not be using raw odometry but rather the ROS Robot_Localization package.    This package will "fuse" odometry, IMUs, GPS, Visual Odometry and other sources to get the robot's position and orientation and account for wheel slip and other sensor errors. 
+http://docs.ros.org/en/noetic/api/robot_localization/html/index.html</p>
+<h2 id="answer-6">Answer 6</h2>
+<p>The "drift" you describe is caused by the fact that, as the robot rotates, the lidar is not sampled at exactly the same spot.    This causes flat surfaces to appear to bend, but only while the robot is rotating.</p>
+<p>Chris Netter has documented this extensively and written code that corrects for this effect for his ROS robot,  which I can't seem to locate at the moment.    </p>
+<p>But it won't be fixed by moving the lidar to the center of rotation.  It is a result of the fact that both the robot and the lidar are rotating while sampling.  It's not seen when the robot is going straight, hence the "setteling down" which you mention.</p>
+<h2 id="answer-7">Answer 7</h2>
+<p>But Pito says he is using software to compensate for the movement of the LIDAR during a turn.   In theory, what he did should work.  The ROS tf2 package should be calculating the LIDAR real-world location as it swings around the center of rotation and interpolating the position at the time the LIDAR scan was processed.</p>
+<p>He said he was using this already. For more on tf2 see http://wiki.ros.org/tf2</p>
+<p>My guess is that the odometry data that drives the transforms that tf2 uses not accurate.   Odometry assumes a perford differential drive system and none are perfect.   </p>
+<p>One way to test my guess would be to run the robot in a simulation where odometry is in fact "perfect" and see if the problem goes away</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["content.action.edit", "navigation.tabs", "toc.integrate", "header.autohide"], "search": "../../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d7c377c4.min.js"></script>
+      
+    
+  </body>
+</html>

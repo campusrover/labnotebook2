@@ -1,6 +1,30 @@
 site_name: "Notebook"
 plugins:
   - search
-  - literate-nav:
-      nav_file: README.md
-  - section-index
+theme:
+  name: material
+  features:
+    - content.action.edit
+    - navigation.tabs
+    - toc.integrate
+    - header.autohide
+  icon:
+    logo: material/robot
+  palette:
+    primary: teal
+    accent: purple
+
+markdown_extensions:
+  - attr_list
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+
+extra_css:
+  - mystyle.css
+
+nav:
+  - Infrastructure: infrastructure/README.md
+  - BRU: bru/README.md
+  - FAQ: faq/README.md
+  - And more

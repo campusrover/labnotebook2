@@ -6,5 +6,4 @@ A collection of notes and documents about all the equipment and facilities we ha
 - Infrastructure
     - [Our Robots](our-robots.md)
     - [Batteriers and Chargers](batteries-and-chargers.md)
-    - *.md
 

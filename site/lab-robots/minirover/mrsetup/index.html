@@ -1,0 +1,801 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.3">
+    
+    
+      
+        <title>Setup of MiniRover - Notebook</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.50c56a3b.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#setup-of-minirover" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Notebook" class="md-header__button md-logo" aria-label="Notebook" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 0 1 7 7h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v1a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-1H2a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h1a7 7 0 0 1 7-7h1V5.73c-.6-.34-1-.99-1-1.73a2 2 0 0 1 2-2M7.5 13A2.5 2.5 0 0 0 5 15.5 2.5 2.5 0 0 0 7.5 18a2.5 2.5 0 0 0 2.5-2.5A2.5 2.5 0 0 0 7.5 13m9 0a2.5 2.5 0 0 0-2.5 2.5 2.5 2.5 0 0 0 2.5 2.5 2.5 2.5 0 0 0 2.5-2.5 2.5 2.5 0 0 0-2.5-2.5Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Notebook
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Setup of MiniRover
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../welcome/" class="md-tabs__link">
+        
+  
+    
+  
+  Welcome
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../cluster/" class="md-tabs__link">
+        
+  
+    
+  
+  Rover Cluster
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../faq/" class="md-tabs__link">
+        
+  
+    
+  
+  FAQ
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../" class="md-tabs__link">
+        
+  
+    
+  
+  Lab Robots
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../infrastructure/" class="md-tabs__link">
+        
+  
+    
+  
+  Infrastrcture
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../reports/" class="md-tabs__link">
+        
+  
+    
+  
+  Student Projects
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../packages/" class="md-tabs__link">
+        
+  
+    
+  
+  Software
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../cr-package/" class="md-tabs__link">
+        
+  
+    
+  
+  CR
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../reports/past-gen-letters/" class="md-tabs__link">
+        
+  
+    
+  
+  Reports
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Notebook" class="md-nav__button md-logo" aria-label="Notebook" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 0 1 7 7h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v1a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-1H2a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h1a7 7 0 0 1 7-7h1V5.73c-.6-.34-1-.99-1-1.73a2 2 0 0 1 2-2M7.5 13A2.5 2.5 0 0 0 5 15.5 2.5 2.5 0 0 0 7.5 18a2.5 2.5 0 0 0 2.5-2.5A2.5 2.5 0 0 0 7.5 13m9 0a2.5 2.5 0 0 0-2.5 2.5 2.5 2.5 0 0 0 2.5 2.5 2.5 2.5 0 0 0 2.5-2.5 2.5 2.5 0 0 0-2.5-2.5Z"/></svg>
+
+    </a>
+    Notebook
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../welcome/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Welcome
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cluster/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Rover Cluster
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../faq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FAQ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab Robots
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../infrastructure/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Infrastrcture
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reports/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Student Projects
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../packages/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Software
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cr-package/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CR
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../reports/past-gen-letters/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Reports
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_9" id="__nav_9_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            Reports
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reports/sample_project_1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sample Project Template
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--new"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="setup-of-minirover">Setup of MiniRover</h1>
+<p>This section will help you get your robot set up to go. Note that if you received this from the Autonomous Robotics Lab then part of these steps may already be done.</p>
+<p>See the important information about turning the robot on and off here: <a href="../mruse/">Using the Robot</a>.</p>
+<h2 id="microsd-card-if-needed">MicroSD Card (if needed)</h2>
+<p><strong>If your robot was set up by us, then you should skip this step!</strong></p>
+<p>You are going to load software onto the microSD Card - which will wipe out what you loaded onto it according the the instructions before. We provide you a disk image on which to store it. It changes from time to time. <a href="https://drive.google.com/drive/folders/1rmt9I9YtlrG3B5IyqSFD_oM0xei-HdNa?usp=sharing">This link</a> is to a google folder that will contain the versions. You should use the latest one in that folder. I recommend you use the app "Balena Etcher" to copy the image onto your microSD card.</p>
+<p>To create a new MicroSD from the old one, see <a href="https://medium.com/@ccarnino/backup-raspberry-pi-sd-card-on-macos-the-2019-simple-way-to-clone-1517af972ca5">Backup Raspi Card on MacOS</a></p>
+<h2 id="connecting-to-the-network">Connecting to the network</h2>
+<p>Now we are facing a dilemma. We need to get the robot on your network. There are several ways of doing this. Below are two specific scenarios that we support:</p>
+<ol>
+<li>A usb keyboard, usb mouse <strong>and</strong> a HDMI display <strong>and</strong> eduroam wifi access</li>
+<li><em>OR</em> A network cable <strong>and</strong> non-eduroam wifi access</li>
+<li>A MiniRover v2 and non-eduroam wifi access. It should be labeled with a name.</li>
+</ol>
+<h3 id="scenario-1">Scenario 1</h3>
+<ol>
+<li>
+<p>We will tell you what the name of your robot is. Plug it in below wherever you see <code>gopigo3</code></p>
+</li>
+<li>
+<p>Locate a wired network connection (on your router for example) and use a network cable to connect your robot to the network</p>
+</li>
+<li>
+<p>Now turn the power on (see <a href="../mruse/">Using MiniRover</a>for instructions. It should boot up into linux. But you won't know this because there's no keyboard or screen!</p>
+</li>
+<li>
+<p>Using your own computer or development environment that is attached to the network check that you see the robot. This includes a linux computer where you program, or a browser web development environment. Broadly speaking, it's the computer "other than" to raspberry pi on the robot (we will refer to this as the <em>remote</em> computer from now on).</p>
+</li>
+</ol>
+<pre><code class="language-bash">ping gopigo3.local
+</code></pre>
+<p>Once this works you know that you have access to the robot from your remote computer. Make note of the robot' ip address. It will likely look like 192.168.1.xx but not necessarily.</p>
+<ol>
+<li>Now use <code>ssh</code> (secure shell) to get to the robot from the remote:</li>
+</ol>
+<pre><code class="language-bash">ssh pi@gopigo3.local
+</code></pre>
+<p>It will ask you for the password for account <code>pi</code>. It is <code>raspberry</code>. Once you get in you are 1/2 way there!</p>
+<ol>
+<li>Now we want to get your robot onto your local wifi network. You need to know the wifi network's name and password. On the robot command line type:</li>
+</ol>
+<pre><code class="language-bash">sudo nmcli d wifi connect &lt;SSID&gt; password &lt;password&gt;
+</code></pre>
+<p>Where \&lt;SSID&gt; is the network's name. You can surround it in quotes if there are spaces or other funny characters. <password> is the password.</p>
+<ol>
+<li>
+<p>Next shutdown the robot nicely (see above), disconnect the network cable, and start the robot up nicely again (see above.)</p>
+</li>
+<li>
+<p>Once it's back, follow the same steps to <code>ssh pi@gopigo3.local</code> and enter the password <code>raspberry</code> and you should have a wireless enabled robot.</p>
+</li>
+</ol>
+<h3 id="scenario-2">Scenario 2</h3>
+<ol>
+<li>
+<p>Connect your mouse, keyboard and screen to the Raspberry pi. You will find several free USB ports and an HDMI port. Look closely they are all there.</p>
+</li>
+<li>
+<p>Boot up the Raspberry Pi and wait until it is running and you see the desktop</p>
+</li>
+<li>Locate the network settings dialog box by clicking the network icon on the top right</li>
+<li>Add eduroam as a network, and fill it in as follows:</li>
+</ol>
+<p><img alt="Button to reboot" src="../networksettings.png" /></p>
+<ol>
+<li>Finally shutdown the robot, unplug the keyboard, mouse and monitor and reboot</li>
+<li>Once it's back <code>ssh pi@gopigo3.local</code> and enter the password <code>raspberry</code> and you should have a wireless enabled robot</li>
+</ol>
+<h3 id="scenario-3-incomplete-and-incorrect">Scenario 3 <strong>incomplete and incorrect</strong></h3>
+<p>You've received a fully set up and tested Minrover v2, and you know the name. The following steps are written as if the robot is called <code>mr1</code>. Scenario 3 Robots will have the account ubuntu with the password ubuntu (so different from scenario 1 and 2)</p>
+<ol>
+<li>Now turn the power on (see <a href="../mruse/">Using MiniRover</a>for instructions. It should boot up into linux. But you won't know this because there's no keyboard or screen!</li>
+<li>MiniRover will come up as a Wifi access point. The SSID is  mr1XXXX where XXXX is part of the MAC address. The wifi password is robotseverywhere.s Connect to it via your computer's wifi.</li>
+</ol>
+<h2 id="troubleshooting-ssh-gopigo3local">Troubleshooting ssh gopigo3.local</h2>
+<p>Under certain circumstances gopigo3.local will be found. If so you need to find out the ip address of your robot when it is on wifi (not wired). If then this should work:</p>
+<pre><code class="language-bash">ssh pi@&lt;ip address&gt;
+</code></pre>
+<h2 id="updating-the-hostname-of-your-robot">Updating the hostname of your Robot</h2>
+<p>Rename the <code>hostname</code> of your robot. It comes to you called "gopigo3" but they are all called that and this can cause confusion. Let's say you want to call your robot <code>pitosalas</code>. Oddly you have to change it in two places. Here's how"</p>
+<pre><code># In the shell of the robot:
+sudo hostname pitosalas
+
+# In the hostname file:
+sudo nano /etc/hostname
+</code></pre>
+<p>Now the robot is called <code>pitosalas</code> and at least it will be different from other miniRovers.</p>
+<h2 id="eduroam">Eduroam</h2>
+<p>On eduroam it is often automatically known as gopigo3.dyn.brandeis.edu. So after rebooting it check if this works. It's not guaranteed but often it works just fine.</p>
+<h2 id="vpn">VPN</h2>
+<p>You can run everything on the robot itself but it doesn't have a screen. You could plug an external screen, keyboard and mouse and have a complete ROS enabled computer (the robot) at your finger-tips. But it would be real slow. So instead we are going to add the robot to a "VPN" - virtual private network which will allow you to work with it remotely.</p>
+<ol>
+<li>Prepare the VPM configuration by:</li>
+</ol>
+<pre><code class="language-bash">sudo apt-get remove -y tailscale
+sudo rm -rf /var/lib/tailscale/tailscaled.state
+
+# Reboot right after!
+sudo reboot
+</code></pre>
+<ol>
+<li>Setup VPN</li>
+</ol>
+<pre><code class="language-bash"># Get the tskey from Pito
+cd ~/rosutils
+chmod +x pi_connect.sh
+
+# Run the script with the tailscale authkey
+sudo ./pi_connect.sh &lt;tskey-123abc456&gt;
+
+# On successful connect, you should see this
+# Connected. IP address: 100.xx.xxx.xxx
+</code></pre>
+<ol>
+<li><code>myvpnip</code> should now return that same IP address.</li>
+</ol>
+<h2 id="updates-for-your-robot">Updates for your Robot</h2>
+<p>We have installed some Brandeis specific software which should be updated:</p>
+<pre><code class="language-bash">cd ~/rosutils
+git pull
+cp ~/rosutils/bashrc_template.bash ~/.bashrc
+cd ~/catkin_ws/src/gpg_bran4
+git pull
+</code></pre>
+<p>And then edit the new ~/.bashrc according to the instructions in the file.</p>
+<h2 id="updates-to-your-cloud-desktop">Updates to your <strong>Cloud Desktop</strong></h2>
+<ol>
+<li>Check that you have ~/rosutils directory on your cloud desktop. If not:</li>
+</ol>
+<pre><code class="language-bash">cd
+git clone https://github.com/campusrover/rosutils.git
+cp rosutils/bashrc_template.bash .bashrc
+</code></pre>
+<p>Edit .bashrc according to the instructions in it</p>
+<h2 id="this-will-continue-to-be-updated">This will continue to be updated</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["content.action.edit", "navigation.tabs", "toc.integrate", "header.autohide"], "search": "../../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d7c377c4.min.js"></script>
+      
+    
+  </body>
+</html>

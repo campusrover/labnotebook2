@@ -1,0 +1,1043 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.3">
+    
+    
+      
+        <title>What are some Computer Vision Tips - Notebook</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.50c56a3b.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#computer-vision" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Notebook" class="md-header__button md-logo" aria-label="Notebook" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 0 1 7 7h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v1a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-1H2a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h1a7 7 0 0 1 7-7h1V5.73c-.6-.34-1-.99-1-1.73a2 2 0 0 1 2-2M7.5 13A2.5 2.5 0 0 0 5 15.5 2.5 2.5 0 0 0 7.5 18a2.5 2.5 0 0 0 2.5-2.5A2.5 2.5 0 0 0 7.5 13m9 0a2.5 2.5 0 0 0-2.5 2.5 2.5 2.5 0 0 0 2.5 2.5 2.5 2.5 0 0 0 2.5-2.5 2.5 2.5 0 0 0-2.5-2.5Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Notebook
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              What are some Computer Vision Tips
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../welcome/" class="md-tabs__link">
+        
+  
+    
+  
+  Welcome
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../cluster/" class="md-tabs__link">
+        
+  
+    
+  
+  Rover Cluster
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../" class="md-tabs__link">
+        
+  
+    
+  
+  FAQ
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../lab-robots/" class="md-tabs__link">
+        
+  
+    
+  
+  Lab Robots
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../infrastructure/" class="md-tabs__link">
+        
+  
+    
+  
+  Infrastrcture
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../reports/" class="md-tabs__link">
+        
+  
+    
+  
+  Student Projects
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../packages/" class="md-tabs__link">
+        
+  
+    
+  
+  Software
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../cr-package/" class="md-tabs__link">
+        
+  
+    
+  
+  CR
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../reports/past-gen-letters/" class="md-tabs__link">
+        
+  
+    
+  
+  Reports
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Notebook" class="md-nav__button md-logo" aria-label="Notebook" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 0 1 7 7h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v1a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-1H2a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h1a7 7 0 0 1 7-7h1V5.73c-.6-.34-1-.99-1-1.73a2 2 0 0 1 2-2M7.5 13A2.5 2.5 0 0 0 5 15.5 2.5 2.5 0 0 0 7.5 18a2.5 2.5 0 0 0 2.5-2.5A2.5 2.5 0 0 0 7.5 13m9 0a2.5 2.5 0 0 0-2.5 2.5 2.5 2.5 0 0 0 2.5 2.5 2.5 2.5 0 0 0 2.5-2.5 2.5 2.5 0 0 0-2.5-2.5Z"/></svg>
+
+    </a>
+    Notebook
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../welcome/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Welcome
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cluster/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Rover Cluster
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FAQ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../lab-robots/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab Robots
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../infrastructure/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Infrastrcture
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reports/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Student Projects
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../packages/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Software
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cr-package/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CR
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../reports/past-gen-letters/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Reports
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_9" id="__nav_9_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            Reports
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reports/sample_project_1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sample Project Template
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--new"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="computer-vision">Computer Vision</h1>
+<h2 id="attention">Attention</h2>
+<p>For new contributors of Percetion_CV team, please first create <strong>your own branch</strong> and make sure all your work is done within your branch. Do <strong>PR (pull request)</strong> only if your team leader asks you to do so.   </p>
+<p>For new team leaders of Perception_CV, the <code>master branch</code> should <strong>only</strong> contain stable code that has been confirmed working. Master branch will be the source we use for integration with other teams when the time is ready.</p>
+<h2 id="introduction">Introduction</h2>
+<p>Full CV Repo here: <a href="https://github.com/campusrover/Robotics_Computer_Vision">https://github.com/campusrover/Robotics_Computer_Vision</a></p>
+<p>This repo is originally forked from <a href="https://github.com/ultralytics/yolov3">https://github.com/ultralytics/yolov3</a> but heavily modified for our own use. The purpose of this repo is to achieve custom object detection for Brandeis Autonomous Robotics Course. Changes were made based on our object of deploying CV on ROS. <br />
+ To download our most recent best trained weights, please go to <a href="https://drive.google.com/file/d/1DquRwpNDaXgkON2gj9Oks8N2ZWgN2Z9q/view?usp=sharing">https://drive.google.com/file/d/1DquRwpNDaXgkON2gj9Oks8N2ZWgN2Z9q/view?usp=sharing</a> <br />
+ Then unzip the file and copy <code>coco</code> and <code>weights</code> directory in this repo and replace everything.</p>
+<p><strong>Notes</strong>:<br />
+ I've put a low of useful tools inside the <code>./utils</code> directory, please feel free to use them whenever you need it.   </p>
+<ul>
+<li><code>./utils/vid_2_frm.py</code> : The python script that extracts all frames out of a video, you can control the extracting rate by reading the comment and do small modification. This script will also tell you the fps of the source video which will be useful for later converting frames back to video. </li>
+<li><code>./utils/frm_2_vid.py</code> : The python script that is converting frames by its name into a video, you better know the original/target video's fps to get the optimal output. </li>
+<li><code>./utils/xml_2_txt</code> : The repo that converts .xml format annotation into our desired .txt format (Yolo format), read and follow the README file inside. </li>
+<li><code>./utils/labelimg</code> : The repo that we use for labelling images, great tool! Detailed README inside. </li>
+<li><code>./utils/check_missing_label.py</code> : The python script that can be used for checking if there's any missing label in the annotation/image mixed directory. </li>
+<li><code>./utils/rename_dataset.py</code> : The python script doing mass rename in case different datasets' images names and annotations are the same and need to be distinguished. </li>
+<li><code>./list_img_path.py</code> : The python script that splits the datasets (images with its corresponding annotations) into training set and validation set in the ratio of 6:1 (you can modify the ratio). </li>
+<li><code>./utils/img_2_gif.py</code> : The python script that converts images to gif. </li>
+<li><code>./coco/dataset_clean.py</code> : The python script that cleans the uneven images and labels that is going to be trained and make sure they are perfectly parallel. </li>
+<li><code>./utils/video_recorder_pi.py</code> : The python script that records videos on pi camera. This script should be located in the robot and run under SSH </li>
+</ul>
+<p>Here are links to download our <strong>datasets</strong> (images and annotations) by certain class:</p>
+<p><strong>Doorplate Recognition</strong>:  </p>
+<ul>
+<li>custom_volen(provided by Haofan): <a href="https://drive.google.com/file/d/1A9yI5PdLeAlKEVQww2NJgQLRDxq9tcOJ/view?usp=sharing">https://drive.google.com/file/d/1A9yI5PdLeAlKEVQww2NJgQLRDxq9tcOJ/view?usp=sharing</a>  </li>
+<li>custom_doorplate(provided by Haofan): <a href="https://drive.google.com/file/d/1jITWceHYYFXjUyaJ1bp4Wdb_tKhtylQJ/view?usp=sharing">https://drive.google.com/file/d/1jITWceHYYFXjUyaJ1bp4Wdb_tKhtylQJ/view?usp=sharing</a>  </li>
+</ul>
+<p><strong>Facial Recognition</strong>:  </p>
+<ul>
+<li>Abhishek: <a href="https://drive.google.com/file/d/1Z3ICrLEVt50ia1C07ZCxE_Na105aRjsE/view?usp=sharing">https://drive.google.com/file/d/1Z3ICrLEVt50ia1C07ZCxE_Na105aRjsE/view?usp=sharing</a>  </li>
+<li>Haofan: <a href="https://drive.google.com/file/d/1nDcGb0QGSzLJaQL1ewMWVXtvXXjSwWC0/view?usp=sharing">https://drive.google.com/file/d/1nDcGb0QGSzLJaQL1ewMWVXtvXXjSwWC0/view?usp=sharing</a>  </li>
+<li>Yuchen: <a href="https://drive.google.com/file/d/1PomjuCvcJ25_d_EaQwqE9l1wuZ5z5Zz3/view?usp=sharing">https://drive.google.com/file/d/1PomjuCvcJ25_d_EaQwqE9l1wuZ5z5Zz3/view?usp=sharing</a>  </li>
+<li>Huaigu: <a href="https://drive.google.com/file/d/1QNKtvanc58PoQZCg6htQpcImd00toYby/view?usp=sharing">https://drive.google.com/file/d/1QNKtvanc58PoQZCg6htQpcImd00toYby/view?usp=sharing</a>  </li>
+<li>Eli: <a href="https://drive.google.com/file/d/14qII9t4tyDsYqj_bxxCdxSyIip0CRwQT/view?usp=sharing">https://drive.google.com/file/d/14qII9t4tyDsYqj_bxxCdxSyIip0CRwQT/view?usp=sharing</a>  </li>
+<li>Nate: <a href="https://drive.google.com/file/d/1KE0UVu7dalip4mDVoVGpBgr1uyyhoHQB/view?usp=sharing">https://drive.google.com/file/d/1KE0UVu7dalip4mDVoVGpBgr1uyyhoHQB/view?usp=sharing</a>  </li>
+<li>Cody: <a href="https://drive.google.com/file/d/1Yb4RmYWXWCBO3nb_Di--3tRh0LdiRZBn/view?usp=sharing">https://drive.google.com/file/d/1Yb4RmYWXWCBO3nb_Di--3tRh0LdiRZBn/view?usp=sharing</a>  </li>
+<li>Pito: <a href="https://drive.google.com/file/d/1NZ4SBfv1Y5zuGpRQLebOlK-duG_p_0pg/view?usp=sharing">https://drive.google.com/file/d/1NZ4SBfv1Y5zuGpRQLebOlK-duG_p_0pg/view?usp=sharing</a>  </li>
+<li>Sibo: <a href="https://drive.google.com/file/d/1c7ZcMN-LcMAjmO62oS_C3y2hpA6IUgvP/view?usp=sharing">https://drive.google.com/file/d/1c7ZcMN-LcMAjmO62oS_C3y2hpA6IUgvP/view?usp=sharing</a>  </li>
+<li>Arjun: <a href="https://drive.google.com/file/d/10NnfTU150Pis5ugOWLzxVvwcesi873LY/view?usp=sharing">https://drive.google.com/file/d/10NnfTU150Pis5ugOWLzxVvwcesi873LY/view?usp=sharing</a>  </li>
+<li>Charlie: <a href="https://drive.google.com/file/d/1UmCUl-uLPwwOub2ZsTNpQHK9Q_rdVScI/view?usp=sharing">https://drive.google.com/file/d/1UmCUl-uLPwwOub2ZsTNpQHK9Q_rdVScI/view?usp=sharing</a>  </li>
+</ul>
+<h2 id="cv-subscriber-publisher">CV Subscriber &amp; Publisher</h2>
+<p>All the CV subscriber and publisher are located at <code>./utils/</code> directory, they are:</p>
+<ul>
+<li><code>./utils/image_subscriber.py</code> : The python script that subscribe image from <code>raspicam_node/image</code> rostopic. </li>
+<li><code>./utils/string_publisher.py</code> : The python script that publishes a string on rostopic of <code>/mutant/face_detection</code> which is generated from <code>detect.py</code>, the format is explained below:  </li>
+</ul>
+<p>CV Publisher example: "['sibo', -4.34, 1.63]"   </p>
+<p>[ <br />
+ &lt;"class name"&gt;, <br />
+ &lt;"angle of target to front in degree (negative -&gt; left, positive -&gt; right")&gt;, <br />
+ &lt;"rough distance in meter"&gt; <br />
+ ]   </p>
+<h2 id="cheat-sheet-for-raspberry-pi-camera">Cheat Sheet For Raspberry Pi Camera</h2>
+<p>Detailed official user guide here: <a href="http://emanual.robotis.com/docs/en/platform/turtlebot3/appendix_raspi_cam/">http://emanual.robotis.com/docs/en/platform/turtlebot3/appendix_raspi_cam/</a>   </p>
+<p><strong>Some useful commands</strong>:   </p>
+<ul>
+<li><code>raspivid -vf -hf -t 30000 -w 640 -h 480 -fps 25 -b 1200000 -p 0,0,640,480 -o pivideo.h264</code>   recording 30 seconds video on 25 fps.  </li>
+<li><code>MP4Box -add pivideo.h264 pivideo.mp4</code>   converting .h264 video to .mp4  </li>
+<li><code>scp donatello@129.64.243.61:~/pivideo.mp4 ~/Downloads/</code>   downloading video from ssh to local machine  </li>
+<li><code>rqt_image_view</code>   getting vision from camera, requires bringup which is conflict to the video recording function  </li>
+<li><code>rosrun rqt_reconfigure rqt_reconfigure</code>   edit camera configuration  </li>
+</ul>
+<p><strong>Pipeline of recording video on</strong> <code>DONATELLO</code>:</p>
+<ul>
+<li>ssh <code>donatello@129.64.243.61</code></li>
+<li>If you want to see preview images, <code>roslaunch turtlebot3_bringup turtlebot3_rpicamera.launch</code>, then on remote computer, do <code>rqt_image_view</code></li>
+<li>when you recording video, shut down the <code>rpicamera bringup</code> in advance</li>
+<li>Do <code>raspivid -vf -hf -t 30000 -w 640 -h 480 -fps 25 -b 1200000 -p 0,0,640,480 -o pivideo.h264</code> on <code>DONATELLO</code> to record video</li>
+</ul>
+<h2 id="cheat-sheet-for-usb-web-camera">Cheat Sheet For USB Web-Camera</h2>
+<p><strong>Get image_view</strong></p>
+<ul>
+<li>ssh &lt;Robot_name_space&gt;@  </li>
+<li>plug in the USB camera  </li>
+<li>On slave, do <code>lsusb</code> and <code>ls /dev |grep video</code> to check if camera was recognized by system  </li>
+<li>On slave, install usb_cam ROS node <code>sudo apt install ros-kinetic-usb-cam</code>  </li>
+<li>On slave, check the usb camera launch file <code>cat /opt/ros/kinetic/share/usb_cam/launch/usb_cam-test.launch</code>  </li>
+<li>(Optional) On local client machine (master machine), run <code>roscore</code> (Usually it's constantly running on the desktop of Robotics Lab so you won't need to do this line)  </li>
+<li>On slave, start usb_cam node <code>roslaunch usb_cam usb_cam-test.launch</code>  </li>
+<li>(Optional) On slave, bring running process to background with <code>CTRL+Z</code> and execute <code>bg</code> command to continue execution it in background  </li>
+<li>(Optional) On slave, check the topic of usb camera <code>rostopic list</code>  </li>
+<li>(Optional) On master, check the topics in GUI <code>rqt_graph</code>  </li>
+<li>On master, read camera data with image_view <code>rosrun image_view image_view image:=/&lt;name_space&gt;/usb_cam/image_raw</code>  </li>
+<li>On slave, to bring background task to foreground <code>fg</code>  </li>
+</ul>
+<p><strong>Web Streaming</strong></p>
+<ul>
+<li>On slave, install web-video-server ROS node <code>sudo apt install ros-kinetic-web-video-server</code>  </li>
+<li>On slave, to make it right, create catkin workspace for our custom launch file <code>mkdir -p ~/rosvid_ws/src</code>  </li>
+<li>On slave,<code>cd ~/rosvid_ws</code>  </li>
+<li>On slave, <code>catkin_make</code>  </li>
+<li>On slave, <code>source devel/setup.bash</code>  </li>
+<li>On slave, create ROS package <code>cd src</code> then <code>catkin_create_pkg vidsrv std_msgs rospy roscpp</code>  </li>
+<li>On slave, create launch file using nano, vim, etc <code>mkdir -p vidsrv/launch</code> then <code>nano vidsrv/launch/vidsrv.launch</code>. Then copy and paste the code below  </li>
+</ul>
+<p><a href="https://github.com/campusrover/Perception_CV/blob/master/utils/vidsrv.launch">https://github.com/campusrover/Perception_CV/blob/master/utils/vidsrv.launch</a>   </p>
+<ul>
+<li>On slave, build package <code>cd..</code> then <code>catkin_make</code>  </li>
+<li>On master, Make sure <code>roscore</code> is running  </li>
+<li>On slave, run created launch file <code>roslaunch vidsrv vidsrv.launch</code>  </li>
+<li>On your client machine, open web browser and go to <code>&lt;Robot IP address&gt;:8080</code> . Under <code>/usb_cam/</code> categoryand and click <code>image_raw</code> .  </li>
+<li>Enjoy the web streaming  </li>
+</ul>
+<h2 id="description">Description</h2>
+<p>The <a href="https://github.com/ultralytics/yolov3">https://github.com/ultralytics/yolov3</a> repo contains inference and training code for YOLOv3 in PyTorch. The code works on Linux, MacOS and Windows. Training is done on the COCO dataset by default: <a href="https://cocodataset.org/#home">https://cocodataset.org/#home</a>. <strong>Credit to Joseph Redmon for YOLO:</strong> <a href="https://pjreddie.com/darknet/yolo/">https://pjreddie.com/darknet/yolo/</a>.</p>
+<h2 id="requirements">Requirements</h2>
+<p>Python 3.7 or later with the following <code>pip3 install -U -r requirements.txt</code> packages:</p>
+<ul>
+<li><code>numpy</code></li>
+<li><code>torch &gt;= 1.0.0</code></li>
+<li><code>opencv-python</code></li>
+<li><code>tqdm</code></li>
+</ul>
+<h2 id="tutorials">Tutorials</h2>
+<ul>
+<li><a href="https://github.com/ultralytics/yolov3/wiki/GCP-Quickstart">GCP Quickstart</a></li>
+<li><a href="https://github.com/ultralytics/yolov3/wiki/Example:-Transfer-Learning">Transfer Learning</a></li>
+<li><a href="https://github.com/ultralytics/yolov3/wiki/Example:-Train-Single-Image">Train Single Image</a></li>
+<li><a href="https://github.com/ultralytics/yolov3/wiki/Example:-Train-Single-Class">Train Single Class</a></li>
+<li><a href="https://github.com/ultralytics/yolov3/wiki/Train-Custom-Data">Train Custom Data</a></li>
+</ul>
+<h2 id="training">Training</h2>
+<p><strong>Start Training:</strong> Run <code>train.py</code> to begin training after downloading COCO data with <code>data/get_coco_dataset.sh</code>.</p>
+<p><strong>Resume Training:</strong> Run <code>train.py --resume</code> resumes training from the latest checkpoint <code>weights/latest.pt</code>.</p>
+<p>Each epoch trains on 117,263 images from the train and validate COCO sets, and tests on 5000 images from the COCO validate set. Default training settings produce loss plots below, with <strong>training speed of 0.6 s/batch on a 1080 Ti (18 epochs/day)</strong> or 0.45 s/batch on a 2080 Ti.</p>
+<p>Here we see training results from <code>coco_1img.data</code>, <code>coco_10img.data</code> and <code>coco_100img.data</code>, 3 example files available in the <code>data/</code> folder, which train and test on the first 1, 10 and 100 images of the coco2014 trainval dataset.</p>
+<p><code>from utils import utils; utils.plot_results()</code> <img alt="results" src="https://user-images.githubusercontent.com/26833433/55669383-df76c980-5876-11e9-9806-691bd507ee17.jpg" /></p>
+<h3 id="image-augmentation">Image Augmentation</h3>
+<p><code>datasets.py</code> applies random OpenCV-powered (<a href="https://opencv.org/">https://opencv.org/</a>) augmentation to the input images in accordance with the following specifications. Augmentation is applied <strong>only</strong> during training, not during inference. Bounding boxes are automatically tracked and updated with the images. 416 x 416 examples pictured below.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Augmentation</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Translation</td>
+<td style="text-align: left;">+/- 10% (vertical and horizontal)</td>
+</tr>
+<tr>
+<td style="text-align: left;">Rotation</td>
+<td style="text-align: left;">+/- 5 degrees</td>
+</tr>
+<tr>
+<td style="text-align: left;">Shear</td>
+<td style="text-align: left;">+/- 2 degrees (vertical and horizontal)</td>
+</tr>
+<tr>
+<td style="text-align: left;">Scale</td>
+<td style="text-align: left;">+/- 10%</td>
+</tr>
+<tr>
+<td style="text-align: left;">Reflection</td>
+<td style="text-align: left;">50% probability (horizontal-only)</td>
+</tr>
+<tr>
+<td style="text-align: left;">H<strong>S</strong>V Saturation</td>
+<td style="text-align: left;">+/- 50%</td>
+</tr>
+<tr>
+<td style="text-align: left;">HS<strong>V</strong> Intensity</td>
+<td style="text-align: left;">+/- 50%</td>
+</tr>
+</tbody>
+</table>
+<p><img alt="" src="https://user-images.githubusercontent.com/26833433/50525037-6cbcbc00-0ad9-11e9-8c38-9fd51af530e0.jpg" /></p>
+<h3 id="speed">Speed</h3>
+<p><a href="https://cloud.google.com/deep-learning-vm/">https://cloud.google.com/deep-learning-vm/</a><br />
+<strong>Machine type:</strong> n1-standard-8 (8 vCPUs, 30 GB memory)<br />
+<strong>CPU platform:</strong> Intel Skylake<br />
+<strong>GPUs:</strong> K80 ($0.198/hr), P4 ($0.279/hr), T4 ($0.353/hr), P100 ($0.493/hr), V100 ($0.803/hr)<br />
+<strong>HDD:</strong> 100 GB SSD<br />
+<strong>Dataset:</strong> COCO train 2014</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">GPUs</th>
+<th style="text-align: left;"><code>batch_size</code></th>
+<th style="text-align: left;">batch time</th>
+<th style="text-align: left;">epoch time</th>
+<th style="text-align: left;">epoch cost</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">(images)</td>
+<td style="text-align: left;">(s/batch)</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">1 K80</td>
+<td style="text-align: left;">16</td>
+<td style="text-align: left;">1.43s</td>
+<td style="text-align: left;">175min</td>
+<td style="text-align: left;">$0.58</td>
+</tr>
+<tr>
+<td style="text-align: left;">1 P4</td>
+<td style="text-align: left;">8</td>
+<td style="text-align: left;">0.51s</td>
+<td style="text-align: left;">125min</td>
+<td style="text-align: left;">$0.58</td>
+</tr>
+<tr>
+<td style="text-align: left;">1 T4</td>
+<td style="text-align: left;">16</td>
+<td style="text-align: left;">0.78s</td>
+<td style="text-align: left;">94min</td>
+<td style="text-align: left;">$0.55</td>
+</tr>
+<tr>
+<td style="text-align: left;">1 P100</td>
+<td style="text-align: left;">16</td>
+<td style="text-align: left;">0.39s</td>
+<td style="text-align: left;">48min</td>
+<td style="text-align: left;">$0.39</td>
+</tr>
+<tr>
+<td style="text-align: left;">2 P100</td>
+<td style="text-align: left;">32</td>
+<td style="text-align: left;">0.48s</td>
+<td style="text-align: left;">29min</td>
+<td style="text-align: left;">$0.47</td>
+</tr>
+<tr>
+<td style="text-align: left;">4 P100</td>
+<td style="text-align: left;">64</td>
+<td style="text-align: left;">0.65s</td>
+<td style="text-align: left;">20min</td>
+<td style="text-align: left;">$0.65</td>
+</tr>
+<tr>
+<td style="text-align: left;">1 V100</td>
+<td style="text-align: left;">16</td>
+<td style="text-align: left;">0.25s</td>
+<td style="text-align: left;">31min</td>
+<td style="text-align: left;">$0.41</td>
+</tr>
+<tr>
+<td style="text-align: left;">2 V100</td>
+<td style="text-align: left;">32</td>
+<td style="text-align: left;">0.29s</td>
+<td style="text-align: left;">18min</td>
+<td style="text-align: left;">$0.48</td>
+</tr>
+<tr>
+<td style="text-align: left;">4 V100</td>
+<td style="text-align: left;">64</td>
+<td style="text-align: left;">0.41s</td>
+<td style="text-align: left;">13min</td>
+<td style="text-align: left;">$0.70</td>
+</tr>
+<tr>
+<td style="text-align: left;">8 V100</td>
+<td style="text-align: left;">128</td>
+<td style="text-align: left;">0.49s</td>
+<td style="text-align: left;">7min</td>
+<td style="text-align: left;">$0.80</td>
+</tr>
+</tbody>
+</table>
+<h2 id="inference">Inference</h2>
+<p>Run <code>detect.py</code> to apply trained weights to an image, such as <code>zidane.jpg</code> from the <code>data/samples</code> folder:</p>
+<p><strong>YOLOv3:</strong> <code>python3 detect.py --cfg cfg/yolov3.cfg --weights weights/yolov3.weights</code> <img alt="" src="https://user-images.githubusercontent.com/26833433/50524393-b0adc200-0ad5-11e9-9335-4774a1e52374.jpg" /></p>
+<p><strong>YOLOv3-tiny:</strong> <code>python3 detect.py --cfg cfg/yolov3-tiny.cfg --weights weights/yolov3-tiny.weights</code> <img alt="" src="https://user-images.githubusercontent.com/26833433/50374155-21427380-05ea-11e9-8d24-f1a4b2bac1ad.jpg" /></p>
+<p><strong>YOLOv3-SPP:</strong> <code>python3 detect.py --cfg cfg/yolov3-spp.cfg --weights weights/yolov3-spp.weights</code> <img alt="" src="https://user-images.githubusercontent.com/26833433/54747926-e051ff00-4bd8-11e9-8b5d-93a41d871ec7.jpg" /></p>
+<h3 id="webcam">Webcam</h3>
+<p>Run <code>detect.py</code> with <code>webcam=True</code> to show a live webcam feed.</p>
+<h2 id="pretrained-weights">Pretrained Weights</h2>
+<ul>
+<li>Darknet <code>*.weights</code> format: <a href="https://pjreddie.com/media/files/yolov3.weights">https://pjreddie.com/media/files/yolov3.weights</a></li>
+<li>PyTorch <code>*.pt</code> format: <a href="https://drive.google.com/drive/folders/1uxgUBemJVw9wZsdpboYbzUN4bcRhsuAI">https://drive.google.com/drive/folders/1uxgUBemJVw9wZsdpboYbzUN4bcRhsuAI</a></li>
+</ul>
+<h2 id="map">mAP</h2>
+<ul>
+<li>Use <code>test.py --weights weights/yolov3.weights</code> to test the official YOLOv3 weights.</li>
+<li>Use <code>test.py --weights weights/latest.pt</code> to test the latest training results.</li>
+<li>Compare to darknet published results <a href="https://arxiv.org/abs/1804.02767">https://arxiv.org/abs/1804.02767</a>.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;"></th>
+<th style="text-align: left;"><a href="https://github.com/ultralytics/yolov3">ultralytics/yolov3</a></th>
+<th style="text-align: left;"><a href="https://arxiv.org/abs/1804.02767">darknet</a></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>YOLOv3 320</code></td>
+<td style="text-align: left;">51.8</td>
+<td style="text-align: left;">51.5</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>YOLOv3 416</code></td>
+<td style="text-align: left;">55.4</td>
+<td style="text-align: left;">55.3</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>YOLOv3 608</code></td>
+<td style="text-align: left;">58.2</td>
+<td style="text-align: left;">57.9</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>YOLOv3-spp 320</code></td>
+<td style="text-align: left;">52.4</td>
+<td style="text-align: left;">-</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>YOLOv3-spp 416</code></td>
+<td style="text-align: left;">56.5</td>
+<td style="text-align: left;">-</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>YOLOv3-spp 608</code></td>
+<td style="text-align: left;">60.7</td>
+<td style="text-align: left;">60.6</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="language-bash">git clone https://github.com/ultralytics/yolov3
+# bash yolov3/data/get_coco_dataset.sh
+git clone https://github.com/cocodataset/cocoapi &amp;&amp; cd cocoapi/PythonAPI &amp;&amp; make &amp;&amp; cd ../.. &amp;&amp; cp -r cocoapi/PythonAPI/pycocotools yolov3
+cd yolov3
+
+python3 test.py --save-json --img-size 416
+Namespace(batch_size=32, cfg='cfg/yolov3-spp.cfg', conf_thres=0.001, data_cfg='data/coco.data', img_size=416, iou_thres=0.5, nms_thres=0.5, save_json=True, weights='weights/yolov3-spp.weights')
+Using CUDA device0 _CudaDeviceProperties(name='Tesla V100-SXM2-16GB', total_memory=16130MB)
+               Class    Images   Targets         P         R       mAP        F1
+Calculating mAP: 100%|█████████████████████████████████████████| 157/157 [05:59&lt;00:00,  1.71s/it]
+                 all     5e+03  3.58e+04     0.109     0.773      0.57     0.186
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.335
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.565
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=100 ] = 0.349
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.151
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.360
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.493
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=  1 ] = 0.280
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets= 10 ] = 0.432
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.458
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.255
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.494
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.620
+
+python3 test.py --save-json --img-size 608 --batch-size 16
+Namespace(batch_size=16, cfg='cfg/yolov3-spp.cfg', conf_thres=0.001, data_cfg='data/coco.data', img_size=608, iou_thres=0.5, nms_thres=0.5, save_json=True, weights='weights/yolov3-spp.weights')
+Using CUDA device0 _CudaDeviceProperties(name='Tesla V100-SXM2-16GB', total_memory=16130MB)
+               Class    Images   Targets         P         R       mAP        F1
+Computing mAP: 100%|█████████████████████████████████████████| 313/313 [06:11&lt;00:00,  1.01it/s]
+                 all     5e+03  3.58e+04      0.12      0.81     0.611     0.203
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.366
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.607
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=100 ] = 0.386
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.207
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.391
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.485
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=  1 ] = 0.296
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets= 10 ] = 0.464
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.494
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.331
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.517
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.618
+</code></pre>
+<h2 id="citation">Citation</h2>
+<p><a href="https://zenodo.org/badge/latestdoi/146165888"><img alt="DOI" src="https://zenodo.org/badge/146165888.svg" /></a></p>
+<h2 id="contact">Contact</h2>
+<p>Issues should be raised directly in the repository. For additional questions or comments please contact your CV Team Leader or Sibo Zhu at siboz1995@gmail.com</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["content.action.edit", "navigation.tabs", "toc.integrate", "header.autohide"], "search": "../../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d7c377c4.min.js"></script>
+      
+    
+  </body>
+</html>

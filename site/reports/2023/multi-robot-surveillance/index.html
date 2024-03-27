@@ -1,0 +1,883 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="James Lee">
+      
+      
+      
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.3">
+    
+    
+      
+        <title>Multi Robot Surveilance - Notebook</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.50c56a3b.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#multi-robot-home-surveillance" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Notebook" class="md-header__button md-logo" aria-label="Notebook" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 0 1 7 7h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v1a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-1H2a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h1a7 7 0 0 1 7-7h1V5.73c-.6-.34-1-.99-1-1.73a2 2 0 0 1 2-2M7.5 13A2.5 2.5 0 0 0 5 15.5 2.5 2.5 0 0 0 7.5 18a2.5 2.5 0 0 0 2.5-2.5A2.5 2.5 0 0 0 7.5 13m9 0a2.5 2.5 0 0 0-2.5 2.5 2.5 2.5 0 0 0 2.5 2.5 2.5 2.5 0 0 0 2.5-2.5 2.5 2.5 0 0 0-2.5-2.5Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Notebook
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Multi Robot Surveilance
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../welcome/" class="md-tabs__link">
+        
+  
+    
+  
+  Welcome
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../cluster/" class="md-tabs__link">
+        
+  
+    
+  
+  Rover Cluster
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../faq/" class="md-tabs__link">
+        
+  
+    
+  
+  FAQ
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../lab-robots/" class="md-tabs__link">
+        
+  
+    
+  
+  Lab Robots
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../infrastructure/" class="md-tabs__link">
+        
+  
+    
+  
+  Infrastrcture
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../" class="md-tabs__link">
+        
+  
+    
+  
+  Student Projects
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../packages/" class="md-tabs__link">
+        
+  
+    
+  
+  Software
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../cr-package/" class="md-tabs__link">
+        
+  
+    
+  
+  CR
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../past-gen-letters/" class="md-tabs__link">
+        
+  
+    
+  
+  Reports
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Notebook" class="md-nav__button md-logo" aria-label="Notebook" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 0 1 7 7h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v1a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-1H2a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h1a7 7 0 0 1 7-7h1V5.73c-.6-.34-1-.99-1-1.73a2 2 0 0 1 2-2M7.5 13A2.5 2.5 0 0 0 5 15.5 2.5 2.5 0 0 0 7.5 18a2.5 2.5 0 0 0 2.5-2.5A2.5 2.5 0 0 0 7.5 13m9 0a2.5 2.5 0 0 0-2.5 2.5 2.5 2.5 0 0 0 2.5 2.5 2.5 2.5 0 0 0 2.5-2.5 2.5 2.5 0 0 0-2.5-2.5Z"/></svg>
+
+    </a>
+    Notebook
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../welcome/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Welcome
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cluster/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Rover Cluster
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../faq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FAQ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../lab-robots/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab Robots
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../infrastructure/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Infrastrcture
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Student Projects
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../packages/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Software
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cr-package/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CR
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../past-gen-letters/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Reports
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_9" id="__nav_9_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            Reports
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sample_project_1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sample Project Template
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--new"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="multi-robot-home-surveillance">Multi-Robot Home Surveillance</h1>
+<h2 id="table-of-contents">Table of Contents</h2>
+<ul>
+<li><a href="#Problem-Statement">Problem Statement</a></li>
+<li><a href="#Challenges">Challenges</a></li>
+<li><a href="#Video-Demo">Video Demo</a></li>
+<li><a href="#Program-Structure">Program Structure</a></li>
+<li><a href="#TF-Tree">TF Tree</a></li>
+<li><a href="#RViz-Interface">RViz Interface</a></li>
+<li><a href="#Leader-Election-Algorithm">Leader Election Algorithm</a></li>
+<li><a href="#Resiliency-and-Node-Failure-Detection">Resiliency and Node Failure Detection</a></li>
+<li><a href="#Limitations">Limitations</a></li>
+<li><a href="#Applications">Applications</a></li>
+<li><a href="#Team-Members">Team Members</a></li>
+<li><a href="#Special-Thanks">Special Thanks</a></li>
+</ul>
+<h2 id="problem-statement">Problem Statement</h2>
+<p><img alt="home" src="../../../images/home.png" /></p>
+<ul>
+<li>The home above is divided into four security zones.</li>
+<li>We can think of them as a sequence, ordered by their importance: [A, B, C, D].</li>
+<li>If we have n live robots, we want the first n zones in the list to be patrolled by at least one robot.</li>
+<li>n== 2 → patrolled(A, B); </li>
+<li>n == 3 → patrolled(A, B, C)</li>
+<li>1 &lt;= n &lt;= 4</li>
+<li>The goal is for this condition to be an invariant for our program, despite robot failures.</li>
+<li>Let robot<sub>z</sub> refer to the robot patrolling zone Z.</li>
+<li>Illustration:</li>
+<li>n == 4 → patrolled(A, B, C, D)</li>
+<li>robotA dies</li>
+<li>n == 3 → patrolled(A, B, C)</li>
+<li>robotB dies</li>
+<li>n == 2 → patrolled(A, B)</li>
+<li>robotA dies</li>
+<li>n == 1 → patrolled(A)</li>
+</ul>
+<h2 id="challenges">Challenges</h2>
+<ul>
+<li>We need to:</li>
+<li>map the home<ul>
+<li>SLAM (Simultaneous Localization and Mapping) with the gmapping package</li>
+</ul>
+</li>
+<li>have multiple robots patrol the security zone in parallel<ul>
+<li>AMCL (Adaptive Monte Carlo Localization) and the move_base package</li>
+<li>One thread per robot with a SimpleActionClient sending move_base goals</li>
+</ul>
+</li>
+<li>have the system be resilient to robot failures, and adjust for the invariant appropriately<ul>
+<li>Rely on Raft’s Leader Election Algorithm (‘LEA’) to elect a leader robot.</li>
+<li>The remaining robots will be followers.</li>
+<li>The leader is responsible for maintaining the invariant among followers.</li>
+</ul>
+</li>
+<li>More on system resiliency:</li>
+<li>The leader always patrols zone A, which has the highest priority.</li>
+<li>On election, the leader assigns the remaining zones to followers to maintain the invariant.</li>
+<li>On leader failure: <ul>
+<li>global interrupts issued to all patrol threads (all robots stop).</li>
+<li>the LEA elects a new leader</li>
+</ul>
+</li>
+<li>On follower failure: <ul>
+<li>local interrupts issued by leader to relevant patrol threads (some robots stop).</li>
+<li>Example:</li>
+<li>n==4 → patrol(A, B, C, D)</li>
+<li>robotB dies</li>
+<li>leader interrupts robotD</li>
+<li>leader assigns robotD to zone B</li>
+<li>n==3 → patrol(A, B, C)</li>
+</ul>
+</li>
+</ul>
+<h2 id="video-demo">Video Demo</h2>
+<p><a href="https://drive.google.com/file/d/1UgOknVUCbNmY5NiatFo7d72_akHZG5z7/view?resourcekey">Watch the System in Action!</a></p>
+<h2 id="program-structure">Program Structure</h2>
+<ul>
+<li>Two points of entry:  real_main.launch and sim_main.launch.</li>
+<li>real_main.launch:</li>
+<li>used for real-world surveillance of our home environment</li>
+<li>runs the map_server with the home.yaml and home.png map files obtained by SLAM gmapping.<ul>
+<li>All robots will share this map_server</li>
+</ul>
+</li>
+<li>launches robots via the real_robots.launch file (to be shown in next slide)</li>
+<li>launches rviz with the real_nav.rviz configuration</li>
+<li>sim_main.launch:</li>
+<li>used for simulated surveillance of gazebo turtlebot3_stage_4.world</li>
+<li>works similarly to real_main.launch except it uses a map of stage_4 and sim_robots.launch to run gazebo models of the robots via tailored urdf files.</li>
+</ul>
+<h2 id="tf-tree">TF Tree</h2>
+<p><img alt="TF Tree" src="../../../images/tf-tree.png" /></p>
+<h2 id="rviz-interface">RViz Interface</h2>
+<p><img alt="RViz Interface" src="../../../images/rviz.png" /></p>
+<h2 id="leader-election-algorithm">Leader Election Algorithm</h2>
+<ul>
+<li>Based on Diego Ongaro et al. 2014, “In Search of an Understandable Consensus Algorithm”</li>
+<li>The full Raft algorithm uses a replicated state machine approach to maintain a set of nodes in the same state. Roughly:</li>
+<li>Every node (process) starts in the same state, and keeps a log of the commands it is going to execute.</li>
+<li>The algorithm elects a leader node, who ensures that the logs are properly replicated so that they are identical to each other.</li>
+<li>
+<p>Raft’s LEA and log replication algorithm are fairly discrete. We will only use the LEA.</p>
+</li>
+<li>
+<p>Background:</p>
+<ol>
+<li>Each of the robots is represented as an mp (member of parliament) node.</li>
+<li>mp_roba, mp_rafael, etc.</li>
+<li>Each node is in one of three states: follower, candidate, or leader.</li>
+<li>If a node is a leader, it starts a homage_request_thread that periodically publishes messages to the other nodes to maintain its status and prevent new elections.</li>
+<li>Every mp node has a term number, and the term numbers of mp nodes are exchanged every time they communicate via ROS topics.</li>
+<li>If an mp node’s term number is less than a received term number, it updates its term number to the received term number.</li>
+</ol>
+</li>
+<li>LEA:<ol>
+<li>On startup, every mp node is in the follower state, and has:<ol>
+<li>a term number; and</li>
+<li>a duration of time called the election timeout.</li>
+</ol>
+</li>
+<li>When a follower node receives no homage request messages from a leader for the duration of its election timeout, it:<ol>
+<li>increments its term number;</li>
+<li>becomes a candidate;</li>
+<li>votes for itself; and</li>
+<li>publishes vote request messages to all the other mp nodes in parallel.</li>
+</ol>
+</li>
+<li>When a node receives a request vote message it will vote for the candidate iff:<ol>
+<li>the term number of the candidate is at least as great as its own; and</li>
+<li>the node hasn’t already voted for another candidate.</li>
+</ol>
+</li>
+<li>Once a candidate mp node receives a majority of votes it will:<ol>
+<li>become a leader;</li>
+<li>send homage request messages to other nodes to declare its status and prevent new elections.</li>
+</ol>
+</li>
+<li>The election timeout duration of each mp node is a random quantity within 2 to 3 seconds.</li>
+<li>This prevents split votes, as it’s likely that some follower will timeout first, acquire the necessary votes, and become the leader. </li>
+<li>Still, in the event of a split vote, candidates will:<ol>
+<li>reset their election timeout durations to a random quantity within the mentioned interval;</li>
+<li>wait for their election timeout durations to expire before starting a new election.</li>
+</ol>
+</li>
+</ol>
+</li>
+</ul>
+<h2 id="resiliency-and-node-failure-detection">Resiliency and Node Failure Detection</h2>
+<ul>
+<li>The election timeout feature is part of what enables leader resiliency in my code. <ul>
+<li>When a leader node is killed, one of the follower nodes time out and become the new leader.</li>
+</ul>
+</li>
+<li>roscore keeps a list of currently active nodes. So:<ul>
+<li>followers, before transitioning to candidate state, update their list of live mp nodes by consulting roscore.</li>
+<li>leaders do the same via a follower_death_handler thread, which runs concurrently with main thread and the homage_request thread, and maintains the invariant.</li>
+</ul>
+</li>
+</ul>
+<h2 id="limitations">Limitations</h2>
+<ul>
+<li>The mp nodes are all running on the remote VNC computer, which also runs the roscore.<ul>
+<li>So killing the mp node is just a simulation of robot failure, not true robot failure.<ul>
+<li>We’re just killing a process on the vnc computer, not the robot itself</li>
+</ul>
+</li>
+<li>We can remedy this by binding the mp node’s life to any other nodes that are crucial to our robot fulfilling its task. <ul>
+<li>E.g., for our project the /roba/amcl and /roba/move_base nodes are critical.</li>
+<li>So we can consult roscore periodically to see if any of these nodes die at any given point. And if they do, we can kill mp_roba.</li>
+<li>We can also define and run more fine-grained custom nodes that keep track of any functional status of the robot we’re interested in, and bind the life of those custom nodes to the mp nodes.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Running each mp node on its corresponding robot is a bad idea!<ul>
+<li>Only if a robot gets totally destroyed, or the mp process fails, will the algorithm work.</li>
+<li>Performance will take a hit: </li>
+<li>bandwidth must be consumed for messages between mp nodes</li>
+<li>robot’s computational load will increase</li>
+</ul>
+</li>
+<li>Our system has a single point of failure; the VNC computer running roscore.<ul>
+<li>So we have to keep the VNC safe from whatever hostile environment the robots are exposed to.</li>
+<li>Maybe this can be remedied in ROS2, which apparently does not rely on a single roscore. </li>
+</ul>
+</li>
+<li>Our patrol algorithm is very brittle and non-adversarial<ul>
+<li>Depends on AMCL and move_base, which do not tolerate even slight changes to the environment, and which do not deal well with moving obstacles.</li>
+<li>There are no consequences to disturbing the patrol of the robots, or the robots themselves (e.g. no alarm or ‘arrests’)</li>
+</ul>
+</li>
+</ul>
+<h2 id="applications">Applications</h2>
+<ul>
+<li>The LEA is fairly modular, and the algorithm can be adapted to tasks other than patrolling.<ul>
+<li>It would work best for tasks which are clearly ordered by priority, and which are hazardous, or likely to cause robot failures.</li>
+<li>Completely fanciful scenarios:<ul>
+<li>Drone strikes: Maybe certain military targets are ordered by priority, and drones can be assigned to them in a way that targets with a higher priority receive stubborn attention.</li>
+<li>Planetary exploration: Perhaps some areas of a dangerous planet have a higher priority that need to be explored than others. Our system could be adapted so that the highest priority areas get patrolled first.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="team-members">Team Members</h2>
+<ul>
+<li>James Lee (leejs8128@brandeis.edu)</li>
+</ul>
+<h2 id="special-thanks">Special Thanks</h2>
+<ul>
+<li>A special thanks to Adam Ring, the TA for the course, who helped with the project at crucial junctures.</li>
+</ul>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["content.action.edit", "navigation.tabs", "toc.integrate", "header.autohide"], "search": "../../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d7c377c4.min.js"></script>
+      
+    
+  </body>
+</html>

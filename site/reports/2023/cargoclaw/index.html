@@ -1,0 +1,803 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="Benjamin Blinder, Ken Kirio, Vibhu Singh">
+      
+      
+      
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.3">
+    
+    
+      
+        <title>Cargo Claw - Notebook</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.50c56a3b.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#cargo-claw" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Notebook" class="md-header__button md-logo" aria-label="Notebook" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 0 1 7 7h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v1a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-1H2a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h1a7 7 0 0 1 7-7h1V5.73c-.6-.34-1-.99-1-1.73a2 2 0 0 1 2-2M7.5 13A2.5 2.5 0 0 0 5 15.5 2.5 2.5 0 0 0 7.5 18a2.5 2.5 0 0 0 2.5-2.5A2.5 2.5 0 0 0 7.5 13m9 0a2.5 2.5 0 0 0-2.5 2.5 2.5 2.5 0 0 0 2.5 2.5 2.5 2.5 0 0 0 2.5-2.5 2.5 2.5 0 0 0-2.5-2.5Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Notebook
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Cargo Claw
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../welcome/" class="md-tabs__link">
+        
+  
+    
+  
+  Welcome
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../cluster/" class="md-tabs__link">
+        
+  
+    
+  
+  Rover Cluster
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../faq/" class="md-tabs__link">
+        
+  
+    
+  
+  FAQ
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../lab-robots/" class="md-tabs__link">
+        
+  
+    
+  
+  Lab Robots
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../infrastructure/" class="md-tabs__link">
+        
+  
+    
+  
+  Infrastrcture
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../" class="md-tabs__link">
+        
+  
+    
+  
+  Student Projects
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../packages/" class="md-tabs__link">
+        
+  
+    
+  
+  Software
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../cr-package/" class="md-tabs__link">
+        
+  
+    
+  
+  CR
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../past-gen-letters/" class="md-tabs__link">
+        
+  
+    
+  
+  Reports
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Notebook" class="md-nav__button md-logo" aria-label="Notebook" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 0 1 7 7h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v1a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-1H2a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h1a7 7 0 0 1 7-7h1V5.73c-.6-.34-1-.99-1-1.73a2 2 0 0 1 2-2M7.5 13A2.5 2.5 0 0 0 5 15.5 2.5 2.5 0 0 0 7.5 18a2.5 2.5 0 0 0 2.5-2.5A2.5 2.5 0 0 0 7.5 13m9 0a2.5 2.5 0 0 0-2.5 2.5 2.5 2.5 0 0 0 2.5 2.5 2.5 2.5 0 0 0 2.5-2.5 2.5 2.5 0 0 0-2.5-2.5Z"/></svg>
+
+    </a>
+    Notebook
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../welcome/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Welcome
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cluster/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Rover Cluster
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../faq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FAQ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../lab-robots/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab Robots
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../infrastructure/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Infrastrcture
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Student Projects
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../packages/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Software
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cr-package/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CR
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../past-gen-letters/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Reports
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_9" id="__nav_9_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            Reports
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sample_project_1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sample Project Template
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--new"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="cargo-claw">Cargo Claw</h1>
+<ul>
+<li>Benjamin Blinder benjaminblinder@brandeis.edu  </li>
+<li>Ken Kirio kenkirio@brandeis.edu  </li>
+<li>
+<p>Vibhu Singh vibhusingh@brandeis.edu  </p>
+</li>
+<li>
+<p><a href="https://github.com/campusrover/cargoclaw**">Github Repository</a></p>
+</li>
+</ul>
+<h2 id="introduction">Introduction</h2>
+<h3 id="problem-statement">Problem Statement</h3>
+<p>The project coordinates a stationary arm robot and a mobile transportation robot to load and unload cargo autonomously. We imagine a similar algorithm being used for loading trucks at ports or in factory assembly lines.</p>
+<h3 id="demonstration">Demonstration</h3>
+<p><a href="https://drive.google.com/file/d/1pIHoIOvNj1FLkFAyZMQcKKy8nnaWH4aA/view?usp=share_link">Watch the demo</a>  </p>
+<p>There are three phases: mapping, localization, and delivery.  </p>
+<p>First, the robot drives around and makes a map. Once the map is made, a person will manually drive the robot to a delivery destination and press a button to indicate its location to the robot. Then the person will manually have to drive the robot back to the loading point and mark that location as well. With this setup, the robot can start working as the delivery robot and transporting cubes from the loading zone to the arm.  </p>
+<p>In the delivery phase, a person loads a piece of cargo - we used a 3D printed cube - onto the robot and then presses a button to tell the robot that it has a delivery to make. Once there, computer vision is used to detect the cargo and calculate its position relative to the arm. Once the arm receives the coordinates, it determines what command would be necessary to reach that position and whether that command is physically possible. If the coordinates aren’t valid, the transportation robot attempts to reposition itself so that it is close enough for the arm. If the coordinates are valid, the arm will then grab the cube off the loading plate on the robot and place it in a specified go. Finally, the transportation robot will go back to the initial home zone, allowing the process to repeat.</p>
+<h3 id="learning-objectives">Learning Objectives</h3>
+<ul>
+<li>Mapping</li>
+<li>Create a map</li>
+<li>Localize on a premade map</li>
+<li>Perform autonomous navigation between two fixed points</li>
+<li>Image processing</li>
+<li>Recognize the cargo</li>
+<li>Calculate the physical location of the cargo</li>
+<li>Robotic arm</li>
+<li>Coordinate commands on a robot that does not run ROS natively</li>
+</ul>
+<h3 id="literature">Literature</h3>
+<ul>
+<li><a href="https://kaiyuzheng.me/documents/navguide.pdf">ROS Navigation Tuning</a></li>
+</ul>
+<h2 id="what-was-created">What Was Created</h2>
+<p><img alt="flowchart" src="../../../images/cargoclaw/cargoclaw_flowchart.png" />
+A flowchart of message passing that must occur between the three main components of this project.</p>
+<h2 id="algorithms-techniques">Algorithms &amp; Techniques</h2>
+<h3 id="mapping-slam-amcl-move_base">Mapping: SLAM, AMCL, move_base</h3>
+<p>We needed the robot to be able to move autonomously and orient itself to the arm, so we decided to use SLAM to create a map and the AMCL and move_base packages to navigate. Using SLAM, we use the LiDAR sensor on the robot to create a map of the room, making sure we scan clear and consistent lines around the arm and the delivery zone. We then save the map and use AMCL to generate a cost map. This also creates a point cloud of locations where the robot could be according to the current LiDAR scan. Then, we manually moved the robot through the map in order to localize the robot to the map and ensure accurate navigation. We then capture the position and orientation data from the robot for a home and delivery location, which is then saved for future navigation. Finally, we can tell the robot to autonomously navigate between the two specified locations using the move_base package which will automatically find the fastest safe route between locations, as well as avoid any obstacles in the way.</p>
+<h3 id="image-processing-color-filtering-conversion-to-physical-units-transformation-to-arm-commands">Image Processing: color filtering, conversion to physical units, transformation to arm commands</h3>
+<p>Cargo is detected via color filtering. We filter with a convolutional kernel to reduce noise, then pass the image through bitwise operators to apply the color mask. The centroid is converted from pixels to physical units by measuring the physical dimensions captured by the image.</p>
+<p>Since commands to the arm are sent in polar coordinates, the cartesian coordinates obtained from the image are then converted into polar. These coordinates must then be transformed into the units utilized by the arm, which have no physical basis. We took measurements with the cargo in various positions and found that a linear equation could model this transformation, and utilized this equation to determine the y-coordinate. However, the x-coordinate could not be modeled by a linear equation, as the arm's limited number of possible positions along this axis made it impossible to determine a strong relationship between the coordinates. In addition, whether the cargo was parallel or at an angle to the arm affected the location of the ideal point to grab on the cargo. Instead we calculated the x-position by assinging the position and orientation of the cargo to states, which were associated with a particular x-coordinate.</p>
+<h2 id="how-to-run">How to Run</h2>
+<h3 id="setup">Setup</h3>
+<p><img alt="setup" src="../../../images/cargoclaw/cargoclaw_setup.jpg" /></p>
+<ol>
+<li>Arm robot  </li>
+</ol>
+<p>The arm robot needs to be elevated so that it can pick up the cube. Ensure that the setup is stable even when the arm changes positions, using tape as necessary. Determine the z-command required to send the arm from the "home" position (see <a href="https://campus-rover.gitbook.io/lab-notebook/brandeis-robotics-utilities/connect-to-robo">Veronika's guide to manually controlling the arm</a>) to the height of the cargo when it is loaded on the transportation robot. This will be one parameter of the launch file.</p>
+<ol>
+<li>Camera  </li>
+</ol>
+<p>The camera should be set in a fixed position above the loading zone, where the lens is parallel to the ground. The lab has a tripod for such purposes. Record the resolution of the image (default 640x480) and the physical distance that the camera captures at the height of the cargo when placed on the transportation robot. These will also be parameters for the launch file.</p>
+<h3 id="execution">Execution</h3>
+<p>Run <code>roslaunch cargoclaw transport_command.launch</code>. Separately, run <code>roslaunch cargoclaw arm_command.launch</code> with the following parameters:</p>
+<ul>
+<li>arm_z: z-command from the arm's position to pick up the cargo from the transportation robot (Setup #1)</li>
+<li>width_pixels/height_pixels: Image resolution (Setup #2)</li>
+<li>width_phys/height_phys: Physical dimensions captured in the image at the height of the cargo (Setup #2)</li>
+</ul>
+<p><strong>Mode 1: Mapping</strong>
+<img alt="mapping mode gui" src="../../../images/cargoclaw/cargoclaw_mapping.jpg" />
+Use teleop to drive the robot between the loading and unloading zones. Watch rviz to ensure adequate data is being collected.</p>
+<p><strong>Mode 2: Localizing</strong>
+<img alt="localization mode gui" src="../../../images/cargoclaw/cargoclaw_localization.jpg" />
+Use teleop to drive the robot between the loading and unloading zones. Watch rviz to ensure localization is accurate. Press the "Set Home" button when the robot is at the location where cargo will be loaded. Press the "Set Goal" button when the robot is at the location of the arm.</p>
+<p><strong>Mode 3: Running</strong>
+<img alt="localization mode gui" src="../../../images/cargoclaw/cargoclaw_driving.jpg" />
+When the cargo is loaded, press "Go Goal". This will send the robot to the loading zone where the loading/unloading will be done autonomously. The robot will then return to the home position for you to add more cargo. Press "Go Goal" and repeat the cycle. The "Go Home" button can be used if the navigation is not working, but should not be necessary.</p>
+<h2 id="summary-of-nodes-messages-and-external-packages">Summary of Nodes, Messages, and External Packages</h2>
+<p><strong>Nodes</strong></p>
+<table>
+  <tr>
+    <th> Node </th>
+    <th> Description </th>
+  </tr>
+  <tr>
+    <td> arm_cam </td>
+    <td> Accepts image of the delivery zone from the camera, detects the cargo with color filtering, and calculates and publishes its physical location </td>
+  </tr>
+  <tr>
+    <td> box_pickup </td>
+    <td> Accepts the coordinates published from arm_cam and uses a linear regression to determine the y transform and a set of ranges to determine the x transform</td>
+  </tr>
+  <tr>
+    <td> cargo_bot </td>
+    <td> Directly controls the motion of the Alien Bot using cmd_vel and move_base</td>
+  </tr>
+  <tr>
+    <td> cargo_gui </td>
+    <td> User interface which allows control of the robot as well as setting the mapping and navigation points</td>
+  </tr>
+</table>
+
+<p><strong>Messages</strong></p>
+<table>
+  <tr>
+    <th> Message </th>
+    <th> Description </th>
+  </tr>
+  <tr>
+    <td> alien_state </td>
+    <td> True if the transportation robot has finished navigating to the delivery zone. Published by `cargo_bot` and subscribed to by `arm_cam`. </td>
+  </tr>
+  <tr>
+    <td> cargo_point </td>
+    <td> The physical position of the cargo. Published by `arm_cam` and subscribed to by `box_pickup`. </td>
+  </tr>
+  <tr>
+    <td> UI </td>
+    <td> A string of information relaying the state, position, and time since the last input for the robot which is published to `cargo_gui` for display </td>
+  </tr>
+  <tr>
+    <td> keys </td>
+    <td> A string that directs robot movement. Published from `cargo_gui` to `cargo_bot`. </td>
+  </tr>
+  <tr>
+    <td> arm_status </td>
+    <td> A string relaying whether the location of the cargo can be picked up by the arm, and if so, when the arm has finished moving the cube. This informs the transportation robot's movement in the delivery zone. Published by `box_pickup` and subscribed to by `cargo_bot`. </td>
+  </tr>
+</table>
+
+<h2 id="process">Process</h2>
+<p>We began by trying to send commands to the robotic arm through ROS. While the arm natively runs proprietary software, Veronika Belkina (hyperlink?) created a package that allows for ROS commands to control the arm which we decided to utilize. The arm is controlled via USB so first we had to set up a new computer with Ubuntu and install ROS. Our first attempt was unsuccessful due to an unresolved driver error, but our second attempt worked. This step took a surprising amount of time, but we learned a lot about operating systems while troubleshooting in this stage.</p>
+<p>Simultaneously, we researched the arm capabilities and found that the arm can pick up a maximum weight of 30g. This required that we create our own 3D printed cubes to ensure that the cargo would be light enough. All cubes were printed in the same bright yellow color so that we could use color filtering to detect the cube.</p>
+<p>Next, we tested our code and the cubes by coding the arm to pick up a piece of cargo from a predetermined location. This step was difficult because commands for the x/z-coordinates are relative, while commands for the y-coordinate are absolute. After this test worked, we made the node more flexible, able to pick up the cargo from any location.</p>
+<p>With the arm working, we then began working on the image processing to detect the cargo and calculate its location. First we had to set up and calibrate the USB camera using the <code>usb_cam</code> package. Then we began working on cargo detection. Our first attempt used color filtering, but ran into issues due to the difference in data between the USB camera and the robots' cameras. We then tried applying a fiducial to the top of the transportation robot and using the aruco_detect package. However, the camera was unable to reliably detect the fiducial, leading us to return to the color detection method. With some additional image transformation and noise reduction processing, the color detection was able to reliably identify the cargo and report its centroid. Then, since the height of the transportation robot is fixed we were able to calculate the physical location of the cargo based on the ratio of pixels to physical distance at that distance from the camera. Using this information, we created another node to determine whether the cube is within the arm's range to pick up. We found converting the physical coordinates to the commands utilized by the arm to be extremely difficult, ultimately deciding to take many data points and run a regression to find a correlation. With this method we were relatively successful with the y-coordinate, which controlled the arm's rotation.</p>
+<p>Simultaneously, we coded the transportation robot's autonomous navigation. We realized our initial plan to combine LIDAR and fiducial data to improve localization would not work, as <code>move_base</code> required a cost map to calculate a trajectory while <code>fiducial_slam</code> saved the coordinates of each detected fiducial but did not produce a cost map. We decided to move forward by using <code>slam_gmapping</code>, which utilized lidar data and did produce a cost map. This allowed us to use <code>move_base</code> to reach the approximate location of the arm, and fine-tune the robot's position using fiducial detection as necessary. However, upon testing, we realized <code>move_base</code> navigation was already very accurate, and trading control between the <code>move_base</code> and a fiducial-following algorithm resulted in unexpected behavior, so we decided to just use <code>move_base</code> alone.</p>
+<p>Finally, we attempted to combine each of these components. Although <code>move_base</code> allowed for good navigation, we found even slight differences in the orientation of the robot in the delivery zone resulted in differences in the coordinates necessary to grab the cargo. We decided to make the image processing component more robust by pivoted to using polar rather than cartesian coordinates when calculating the commands to send to the arm, as the arm's x- and y-coordinates correspond to its radius and angle. We then used different approaches for transforming the x- and y-coordinates into commands. The arm had very limited range of motion along its x-axis, making it practical to measure the cargo's location at each position and pick the x-command which most closely corresponded to the cargo's location. However, the robot had a much greater range along its y-axis, leading us to take measurements and perform a cubic regression to get an equation of the command for a given y-coordinate. In addition, we added further tuning after this step, as the cargo's orientation required that the arm move increasingly along its y-axis to pick up a piece of cargo that is angled compared to the arm's gripper.</p>
+<p>Working as a team was very beneficial for this project. Although we all planned the structure of the project and overcame obstacles as a team, each person was able to specialize in a different area of the project. We had one person work on the arm, another on image processing, and another on the transportation robot.</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["content.action.edit", "navigation.tabs", "toc.integrate", "header.autohide"], "search": "../../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d7c377c4.min.js"></script>
+      
+    
+  </body>
+</html>

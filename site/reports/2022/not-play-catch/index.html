@@ -1,0 +1,881 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.3">
+    
+    
+      
+        <title>not-play-catch - Notebook</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.50c56a3b.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#not-play-catch" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Notebook" class="md-header__button md-logo" aria-label="Notebook" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 0 1 7 7h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v1a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-1H2a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h1a7 7 0 0 1 7-7h1V5.73c-.6-.34-1-.99-1-1.73a2 2 0 0 1 2-2M7.5 13A2.5 2.5 0 0 0 5 15.5 2.5 2.5 0 0 0 7.5 18a2.5 2.5 0 0 0 2.5-2.5A2.5 2.5 0 0 0 7.5 13m9 0a2.5 2.5 0 0 0-2.5 2.5 2.5 2.5 0 0 0 2.5 2.5 2.5 2.5 0 0 0 2.5-2.5 2.5 2.5 0 0 0-2.5-2.5Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Notebook
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              not-play-catch
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../welcome/" class="md-tabs__link">
+        
+  
+    
+  
+  Welcome
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../cluster/" class="md-tabs__link">
+        
+  
+    
+  
+  Rover Cluster
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../faq/" class="md-tabs__link">
+        
+  
+    
+  
+  FAQ
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../lab-robots/" class="md-tabs__link">
+        
+  
+    
+  
+  Lab Robots
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../infrastructure/" class="md-tabs__link">
+        
+  
+    
+  
+  Infrastrcture
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../" class="md-tabs__link">
+        
+  
+    
+  
+  Student Projects
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../packages/" class="md-tabs__link">
+        
+  
+    
+  
+  Software
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../cr-package/" class="md-tabs__link">
+        
+  
+    
+  
+  CR
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../past-gen-letters/" class="md-tabs__link">
+        
+  
+    
+  
+  Reports
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Notebook" class="md-nav__button md-logo" aria-label="Notebook" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 0 1 7 7h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v1a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-1H2a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h1a7 7 0 0 1 7-7h1V5.73c-.6-.34-1-.99-1-1.73a2 2 0 0 1 2-2M7.5 13A2.5 2.5 0 0 0 5 15.5 2.5 2.5 0 0 0 7.5 18a2.5 2.5 0 0 0 2.5-2.5A2.5 2.5 0 0 0 7.5 13m9 0a2.5 2.5 0 0 0-2.5 2.5 2.5 2.5 0 0 0 2.5 2.5 2.5 2.5 0 0 0 2.5-2.5 2.5 2.5 0 0 0-2.5-2.5Z"/></svg>
+
+    </a>
+    Notebook
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../welcome/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Welcome
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cluster/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Rover Cluster
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../faq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FAQ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../lab-robots/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab Robots
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../infrastructure/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Infrastrcture
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Student Projects
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../packages/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Software
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cr-package/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CR
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../past-gen-letters/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Reports
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_9" id="__nav_9_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            Reports
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sample_project_1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sample Project Template
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--new"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="not-play-catch">not-play-catch</h1>
+<p>Veronika Belkina
+Robotics Independent Study
+Fall 2022</p>
+<h2 id="links">Links</h2>
+<ul>
+<li><a href="https://github.com/campusrover/not-play-catch]">not-play-catch github</a></li>
+<li><a href="https://github.com/campusrover/arm_control">arm_control github</a></li>
+<li><a href="https://github.com/campusrover/labnotebook/blob/master/faq/InterbotixPincherX100.md">arm documentation</a></li>
+<li><a href="https://github.com/campusrover/labnotebook/blob/master/faq/camera_calibration.md">camera calibration</a></li>
+<li><a href="https://github.com/campusrover/labnotebook/blob/master/faq/apriltags_setup.md">apriltag setup</a></li>
+<li><a href="https://drive.google.com/file/d/1layYan32hGv9hBpsms_8D5jIO6dBdrxE/view?usp=share_link">video</a></li>
+</ul>
+<h2 id="introduction">Introduction</h2>
+<p><strong>Objectives</strong></p>
+<ul>
+<li>Document the Interbotix X100 arm and create a program that would send commands to the arm through messages and help explore the capabilities and limitations of the arm.</li>
+<li>Create a program that would push a ball towards a target and also to guess if a ball is under a goal and push it out.</li>
+<li>The original purpose of this project was to create an arm that could play catch with the user. This would have involved catching a ball that was rolling towards it, and also pushing the ball towards a target.</li>
+</ul>
+<h2 id="what-was-created">What was created</h2>
+<h3 id="technical-description">Technical Description</h3>
+<h4 id="arm-control"><code>arm-control</code></h4>
+<ul>
+<li>arm-control is a basic command line program that allows the user to send commands to the arm through a ROS message. There are two nodes: send_command.py and arm_control.py. The arm must be turned on, connected to the computer, and the ROS launch files launched.</li>
+<li>send_command.py allows for a user to input a command (from a limited pool of commands) such as moving the arm to a point, opening or closing the gripper, moving to the sleep position, etc. There are some basic error checks in place such as whether the command is correct or whether the inputs are the correct type. The user can enter one command at a time and see what happens. The node will then publish the proper message out. There are 8 message types for the various commands to simplify parsing through and figuring out what is happening. When the user decides to exit the program, the sleep message will be sent out to put the arm in the sleep position and exit out of the send_command program.</li>
+<li>Arm_control subscribes to the same messages that the send_command node publishes. It connects to the arm and initiates in a pose. From there, it will wait for a message. When it receives a message of a certain type, it will execute that command, and then stay in that position until another command comes.</li>
+</ul>
+<h4 id="not-play-catch_1"><code>not-play-catch</code></h4>
+<p><img alt="image" src="https://user-images.githubusercontent.com/72238100/207402825-887121e1-4d26-47d8-9cfe-33e1c386a240.png" /></p>
+<p>This is the setup for play-catch. There is a board that is taped off to indicate the boundaries of the camera. The robot is placed in the center of the bottom half and its base-link is treated as the origin (world). There is a ball that is covered in green tape for colour detection, and Apriltags that are placed on top of goals. The camera is situated around 80 cm above the board to get a full view of the board.</p>
+<p><strong>Camera and Computer Vision</strong></p>
+<p><em>Camera.py</em></p>
+<p>This node does the main masking and filtering of the images for colour detection. It then publishes a variety of messages out with the various image types after processing. It also allows for dynamic reconfiguration so that it is easier to find the colour that you need.</p>
+<p><em>Ball_distance.py</em></p>
+<p><img alt="image" src="https://user-images.githubusercontent.com/72238100/207402903-b0f39dcc-f608-4fcd-8522-a1975fbca6af.png" /></p>
+<p>This node finds the green ball and determines its coordinates on the x-y plane. It publishes those coordinates and publishes an Image message that displays the scene with a box around the ball and the coordinates in centimeters in the corner.</p>
+<p><strong>Sending Commands</strong></p>
+<p><em>Pickup.py</em></p>
+<p>The pickup node calculates the position of the ball and picks it up. It first turns to the angle in the direction of the ball and then moves in the x-z direction to pickup the ball. It then turns to the target Apriltag and puts the ball down 15cm away in front of the Apriltag. The calculations for the angles are down in the same way – determining the atan of the y/x coordinates. The steps are all done at trajectory time of 2.0 sec.</p>
+<p><em>Push.py</em></p>
+<p>The push node pushes the ball towards the target. It starts from the sleep position and then turns back to Apriltag target. Since it knows that the ball is already in position, it can push the ball with confidence after closing its gripper. The steps are all done at a trajectory time 0.9 sec to give extra impact to the ball and let it roll.</p>
+<p><em>Guess.py</em></p>
+<p>The guess node is a similar idea to the previous nodes, however, there is some random chance involved. The arm guesses between the two Apriltags, and then tries to push the ball out from under it. If a ball rolls out and is seen by the camera, then the arm will do a celebration dance. If there is no ball, then it will wait for the next turn. For this node, I had to make some adjustments to the way I publish the coordinates of the ball because when the ball wasn’t present, the colour detector was still detecting some colour and saying that there was a ball. So I adjusted the detector to only work when the detected box is greater than 30 pixels, otherwise, the node will publish (0,0,0). Since the ball is (x, y, 0.1) when it is being seen, there shouldn’t be a chance for an error with the ball being at (0,0,0). It would be (0,0,0,1) instead.</p>
+<p><strong>Miscellaneous</strong></p>
+<p><em>Main.py</em></p>
+<p>The node that initiates the game with the user and the one that is run in the roslaunch file. From here, the other nodes are run. It also keeps track of the score.</p>
+<p><em>Ball_to_transform.py</em></p>
+<p>This node creates the transform for the ball using the coordinates that are published from ball_distance.py. It uses pose.yaml file to see what the name of the frame is, the parent frame, and the message topic the Pose is being published to.</p>
+<p><strong>Guide on how to use the code written</strong></p>
+<ul>
+<li>
+<p><code>roslaunch arm_control command_center.launch</code></p>
+</li>
+<li>
+<p>If you’re working with the actual arm, ensure that it is turned on and plugged into the computer before starting. Otherwise, if you’re working in simulation, then uncomment <code>&lt;arg name=use_sim value=true /&gt;</code> line in the launch file.</p>
+</li>
+<li>
+<p>If you want to just run this file and send commands to the arm, then you can also run: <code>rosrun arm_control send_command.py</code></p>
+</li>
+<li>
+<p><code>roslaunch playcatch play-catch.launch</code></p>
+</li>
+</ul>
+<p><strong>Tables</strong></p>
+<p><code>arm_control</code></p>
+<table>
+<thead>
+<tr>
+<th>Nodes</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>send_command.py</td>
+<td>Receives command line input from user and sends it to arm_control as a message</td>
+</tr>
+<tr>
+<td>arm_control.py</td>
+<td>Receives command line input from user and sends it to arm_control as a message</td>
+</tr>
+</tbody>
+</table>
+<p><code>not-play-catch</code></p>
+<table>
+<thead>
+<tr>
+<th>Nodes</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>main.py</td>
+<td>Brings everything together into a game</td>
+</tr>
+<tr>
+<td>pickup.py</td>
+<td>Locates the ball, determines if it can pick it up, and sends a series of commands to the arm to pick and place the ball in the correct angle for the Apriltag.</td>
+</tr>
+<tr>
+<td>push.py</td>
+<td>Pushes the ball towards the Apriltag using a series of commands.</td>
+</tr>
+<tr>
+<td>guess.py</td>
+<td>Guesses a box and pushes the ball out to see if it is there or not. If it is, then it does a celebratory dance. If it’s not, then it will wait for the next round sadly.</td>
+</tr>
+<tr>
+<td>ball_distance.py</td>
+<td>Calculates the location of the ball on the x-y plane from the camera and publishes a message with an image of the ball with a box around it and the coordinates of the ball.</td>
+</tr>
+<tr>
+<td>ball_to_transform.py</td>
+<td>Creates a transform for the ball.</td>
+</tr>
+<tr>
+<td>camera.py</td>
+<td>Does all the masking and filtering and colour detection to make the computer vision work properly.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Messages</strong></p>
+<table>
+<thead>
+<tr>
+<th>Message</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>/arm_control/point</td>
+<td>Pose</td>
+<td>Pose message which tells the arm where to go</td>
+</tr>
+<tr>
+<td>/arm_control/pose</td>
+<td>Pose</td>
+<td>Pose message which sets the initial pose of the arm</td>
+</tr>
+<tr>
+<td>/arm_control/home</td>
+<td>Bool</td>
+<td>Sends the arm to the home position</td>
+</tr>
+<tr>
+<td>/arm_control/sleep</td>
+<td>Bool</td>
+<td>Sends the arm to the sleep position</td>
+</tr>
+<tr>
+<td>/arm_control/gripper</td>
+<td>String</td>
+<td>Opens or closes the gripper</td>
+</tr>
+<tr>
+<td>/arm_control/exit</td>
+<td>Bool</td>
+<td>Exits the program and sends the arm to the sleep position</td>
+</tr>
+<tr>
+<td>/arm_control/time</td>
+<td>Float32</td>
+<td>Sets the trajectory time for movement execution</td>
+</tr>
+<tr>
+<td>/arm_control/celebrate</td>
+<td>Bool</td>
+<td>Tells the arm to celebrate!</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Other Files/Libraries</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>apriltag library</td>
+<td>A library that allows for users to easily make use of Apriltags and get their transforms.</td>
+</tr>
+<tr>
+<td>catch_settings.yaml</td>
+<td>Apriltags settings to specify the family of tags and other parameters.</td>
+</tr>
+<tr>
+<td>catch_tags.yaml</td>
+<td>The yaml file for specifying information about the Apriltags.</td>
+</tr>
+<tr>
+<td>pose.yaml</td>
+<td>The yaml file for specifying information about the ball.</td>
+</tr>
+<tr>
+<td>cvconfig.cfg</td>
+<td>The dynamic reconfiguration file for colour detection and dynamically changing the colour that is being detected.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="story-of-the-project">Story of the project</h2>
+<p>The idea for this project started a while ago, during the time when we were selecting what project to do in COSI119. I had wanted to play catch with a robot arm then, however, we ended up deciding on a different project at that time. But the idea still lived on inside me, and when Pito bought the PX100 over the summer, I was really excited to give the project a try.</p>
+<p>The beginning was a little unorganized and a little difficult to get familiar with the arm because I had to stay home due to personal reasons for a month. I worked primarily on the computer vision aspects of the project at that time, setting up the Apriltag library and developing the colour detection for the ball and publishing a transform for it.</p>
+<p>When I was able to finally return to the lab, it still felt hard to get familiar with the arm’s capabilities and limitations, however, after talking to Pito about it, I ended up developing the arm_control program to send commands and see how the ROS-Python API works more properly. This really helped push the project forward and from there, things felt like they went smoother. I was able to finish developing the pickup and pushing nodes. However, this program also allowed for me to see that the catching part of the project was not really feasible with the way things were. The commands each took several seconds to process, there had to be time between sending messages otherwise they might be missed, and it took two steps to move the arm in the x, y, z directions. It was a bit of a letdown, but not the end of the world.</p>
+<p>As an additional part of the project, I was going to do a pick and place node, but it didn’t seem very exciting to be honest. So, I was inspired by the FIFA World Cup to create a game for the robot to play which developed into the guessing game that you see in the video.</p>
+<p>This project had a lot of skills that I needed to learn. A big part of it was breaking down the task into smaller more manageable tasks to keep myself motivated and see consistent progress in the project. Since this project was more self-dictated than other projects that I have worked on, it was a challenge to do sometimes, but I’m happy with the results that I have achieved.</p>
+<p>As I was writing this report, I had an insight that I felt would have made the program run much faster. It is a little sad that I hadn’t thought of it earlier which is simply to add a queue into the program to act as a buffer that holds commands as they come in. However, I wouldn’t have had to time to implement in a couple of days because it would require to rework the whole structure of the arm_control node. When I thought of the idea, I really didn’t understand how I didn’t think of it earlier, but I suppose that is what happens when you are in the middle of a project and trying to get things to work. Since I had written the arm_control program for testing and discovery and not for efficiency. But then I used it since it was convenient to use, but I didn’t consider that it was not really an optimized program. So next semester, I would like to improve the arm_control program and see if the arm runs the not-play-catch project faster.</p>
+<p>Either way, I really enjoyed developing this project and seeing it unfold over time, even if it’s not exactly what I had aspired to do in the beginning. Hopefully, other people will also enjoy creating exciting projects with the arm in the future!</p>
+<p>(I didn’t really want to change the name of the project, so I just put a not in front of it…)</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["content.action.edit", "navigation.tabs", "toc.integrate", "header.autohide"], "search": "../../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d7c377c4.min.js"></script>
+      
+    
+  </body>
+</html>
