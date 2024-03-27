@@ -17,7 +17,6 @@
   * e4:5f:01:ab:b7:ff - **platform3** - platform3.dyn.brandeis.edu
 
 
-  
 * Wifi connected Linux Notebook
   * 5c:ff:35:0f:ef:6d - **roscore2**
 * Wired Linux Desktop
