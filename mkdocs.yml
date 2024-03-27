@@ -1,6 +1,9 @@
 site_name: "Notebook"
 plugins:
   - search
+  - literate-nav:
+      nav_file: README.md
+
 theme:
   name: material
   features:
@@ -27,4 +30,4 @@ nav:
   - Infrastructure: infrastructure/README.md
   - BRU: bru/README.md
   - FAQ: faq/README.md
-  - And more
+  - cr-package/*.md
