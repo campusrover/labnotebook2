@@ -1,3 +1,8 @@
+---
+title: Campus Rover Codebase
+author: Pito Salas
+updated: mar-2024
+---
 # Campus Rover Code Base
 
 This section of the Lab Notebook contains pages related to the ongoing campus rover project, specifically the cr_ros, cr_web, cr_ros_2, cr_ros_3 and rover_4_core repositories.

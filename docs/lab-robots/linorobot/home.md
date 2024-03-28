@@ -1,3 +1,8 @@
+---
+title: Linorobot
+author: Pito Salas
+updated: mar-2024
+---
 # Linorobot
 
 ## What it is

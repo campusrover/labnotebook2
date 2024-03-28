@@ -3,9 +3,10 @@ title: Speech Recognition Report
 date: feb-2023
 author: Veronika Belkina
 status: new
-desc: 
+updated: mar-2024 
 ---
-# **Speech Recognition**
+# Speech Recognition
+
 ### [Github](https://github.com/campusrover/speech_recognition)
 ### Veronika Belkina (vbelkina@brandeis.edu)
 ### Spring 2023 

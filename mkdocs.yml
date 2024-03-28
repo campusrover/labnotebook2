@@ -2,7 +2,7 @@ site_name: "Notebook"
 plugins:
   - search
   - literate-nav:
-      nav_file: README.md
+      nav_file: SUMMARY.md
 
 theme:
   name: material
@@ -25,9 +25,3 @@ markdown_extensions:
 
 extra_css:
   - mystyle.css
-
-nav:
-  - Infrastructure: infrastructure/README.md
-  - BRU: bru/README.md
-  - FAQ: faq/README.md
-  - cr-package/*.md

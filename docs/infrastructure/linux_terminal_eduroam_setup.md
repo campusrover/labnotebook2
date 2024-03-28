@@ -1,6 +1,7 @@
 ---
 title: Configuring Wifi for Eduroam
 author: Pito Salas
+updated: march-2024
 ---
 
 ## Setting up an Eduroam connection via Command Line Interface on Linux
@@ -27,7 +28,19 @@ connecting to Eduroam has been tested on a barebones version of Ubuntu 20.04.
  - `sudo apt install network-manager`
  - `systemctl start NetworkManager.service`
  - `systemctl enable NetworkManager.service`
- 
+
+#### Make sure that networkd is disabled
+
+**I am not an expert in ubuntu networking. ** There are two different and sort of compatible/incompatible network management stacks, known sometimesa as NeworkManager and networkd. I have found that they fight with each other. I try to make sure that networkd is totally turned off (which is suprisingly difficult!)
+
+```
+sudo systemctl stop systemd-networkd.service
+sudo systemctl disable systemd-networkd.service
+# more needed, have to look them up.
+```
+
+
+
 ### Connection to Eduroam    
 
 Run the following command to get the names of your wireless devices.
@@ -57,5 +70,8 @@ You may then be prompted to enter in the wifi username and password, however the
 
 * Problems arise because there are two or three network management schemes on Ubuntu. There's `networkd` and there's `network-manager`. And they interact in very obscure ways. My current model (which remains to be proven) is to try to disable fully networkd and use only network-manager.
 
-`nmcli` is the cli for network-manager.
-
+* `nmcli` is the cli for network-manager.
+* `nmcli -t -f active,ssid dev wifi`  to find out what SSID I am connected over wifi
+* `sudo nmcli dev wifi` list all wifi SSIDs visible
+* `nmcli connection show` to show all connections that nmcli knows about
+* `nmtui` for a textui to nmcli (networkmanager)s
