@@ -4,7 +4,6 @@ repo_url: https://github.com/campusrover/labnotebook2
 copyright: Copyright, Brandeis University, 2024
 plugins:
   - search
-      indexing: 'full'
   - literate-nav:
       nav_file: SUMMARY.md
 
@@ -15,6 +14,8 @@ theme:
     - navigation.tabs
     - toc.integrate
     - header.autohide
+    - search.suggest
+    - search.highlight
   icon:
     logo: material/robot
   palette:
