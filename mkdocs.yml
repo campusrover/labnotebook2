@@ -12,6 +12,8 @@ theme:
   features:
     - content.action.edit
     - navigation.tabs
+    - navigation.instant
+    - navigation.path
     - toc.integrate
     - header.autohide
     - search.suggest
