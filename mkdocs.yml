@@ -1,4 +1,5 @@
 site_name: "Notebook"
+site_url: https://campusrover.github.io/labnotebook2/
 plugins:
   - search
   - literate-nav:
