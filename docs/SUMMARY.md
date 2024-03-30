@@ -16,5 +16,4 @@
     * faq/*
 * [Campus Rover Package](crpackage/home.md)
     * crpackage/*
-* [Our Software](packages/home.md)
-    * packages/*
+* [Our Software](packages/)
