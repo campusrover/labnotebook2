@@ -13,13 +13,15 @@ theme:
     - content.action.edit
     - content.code.copy
     - content.code.annotate 
-    - navigation.tabs
     - navigation.instant
     - navigation.path
+    - navigation.expand
+    - navigation.footer
     - toc.integrate
     - header.autohide
     - search.suggest
     - search.highlight
+
   icon:
     logo: material/robot
   palette:
