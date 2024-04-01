@@ -1,6 +1,8 @@
 ---
 title: Creating a bootable SSD
-status: old
+author: Pito Salas
+date: apr-2024
+quality: un
 ---
 
 # Creating a bootable SSD
