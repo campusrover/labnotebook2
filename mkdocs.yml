@@ -10,13 +10,16 @@ plugins:
 theme:
   name: material
   features:
-    - content.action.edit
     - content.code.copy
     - content.code.annotate 
     - navigation.instant
     - navigation.path
     - navigation.expand
     - navigation.footer
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
     - toc.integrate
     - header.autohide
     - search.suggest
