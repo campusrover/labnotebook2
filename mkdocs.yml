@@ -1,4 +1,4 @@
-site_name: "Notebook"
+site_name: "Brandeis Robotics Lab Notebook"
 site_url: https://campusrover.github.io/labnotebook2/
 repo_url: https://github.com/campusrover/labnotebook2
 copyright: Copyright, Brandeis University, 2024
@@ -6,7 +6,6 @@ plugins:
   - search
   - literate-nav:
       nav_file: SUMMARY.md
-
 theme:
   name: material
   features:
