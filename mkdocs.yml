@@ -23,7 +23,7 @@ theme:
     - header.autohide
     - search.suggest
     - search.highlight
-
+  custom_dir: overrides
   icon:
     logo: material/robot
   palette:
