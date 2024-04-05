@@ -1,9 +1,13 @@
 * [Intro](intro.md)
 * Current Robots
-    * [Turtlebot3](tb3/*)
-    * [LinoRobot](linorobot/*)
-    * [Platform](platforrm/*)
-* *.md
-* Older Robots
-    * [MiniRover](minirover/*)
-    * [Pupper](pupper/*)
+    * Turtlebot3
+        * tb3/*
+    * Linorobot
+        * linorobot/*
+    * Platform
+        * platform/*
+* Older Robots!
+    * MiniRover
+        * minirover/*
+    * Pupper
+        * pupper/*
