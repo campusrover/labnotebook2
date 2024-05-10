@@ -1,6 +1,7 @@
 ---
 title: Creating a bootable SSD
-status: old
+author: Pito Salas
+date: apr-2024
 ---
 
 # Creating a bootable SSD
@@ -85,7 +86,7 @@ New Size = 80,000 MB File System = ext4
 
 To complete the process, click the green checkmark from the top menu once again. With all the partitions created, your GParted should look like this:
 
-![Gparted](../.gitbook/assets/gparted.png)
+![Gparted](../images/gparted.png)
 
 ### Installing Ubuntu onto the SSD
 
@@ -137,7 +138,7 @@ To be sure that this process worked, the final command should return a message s
 
 The final step in the process is to install ROS. In order to install ROS, you will need access to the internet. If you are using Eduroam, the following settings will need to be used:
 
-![Eduroam settings](<../.gitbook/assets/wifi (1).png>)
+![Eduroam settings](../images/wifi.png)
 
 Once you are connected to the internet, follow these instructions to install ROS:
 

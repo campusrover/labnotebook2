@@ -1,9 +1,11 @@
 ---
 title: Commands
+author: Pito Salas
+updated: mar-2024
 ---
 # BRU commands
 
-BRU is a simple command line tool (currently implemented as a bash script.) All it really does is help you properly set up the required ROS environment variables.
+bru is a simple command line tool (currently implemented as a bash script.) All it really does is help you properly set up the required ROS environment variables.
 
 Here are the commands:
 

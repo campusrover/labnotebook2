@@ -1,7 +1,50 @@
-site_name: "Notebook"
+site_name: "Brandeis Robotics Lab Notebook"
+site_url: https://campusrover.github.io/labnotebook2/
+repo_url: https://github.com/campusrover/labnotebook2
+copyright: Copyright, Brandeis University, 2024
 plugins:
   - search
   - literate-nav:
-      nav_file: README.md
-      implicit_index: false
-  - section-index
+      nav_file: SUMMARY.md
+theme:
+  name: material
+  features:
+    - content.code.copy
+    - content.code.annotate 
+    - navigation.instant
+    - navigation.path
+    - navigation.expand
+    - navigation.footer
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - toc.integrate
+    - header.autohide
+    - search.suggest
+    - search.highlight
+  custom_dir: overrides
+  icon:
+    logo: material/robot
+  palette:
+    primary: teal
+    accent: purple
+
+markdown_extensions:
+  - attr_list
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - admonition
+  - pymdownx.details
+  - tables
+
+extra_css:
+  - mystyle.css

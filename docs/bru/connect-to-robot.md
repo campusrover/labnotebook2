@@ -1,6 +1,7 @@
 ---
 title: Controlling Robots from VNC
-order: 3
+date: apr-2024
+status: old
 ---
 # Connecting to Turtlebot3 or Plaform Robots from VNC
 
