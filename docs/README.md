@@ -21,7 +21,7 @@ date: month-year
 ```
 ## Contents
 
-* [Robot Utilitiies](bru/README.md)
+* [BRU](bru/README.md)
 * [Rover Cluster](cluster/README.md)
 * [FAQ](faq/README.md)
 * [Lab Robots](lab-robots/README.md)

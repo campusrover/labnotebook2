@@ -12,3 +12,6 @@ These have been our workhorses. They are robust and don't seem to break much. Pr
 ## Platform - Brandeis
 
 These robots are homegrown, hardware design and manugacture by Charlie Squires and software stack based on the teensy
+
+* Linorobot
+    * [How To](linorobot/howto.md)
