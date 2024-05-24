@@ -1,16 +1,26 @@
 ---
 title: How do I control the Arm
 desc: Converting Arm Coordinates
-date: may-2023
-status: new
-author: Elliot Siegal
+date: may-2024
+status: updated 
+author: Elliot Siegal, James Lee
 type: faq
 ---
-# Arm Motion Control
+# Question
+
+How can I effectively move the robotic arm to a desired location?
+
+# Answer 1
+
+To see how to move the arm with the help of fiducials and the tf2 package, refer
+to the README of [this
+project](https://github.com/campusrover/fiducial_pick_and_place).
+
+# Answer 2
 
 ## Problem
 
-The InterbotixPincherX100 can rotate, move up and down, and extend. To get the arm to go to a specific point in space given (x, y, z) coordinates, the x and y compenents must be converted to polar coordinates.
+The InterbotixPincherX100 can rotate, move up and down, and extend. To get the arm to go to a specific point in space given (x, y, z) coordinates, the x and y components must be converted to polar coordinates.
 
 ## Solution
 <img width="318" alt="Screen Shot 2023-05-06 at 10 54 42 AM" src="https://user-images.githubusercontent.com/62267188/236631562-4e0a5d32-b811-4736-9ebe-0f4b7ebd5d9c.png">
