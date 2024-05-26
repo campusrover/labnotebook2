@@ -46,7 +46,7 @@ change the `Fixed Frame` from `world` to `px100/base_link`, as pictured below:
 
 <p align="center">
     <kbd>
-        <img src="../../../images/moveit1.png />
+        <img src="../../../images/moveit1.png" />
     </kbd>
 </p>
 
