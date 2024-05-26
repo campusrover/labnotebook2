@@ -50,7 +50,50 @@ change the `Fixed Frame` from `world` to `px100/base_link`, as pictured below:
     </kbd>
 </p>
 
+Next, again in the `Displays` window, click on the `MotionPlanning` tab and
+ensure that `Query Goal State` is checked, like so.
+ 
+<p align="center">
+    <kbd>
+        <img src="../../../images/moveit2.png" />
+    </kbd>
+</p>
+
+If you do this properly, you will see a small turqoise ball appear between the
+robot's grippers, and arrows pointing to opposite directions on each of the x,
+y, and z axes.
+
+Now, try holding the top blue arrow with your mouse, and dragging it up, like
+so:
 
 
+<p align="center">
+    <kbd>
+        <img src="../../../images/moveit3.png" />
+    </kbd>
+</p>
 
+Then move to the `Planning` tab of the `MotionPlanning` window, and click `Plan
+& Execute`.
 
+<p align="center">
+    <kbd>
+        <img src="../../../images/moveit5.png" />
+    </kbd>
+</p>
+
+If all went well, you should have witnessed the MoveIt package plan a trajectory
+to your arm's goal state, and move the arm accordingly!
+
+## Next Steps
+
+Reverse your steps to ensure the arm returns to a resting position. Otherwise,
+make sure you have a colleague holding the arm before you exit RViz. This is
+because once you exit RViz, the locks on the servo motors will shut off, and the
+arm will come crashing to its floor! This probably won't damage your arm
+permanently, but we still want to be as gentle with it as possible.
+
+Playing with MoveIt in the way described above allows you to get acquainted with
+the arm's rough workspace: what places it can reach, and what places it can't.
+Of course, the next steps are to control the arm's movements through code that
+you write. For this, see the entry on arm motion control in this faq.
