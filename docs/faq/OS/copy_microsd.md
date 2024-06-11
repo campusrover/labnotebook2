@@ -45,7 +45,9 @@ Once the command has finished running, you’ll end up with a file in your home 
 
 ## Copy the disk image (dmg) to your SD card
 
-You’ll first need to unmount your SD card. Do not click the eject button in finder, but run this command, replacing 4 with whatever number you identified as your sd card 
+!!! Error Resource busy or locked
+
+   You’ll first need to unmount your SD card. Do not click the eject button in finder, but run this command, replacing 4 with whatever number you identified as your sd card. Without this you will get an error.
 
 `sudo diskutil unmountDisk /dev/disk4`
 
