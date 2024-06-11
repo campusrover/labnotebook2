@@ -2,7 +2,8 @@
 title: How to Copy a MicroSD
 status: tophit
 author: Pito Salas
-description: Very common requirement
+description: Detailed instructions on MacOS
+date: jun-11-2024
 ---
 # Copy MicroSD!
 
@@ -37,7 +38,8 @@ Now you should run the following command, replacing 4 with whatever number you i
 
 `sudo gdd if=/dev/rdisk4 of=sd_backup.dmg status=progress bs=16M`
 
-Tip: you can experiment with different numbers for the block size by replacing bs=16M with larger or smaller numbers to see if it makes a difference to the speed. I’ve found 16M the best for my hardware.
+!!! Tip
+    You can experiment with different numbers for the block size by replacing bs=16M with larger or smaller numbers to see if it makes a difference to the speed. I’ve found 16M the best for my hardware.
 
 You should see some progress feedback telling you the transfer speed. If you’d like to experiment with different block sizes, just type ctrl + c to cancel the command, then you can run it again.
 
@@ -45,9 +47,8 @@ Once the command has finished running, you’ll end up with a file in your home 
 
 ## Copy the disk image (dmg) to your SD card
 
-!!! Error Resource busy or locked
-
-   You’ll first need to unmount your SD card. Do not click the eject button in finder, but run this command, replacing 4 with whatever number you identified as your sd card. Without this you will get an error.
+!!! Important "Resource busy or locked"
+    You’ll first need to unmount your SD card. Do not click the eject button in finder, but run this command, replacing 4 with whatever number you identified as your sd card. Without this you will get an error.
 
 `sudo diskutil unmountDisk /dev/disk4`
 
@@ -56,7 +57,8 @@ Then to copy the image, run the following command:
 `sudo gdd of=/dev/rdisk4 if=sd_backup.dmg status=progress bs=16M`
 
 
-Tip: you can experiment with different numbers for the block size by replacing bs=16M with larger or smaller numbers to see if it makes a difference to the speed. I’ve found 16M the best for my hardware.
+!!! Tip
+     You can experiment with different numbers for the block size by replacing bs=16M with larger or smaller numbers to see if it makes a difference to the speed. I’ve found 16M the best for my hardware.
 
 You should see some progress feedback telling you the transfer speed. If you’d like to experiment with different block sizes, just type ctrl + c to cancel the command, then you can run it again.
 
