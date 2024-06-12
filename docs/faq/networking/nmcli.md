@@ -30,9 +30,7 @@ sudo systemctl disable systemd-networkd.service
 ```
 
 !!! Note
-    I am not an expert in ubuntu networking. ** There are two different and sort of compatible/incompatible network management stacks, known sometimesa as NeworkManager and networkd. I have found that they fight with each other. I try to make sure that networkd is totally turned off (which is suprisingly difficult!)
-
-* Problems arise because there are two or three network management schemes on Ubuntu. There's `networkd` and there's `network-manager`. And they interact in very obscure ways. My current model (which remains to be proven) is to try to disable fully networkd and use only network-manager.
+    I am not an expert in ubuntu networking. ** There are two different and sort of compatible/incompatible network management stacks, known sometimesa as NeworkManager and networkd. I have found that they fight with each other. I try to make sure that networkd is totally turned off (which is suprisingly difficult!) Problems arise because there are two or three network management schemes on Ubuntu. There's `networkd` and there's `network-manager`. And they interact in very obscure ways. My current model (which remains to be proven) is to try to disable fully networkd and use only network-manager.
 
 #### Cheat Sheet
 
@@ -53,6 +51,7 @@ nmcli connection modify <connection-name> \
         connection.autoconnect-priority <priority-value>        # Set priority of a connection
         # <connection-name>: The name of the connection profile you want to modify.
         # <priority-value>: An integer value representing the priority. Higher values have higher priority.
+nmcli general                                                  # Summary status
 
 
 ```
