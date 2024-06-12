@@ -33,3 +33,11 @@ You may then be prompted to enter in the wifi username and password, however the
 
 1. Sometimes despite checking everything, the wireless (eduroam) network refuses to connect. One important detail that has caused problems is the system time on the Rasberry Pi. It has to be correct or close to it. Apparently that's part of the authentication. I think the command is `date -s "19 APR 2012 11:14:00"` and that sets the UTC time.ß
 
+
+### New Attempt
+
+```bash title="Adding eduroam in steps"
+sudo nmcli conn add type wifi con-name eduroam ssid eduroam
+sudo nmcli conn mod eduroam ifname wlan0
+sudo nmcli conn mod eduroam ipv4.method auto 802-1x.eap peap 802-1x.phase2-auth mschapv2 802-1x.identity "robotics@brandeis.edu"
+sudo nmcli conn mod eduroam 802-1x.password "x"
