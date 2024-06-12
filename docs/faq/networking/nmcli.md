@@ -23,8 +23,6 @@ updated: may-2024
  systemctl enable NetworkManager.service
  ```
 
-#### Make sure that networkd is disabled
-
 ``` title="Make sure networkd is disabled"
 sudo systemctl stop systemd-networkd.service
 sudo systemctl disable systemd-networkd.service
@@ -35,6 +33,8 @@ sudo systemctl disable systemd-networkd.service
     I am not an expert in ubuntu networking. ** There are two different and sort of compatible/incompatible network management stacks, known sometimesa as NeworkManager and networkd. I have found that they fight with each other. I try to make sure that networkd is totally turned off (which is suprisingly difficult!)
 
 * Problems arise because there are two or three network management schemes on Ubuntu. There's `networkd` and there's `network-manager`. And they interact in very obscure ways. My current model (which remains to be proven) is to try to disable fully networkd and use only network-manager.
+
+#### Cheat Sheet
 
 ```title="nmcli cheat sheet"
 nmcli                   # is the cli for network-manager.
