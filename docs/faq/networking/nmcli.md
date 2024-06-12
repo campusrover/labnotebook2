@@ -50,3 +50,4 @@ nmcli connection modify <connection-name> connection.autoconnect-priority <prior
 nmcli connection modify <current-name> connection.id <new-name> # Changing the name of a connection:
 nmcli -f NAME,UUID,TYPE,DEVICE,STATE con show # Showing a list of connections with specific properties
 nmcli connection modify <connection-name> connection.autoconnect yes # Change autoconnect property
+```
