@@ -16,9 +16,9 @@ Welcome! This is our Lab Notebook. Over the 6 years that we have been doing Robo
 title: Gooder Title
 author: Pito Salas
 description: nicer subtitle
-status: obsolete|new|tophit
-created: march-2023
-modified: march-2024
+status: obsolete|new|tophit|unknown
+created: 12-mar-2023
+modified: 15-mar-2024
 version: 1
 ---
 ```
