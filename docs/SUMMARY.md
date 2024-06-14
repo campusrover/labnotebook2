@@ -1,7 +1,7 @@
 * [Home](home.md)
 * [BRU](bru/home.md)
     * bru/*.md
-* [Infrastructure](infrastructure/)
+* [Networking](networking/)
 * [Lab Robots](lab-robots/)
 * [Cluster](cluster/home.md)
     * cluster/*

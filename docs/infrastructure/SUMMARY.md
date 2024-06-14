@@ -1,3 +1,0 @@
-* Networking
-    * networking/*.md
-* *.md

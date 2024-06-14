@@ -2,12 +2,17 @@
 title: Creating a bootable SSD
 author: Pito Salas
 date: apr-2024
+description: It is harder than you think
+status: dated
 ---
-
 # Creating a bootable SSD
 
 This procedure is very finicky. We used it before we had our Rover cluster. Avoid doing this if you can!
 
+!!! Important
+    THis procedure is no longer used in the class. Students get an account on our Rover cluster so you don't need to figure out how to set up ROS on your own computer.
+
+    
 ## Introduction
 
 * **SSD** Solid state disk. Either internal or external. In our case we are using external SSDs which connect to your computer with a USB connection.

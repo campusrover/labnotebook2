@@ -1,6 +1,8 @@
 ---
-title:  Danger Signs with Batteries and Chargers
+title:  Danger Signs with Lipo Batteries and Chargers
 status: current
+date: 14-jun-2024
+description: Things you should know about LiPo batteries
 ---
 # Batteries and Chargers
 

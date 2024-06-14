@@ -2,14 +2,12 @@
 title: Diagnosing DNS Problems
 author: Pito Salas
 date: mar-2024
+status: current
+description: Hints and tips to get out of DNS hell
 ---
 # DNS Problems
 
 Sometimes, you can connect to your robot over ssh, so you know that the wifi is working correctly. And yet, git push and other commands are failing. This might be a problem DNS lookups.
-
-!!! Note
-
-    This is a note. It just a feature of markdown in our CMS. 
 
 ## Checking
 
