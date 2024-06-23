@@ -25,7 +25,7 @@ Copy both these files to the /etc/udev/rules.d directory.
 
 ## Creating the linobase udev rule
 
-!!! Don't use lino_udev.py
+!!! Important "Don't use lino_udev.py!"
     The Linorobot1 instructions have a little script called lino_udev.py. 
     We **do not use it** because it uses old apis that no longer work!
 
