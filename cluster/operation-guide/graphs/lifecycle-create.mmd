@@ -1,0 +1,11 @@
+graph TB
+    create-user(Create User)
+    create-template(Create deployment files from template)
+    create-dns-record(Create DNS record on AWS Route53)
+    deploy-storage(Deploy storage on K8s)
+    deploy-desktop(Deploy cloud desktop)
+    
+    create-user --> create-template
+    create-template --> create-dns-record
+    create-dns-record --> deploy-storage
+    deploy-storage --> deploy-desktop
