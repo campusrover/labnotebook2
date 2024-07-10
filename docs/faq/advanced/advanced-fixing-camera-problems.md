@@ -1,5 +1,5 @@
 ---
-title: "Advanced: Help me troubleshoot weird camera problems"
+title: "Camera Fails to initialize"
 description: For advanced users who are trying to tix weird problems
 author: Pito Salas
 date: may-2023
@@ -8,9 +8,11 @@ type: faq
 ---
 # Camera fails to initialize:
 
-Ensure that the camera is enabled and there is enough GPU memory: 
+Ensure that the camera is enabled and there is enough GPU memory, Note that there isa config.txt in /boot/firmware when ubuntu is running but editing that seems to not do anything. Instead shut down the raspberry pi and pull the MicroSD card and plug it into your laptop so you can view it without ubuntu running.
 
-1. Add the following lines to the `/boot/firmware/config.txt` file:
+1. Locate the file config.txt in the boot microsd when viewing it on your laptop.
+
+1. Add the following lines to the `config.txt` file if they are not already there.
 
 ```
 start_x=1
@@ -27,3 +29,8 @@ vcgencmd get_mem gpu
 ```
 It should show 256 or whatever number you put there.
 
+1. Check that the camera is supported and detected:
+
+```
+vcgencmd get_camera
+```
