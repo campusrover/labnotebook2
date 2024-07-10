@@ -34,3 +34,8 @@ It should show 256 or whatever number you put there.
 ```
 vcgencmd get_camera
 ```
+
+1. Snap a picture to a jpeg
+```
+raspistill -o output.jpg
+```
