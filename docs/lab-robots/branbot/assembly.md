@@ -93,10 +93,15 @@ __PICTURE__
 2. Tools: Screwdriver
 3. Steps:
     1. Find the appropriate holes in the LAF for the LED Driver.
-    2. Attach the LED Driver to the LAF using the nylon screws, standoffs, and nuts (cf.
-       the LIDAR board to LAF attachment instructions).
+    2. Attach the LED Driver to the LAF using the nylon screws, standoffs, and
+       nuts (cf.  the LIDAR board to LAF attachment instructions).
+4. Note: The LED Driver is the wrong side up in the picture below. So are the
+   male pins that have been attached to it. This does not affect the
+   functionality of the Driver, but attaching it the right side up is
+   preferable.
 
 __PICTURE__
+
 ## Attach the Motor Brackets to the LAF
 
 1. Parts: 2 Motor Brackets, 8 M3x11 bolts, 8 M3 nuts
@@ -217,10 +222,64 @@ __PICTURE 1__
 __PICTURE 2__
 __PICTURE 3__
 
-## Attach the LED holders to the LAF
+## Attach the LED Holders to the LAF
 
-## Attach the Standoffs to the LAF
+1. Parts: 4 M3x9 screws, 4 LED Holders
+2. Tools: Screwdriver
+3. Steps:
+    1. Fix the LED holders to the appropriate holes in the LAF with the screws.
+4. Notes:
+    1. The LED Holders should have heat-set nuts melted into them. If they do
+       not, ask for assistance from the Automation Lab.
+
+__PICTURE: FRONT__
+__PICTURE: BACK__
 
 ## Wiring
 
+### Connect the Raspberry Pi and the Teensy 
+
+1. Part: USB 2.0 to Micro USB Right-Angle Connector.
+
+__PICTURE: ABOVE__ 
+__PICTURE: BELOW__
+
+### Connect the LED Board with the Raspberry Pi 
+
+1. Part: USB 2.0 to Micro USB Cable.
+
+__PICTURE__
+
+### Connect the Raspberry Pi and the LIDAR Board to the Battery
+
+1. Part: USB 2.0 to Micro USB and USB-C Splitter Charging Cable 
+
+__PICTURE__
+
+### Connect the Battery to the Charlie Board's Screw Terminal 
+
+1. Part: Battery Power Cable
+
+__PICTURE__
+
+###
+
+## Attach the Standoffs to the LAF
+
+1. Parts: 6 75mm standoffs, 6 M3x10 screws
+2. Tools: Screwdriver
+3. Steps:
+    1. Attach the standoffs to the appropriate holes on the LAF with the screws.
+
+__PICTURE: SIDE 1__
+__PICTURE: SIDE 2__
+
 ## Attach the Upper Acrylic Frame to the Standoffs
+
+1. Parts: 6 M3x10 screws
+2. Tools: Screwdriver
+3. Steps:
+    1. Attach the Upper Acrylic Frame to the Standoffs with the M3x10 screws.
+4. Note: Refer to the pictures in the [Attach Standoffs to the
+   LAF](#attach-standoffs-to-the-laf) section above.
+
