@@ -9,6 +9,10 @@ type: tutorial
 
 # Instructions
 
+## General Notes
+1. 'MakerLab' and 'AutomationLab' below refer to the Brandeis organizations
+   located in the Brandeis Library.
+
 ## Prepare Acrylic Frames
 
 1. Parts: Lower Acrylic Frame, Upper Acrylic Frame
@@ -163,14 +167,55 @@ __PICTURE: Thin part of wheel adapter__
 1. Parts: Caster Wheel Offsets, Caster Wheels, 8 M6x20 bolts, 8 M6 nuts
 2. Tools: Screwdriver, Pliers
 3. Steps:
-    1. Use the pliers to remove the breaks from the Caster Wheels.
-    2.
+    1. Use the pliers to remove the breaks from a Caster Wheel.
+    2. Align the holes of a Caster Wheel Offset and those of a Caster
+       Wheel to an appropriate set of holes in the LAF.
+    3. Use hands to loosely fix the Caster Wheel Offset, the Caster Wheel, and
+       the LAF via the M6 nuts and bolts.
+    4. Use the plier to hold the nuts in place and the screwdriver to fasten the
+       bolts into the nuts.
+    5. Repeat for the other side.
 4. Notes:
-    1. It's 
+    1. The Caster Wheel Offsets are manufactured by MakerLab. 
+
+__PICTURE__
+
+## Attach the Camera to the Camera Mount
+
+1. Parts: 2 M2x4 screws, Camera, Camera Mount
+2. Tools: Screwdriver
+3. Steps:
+    1. Fasten the Camera to the Camera Mount with the screws.
+4. Note: Camera Mounts are printed by the MakerLab.
+
+__PICTURE__
 
 ## Attach the Camera Mount to the LAF
 
+1. Parts: 2 M3x16 bolts, 2 M3 nylon lock nuts, Camera Mount
+2. Tools: Pliers Screwdriver
+3. Steps:
+    1. Fasten the Camera Mount to the LAF using the bolts and nylon nuts. Hold
+       the nylon nut in place with a plier when fastening the bolt. 
+
+__PICTURE__
+
 ## Attach the Battery Brackets to the LAF
+
+1. Parts: 2 Battery Brackets with heat-set nuts, 2 foam inserts, 4 M3x9 bolts
+2. Tools: Screwdriver
+3. Steps:
+    1. Observe the orientation of the battery relative to the brackets in the
+       pictures below.
+    2. __RESUME HERE__ Battery and Foam into brackets
+4. Notes:
+    1. The battery brackets should already have heat-set nuts set into them. If
+       this isn't the case, ask for assistance from the MakerLab.
+    2. The MakerLab is also responsible for providing the foam inserts.
+
+__PICTURE 1__
+__PICTURE 2__
+__PICTURE 3__
 
 ## Attach the LED holders to the LAF
 
