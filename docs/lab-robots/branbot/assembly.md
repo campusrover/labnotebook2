@@ -262,7 +262,25 @@ __PICTURE__
 
 __PICTURE__
 
-###
+### Connect the LED Driver to the IMU
+
+1. Part: I2C Cable
+
+__PICTURE__
+
+### Connect the IMU to the Charlie Board
+
+1. Part: I2C Cable
+
+__PICTURE__
+
+### Connect the Motor Assembly's Wires to the Charlie Board
+
+__PICTURE__
+
+### Connect the LEDs to the LED Driver
+
+__PICTURE__
 
 ## Attach the Standoffs to the LAF
 
