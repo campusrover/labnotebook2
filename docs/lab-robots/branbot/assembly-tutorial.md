@@ -14,8 +14,7 @@ __WARNING__: Always be careful with tools. Safety comes first!
 ## Overview of Instructions
 
 - [Prepare Acrylic Frames](#prepare-acrylic-frames)
-- [Attach the LIDAR to the Lower Acrylic Frame
-  ('LAF')](#attach-the-lidar-to-the-lower-acrylic-frame-'laf')
+- [Attach the LIDAR to the LAF](#attach-the-lidar-to-the-laf)
 
 
 ---
@@ -30,11 +29,12 @@ __WARNING__: Always be careful with tools. Safety comes first!
     2. Take a curved nose plier and punch through any incompletely drilled holes
        in the Lower and Upper Acrylic Frames.
 
-## Attach the LIDAR to the Lower Acrylic Frame ('LAF')
+## Attach the LIDAR to the LAF 
 
-1. Parts: LIDAR, 4 M2.5x6 screws
-2. Tools: Screwdriver
-3. Steps:
+1. Note: 'LAF' stands for 'Lower Acrylic Frame'
+2. Parts: LIDAR, 4 M2.5x6 screws
+3. Tools: Screwdriver
+4. Steps:
     1. Align the LIDAR to the correct holes on the LAF.
     2. Attach the LIDAR to the LAF with the 4 M2.5x6 bolts
 
