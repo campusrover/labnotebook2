@@ -228,13 +228,17 @@ __bracket-to-laf.png__
 1. Parts: 4 M3x9 screws, 4 LED Holders
 2. Tools: Screwdriver
 3. Steps:
-    1. Fix the LED holders to the appropriate holes in the LAF with the screws.
+    1. Insert the LED bulbs/wires into the LED holders.
+    2. Fix the LED holders to the appropriate holes in the LAF with the screws.
 4. Notes:
     1. The LED Holders should have heat-set nuts melted into them. If they do
        not, ask for assistance from the Automation Lab.
+    2. The LED wires should have bulbs on one end and female plugs on the other.
+       If the female plugs are missing, ask for assistance from the Automation
+       Lab.
 
-__PICTURE: FRONT__
-__PICTURE: BACK__
+__led-front.png__
+__led-back.png__
 
 ## Wiring
 
@@ -242,52 +246,63 @@ __PICTURE: BACK__
 
 1. Part: USB 2.0 to Micro USB Right-Angle Connector.
 
-__PICTURE: ABOVE__ 
-__PICTURE: BELOW__
+__pi-to-teensy-above.png__
+__pi-to-teensy-below.png__
 
 ### Connect the LED Board with the Raspberry Pi 
 
 1. Part: USB 2.0 to Micro USB Cable.
 
-__PICTURE__
+__led-board-to-pi.png__
 
 ### Connect the Raspberry Pi and the LIDAR Board to the Battery
 
 1. Part: USB 2.0 to Micro USB and USB-C Splitter Charging Cable 
 
-__PICTURE__
+__pi-lidar-to-battery-above.png__
+__pi-lidar-to-battery-battery.png__
 
 ### Connect the Battery to the Charlie Board's Screw Terminal 
 
 1. Part: Battery Power Cable
 
-__PICTURE__
+__cb-to-battery-below.png__
+__cb-to-battery-battery.png__
 
 ### Connect the LED Driver to the IMU
 
 1. Part: I2C Cable
+2. Note: The LED Driver is the wrong side up in the picture below. So are the
+   male pins that have been attached to it. This does not affect the
+   functionality of the Driver, but attaching it the right side up is
+   preferable.
 
-__PICTURE__
+__led-driver-to-imu.png__
 
 ### Connect the IMU to the Charlie Board
 
 1. Part: I2C Cable
 
-__PICTURE__
+__imu-to-cb-above.png__
+__imu-to-cb-below.png__
 
 ### Connect the Motor Assembly's Wires to the Charlie Board
 
-__PICTURE__
+__motor-to-cb.png__
 
 ### Connect the LEDs to the LED Driver
 
-__PICTURE__
+__led-to-driver-side.png__
+__led-to-driver-above.png__
 
 ### Connect the Camera to the Raspberry Pi
 
 1. Part: Raspberry Pi Camera Ribbon Cable
+2. Note: Observe how the ribbon cable twists as it goes from the pi to the
+   camera.
 
-__PICTURE__
+__pi-to-cam-side.png__
+__pi-to-cam-front.png__
 
 ## Attach the Standoffs to the LAF
 
@@ -296,8 +311,8 @@ __PICTURE__
 3. Steps:
     1. Attach the standoffs to the appropriate holes on the LAF with the screws.
 
-__PICTURE: SIDE 1__
-__PICTURE: SIDE 2__
+__standoffs-to-laf-one.png__
+__standoffs-to-laf-two.png__
 
 ## Attach the Upper Acrylic Frame to the Standoffs
 
@@ -305,6 +320,7 @@ __PICTURE: SIDE 2__
 2. Tools: Screwdriver
 3. Steps:
     1. Attach the Upper Acrylic Frame to the Standoffs with the M3x10 screws.
-4. Note: Refer to the pictures in the [Attach Standoffs to the
-   LAF](#attach-standoffs-to-the-laf) section above.
+
+__uaf-to-standoffs-one.png__
+__uaf-to-standoffs-two.png__
 
