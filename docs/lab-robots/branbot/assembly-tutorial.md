@@ -1,12 +1,4 @@
---
-title: BranBot Assembly
-desc: How to assemble the BranBot
-date: may-2024
-status: updated
-author: James Lee
----
-
-# Instructions
+# BranBot Assembly Tutorial
 
 ## General Notes
 1. 'MakerLab' and 'AutomationLab' below refer to the Brandeis organizations
