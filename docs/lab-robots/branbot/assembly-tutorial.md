@@ -2,19 +2,33 @@
 
 ## Introduction
 
-This is a tutorial on how to assemble the BranBot from the parts listed in [this
-document](https://docs.google.com/spreadsheets/d/1uRBRJOtii2d5AbC0FSu0Z_0Gutc6lYwzHgX9t3E3YAE/edit?usp=sharing).
+This is a tutorial on how to assemble the BranBot from the [BranBot List of
+Parts](https://docs.google.com/spreadsheets/d/1uRBRJOtii2d5AbC0FSu0Z_0Gutc6lYwzHgX9t3E3YAE/edit?usp=sharing).
 
-'MakerLab' and 'AutomationLab' below refer to the organizations located in the
+'MakerLab' and 'Automation Lab' below refer to the organizations located in the
 Brandeis Library.
+
+__WARNING__: Always be careful with tools. Safety comes first!
+
+---
+## Overview of Instructions
+
+- [Prepare Acrylic Frames](#prepare-acrylic-frames)
+- [Attach the LIDAR to the Lower Acrylic Frame
+  ('LAF')](#attach-the-lidar-to-the-lower-acrylic-frame-('laf'))
+
+
+---
 
 ## Prepare Acrylic Frames
 
 1. Parts: Lower Acrylic Frame, Upper Acrylic Frame
-2. Tools: Screwdriver
+2. Tools: Curved Nose Plier 
 3. Steps:
-    1. Take a screwdriver and punch through any incompletely drilled holes in
-       the Lower and Upper Acrylic Frames.
+    1. It's best to do this step in the Automation Lab, where a curved nose
+       plier is readily available.
+    2. Take a curved nose plier and punch through any incompletely drilled holes
+       in the Lower and Upper Acrylic Frames.
 
 ## Attach the LIDAR to the Lower Acrylic Frame ('LAF')
 
@@ -108,10 +122,13 @@ Brandeis Library.
     1. Find the appropriate holes in the LAF for the LED Driver.
     2. Attach the LED Driver to the LAF using the nylon screws, standoffs, and
        nuts (cf.  the LIDAR board to LAF attachment instructions).
-4. Note: The LED Driver is the wrong side up in the picture below. So are the
-   male pins that have been attached to it. This does not affect the
-   functionality of the Driver, but attaching it the right side up is
-   preferable.
+4. Notes:
+    1.  The LED Driver is the wrong side up in the picture below. So are the
+        male pins that have been attached to it. This does not affect the
+        functionality of the Driver, but attaching it the right side up is
+        preferable.
+    2. The LED driver should already have male pins soldered onto it. If it
+       doesn't, ask the Automation Lab for assistance.
 
 <p align="center">
     <kbd>
