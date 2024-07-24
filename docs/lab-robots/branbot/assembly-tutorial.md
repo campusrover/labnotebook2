@@ -15,7 +15,7 @@ __WARNING__: Always be careful with tools. Safety comes first!
 
 - [Prepare Acrylic Frames](#prepare-acrylic-frames)
 - [Attach the LIDAR to the Lower Acrylic Frame
-  ('LAF')](#attach-the-lidar-to-the-lower-acrylic-frame-('laf'))
+  ('LAF')](#attach-the-lidar-to-the-lower-acrylic-frame-'laf')
 
 
 ---
