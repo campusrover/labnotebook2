@@ -1,8 +1,12 @@
 # BranBot Assembly Tutorial
 
-## General Notes
-1. 'MakerLab' and 'AutomationLab' below refer to the Brandeis organizations
-   located in the Brandeis Library.
+## Introduction
+
+This is a tutorial on how to assemble the BranBot from the parts listed in [this
+document](https://docs.google.com/spreadsheets/d/1uRBRJOtii2d5AbC0FSu0Z_0Gutc6lYwzHgX9t3E3YAE/edit?usp=sharing).
+
+'MakerLab' and 'AutomationLab' below refer to the organizations located in the
+Brandeis Library.
 
 ## Prepare Acrylic Frames
 
