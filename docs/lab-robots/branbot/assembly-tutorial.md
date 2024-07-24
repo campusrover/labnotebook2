@@ -26,8 +26,6 @@
     </kbd>
 </p>
 
-__lidar.png__
-
 ## Attach the LIDAR Board to the LAF
 
 1. Parts: LIDAR Board, 4 nylon M2 screws, 4 nylon M2 standoffs, 4 nylon M2 nuts
@@ -38,7 +36,11 @@ __lidar.png__
     2. Insert the LIDAR Board onto the nylon standoffs via its 4 holes.
     3. Fix the LIDAR Board onto the nylon standoffs via the 4 nylon M2 nuts.
 
-__lidar-board.png__
+<p align="center">
+    <kbd>
+        <img src="../../images/branbot/lidar-board.png" />
+    </kbd>
+</p>
 
 ## Attach the Charlie Board to the LAF
 
@@ -59,7 +61,11 @@ __lidar-board.png__
        that have themselves been soldered to the Charlie Board.
     2. If the above is not the case, ask the Automation Lab for assistance.
 
-__charlie-board.png__
+<p align="center">
+    <kbd>
+        <img src="../../images/branbot/charlie-board.png" />
+    </kbd>
+</p>
 
 ## Attach the Raspberry Pi to the LAF
 
@@ -70,7 +76,11 @@ __charlie-board.png__
     2. Attach the Pi to the LAF using the nylon screws, standoffs, and nuts (cf.
        the LIDAR board to LAF attachment instructions).
 
-__raspberry-pi.png__
+<p align="center">
+    <kbd>
+        <img src="../../images/branbot/raspberry-pi.png" />
+    </kbd>
+</p>
 
 ## Attach the IMU to the LAF
 
@@ -80,8 +90,11 @@ __raspberry-pi.png__
     1. Find the appropriate holes in the LAF for the IMU.
     2. Attach the IMU to the LAF using the nylon screws, standoffs, and nuts (cf.
        the LIDAR board to LAF attachment instructions).
-
-__imu.png__
+<p align="center">
+    <kbd>
+        <img src="../../images/branbot/imu.png" />
+    </kbd>
+</p>
 
 ## Attach the LED Driver to the LAF 
 
@@ -96,7 +109,11 @@ __imu.png__
    functionality of the Driver, but attaching it the right side up is
    preferable.
 
-__led-driver.png__
+<p align="center">
+    <kbd>
+        <img src="../../images/branbot/led-driver.png" />
+    </kbd>
+</p>
 
 ## Attach the Motor Brackets to the LAF
 
@@ -109,7 +126,11 @@ __led-driver.png__
        in place with a plier while screwing a bolt into it.
     3. Repeat for the other side.
 
-__motor-bracket.png__
+<p align="center">
+    <kbd>
+        <img src="../../images/branbot/motor-bracket.png" />
+    </kbd>
+</p>
 
 ## Attach the Motor Assemblies to the Brackets
 
@@ -124,7 +145,11 @@ __motor-bracket.png__
 4. Note: The length of the bolts should be no longer than 6mm. Otherwise, they
    might interfere with the functioning of the gear box in the Motor Assembly.
 
-__motor-assembly.png__
+<p align="center">
+    <kbd>
+        <img src="../../images/branbot/motor-assembly.png" />
+    </kbd>
+</p>
 
 ## Attach the Wheel Adapters to the Motor Assemblies
 
@@ -143,7 +168,11 @@ __motor-assembly.png__
     3. Insert two stud bolts into the two holes to fix the adapter to the shaft.
     4. Repeat for the other side.
 
-__wheel-adapter-thick.png__
+<p align="center">
+    <kbd>
+        <img src="../../images/branbot/wheel-adapter-thick.png" />
+    </kbd>
+</p>
 
 ## Attach the Fixed Wheels to the Wheel Adapters
 
@@ -161,8 +190,16 @@ __wheel-adapter-thick.png__
 4. Note: The length of the bolts should be no longer than 20mm. Otherwise, they
    might interfere with the rotation of the Motor Assembly's shaft. 
 
-__wheel-adapter-thin.png__
-__fixed-wheel.png__
+<p align="center">
+    <kbd>
+        <img src="../../images/branbot/wheel-adapter-thin.png" />
+    </kbd>
+</p>
+<p align="center">
+    <kbd>
+        <img src="../../images/branbot/fixed-wheel.png" />
+    </kbd>
+</p>
 
 ## Attach the Caster Wheels to the LAF
 
@@ -180,7 +217,11 @@ __fixed-wheel.png__
 4. Notes:
     1. The Caster Wheel Offsets are manufactured by MakerLab. 
 
-__caster-wheels.png__
+<p align="center">
+    <kbd>
+        <img src="../../images/branbot/caster-wheels.png" />
+    </kbd>
+</p>
 
 ## Attach the Camera to the Camera Mount
 
@@ -190,7 +231,11 @@ __caster-wheels.png__
     1. Fasten the Camera to the Camera Mount with the screws.
 4. Note: Camera Mounts are printed by the MakerLab.
 
-__camera-to-mount.png__
+<p align="center">
+    <kbd>
+        <img src="../../images/branbot/camera-to-mount.png" />
+    </kbd>
+</p>
 
 ## Attach the Camera Mount to the LAF
 
@@ -200,7 +245,11 @@ __camera-to-mount.png__
     1. Fasten the Camera Mount to the LAF using the bolts and nylon nuts. Hold
        the nylon nut in place with a plier when fastening the bolt. 
 
-__mount-to-laf.png__
+<p align="center">
+    <kbd>
+        <img src="../../images/branbot/mount-to-laf.png" />
+    </kbd>
+</p>
 
 ## Attach the Battery Brackets to the LAF
 
@@ -216,9 +265,22 @@ __mount-to-laf.png__
     1. The battery brackets should already have heat-set nuts set into them. If
        this isn't the case, ask for assistance from the MakerLab.
     2. The MakerLab is also responsible for providing the foam inserts.
-__bracket-one.png__
-__bracket-two.png__
-__bracket-to-laf.png__
+
+<p align="center">
+    <kbd>
+        <img src="../../images/branbot/bracket-one.png" />
+    </kbd>
+</p>
+<p align="center">
+    <kbd>
+        <img src="../../images/branbot/bracket-two.png" />
+    </kbd>
+</p>
+<p align="center">
+    <kbd>
+        <img src="../../images/branbot/bracket-to-laf.png" />
+    </kbd>
+</p>
 
 ## Attach the LED Holders to the LAF
 
@@ -234,8 +296,16 @@ __bracket-to-laf.png__
        If the female plugs are missing, ask for assistance from the Automation
        Lab.
 
-__led-front.png__
-__led-back.png__
+<p align="center">
+    <kbd>
+        <img src="../../images/branbot/led-front.png" />
+    </kbd>
+</p>
+<p align="center">
+    <kbd>
+        <img src="../../images/branbot/led-back.png" />
+    </kbd>
+</p>
 
 ## Wiring
 
@@ -243,28 +313,56 @@ __led-back.png__
 
 1. Part: USB 2.0 to Micro USB Right-Angle Connector.
 
-__pi-to-teensy-above.png__
-__pi-to-teensy-below.png__
+<p align="center">
+    <kbd>
+        <img src="../../images/branbot/pi-to-teensy-above.png" />
+    </kbd>
+</p>
+<p align="center">
+    <kbd>
+        <img src="../../images/branbot/pi-to-teensy-below.png" />
+    </kbd>
+</p>
 
 ### Connect the LED Board with the Raspberry Pi 
 
 1. Part: USB 2.0 to Micro USB Cable.
 
-__led-board-to-pi.png__
+<p align="center">
+    <kbd>
+        <img src="../../images/branbot/led-board-to-pi.png" />
+    </kbd>
+</p>
 
 ### Connect the Raspberry Pi and the LIDAR Board to the Battery
 
 1. Part: USB 2.0 to Micro USB and USB-C Splitter Charging Cable 
 
-__pi-lidar-to-battery-above.png__
-__pi-lidar-to-battery-battery.png__
+<p align="center">
+    <kbd>
+        <img src="../../images/branbot/pi-lidar-to-battery-above.png" />
+    </kbd>
+</p>
+<p align="center">
+    <kbd>
+        <img src="../../images/branbot/pi-lidar-to-battery-battery.png" />
+    </kbd>
+</p>
 
 ### Connect the Battery to the Charlie Board's Screw Terminal 
 
 1. Part: Battery Power Cable
 
-__cb-to-battery-below.png__
-__cb-to-battery-battery.png__
+<p align="center">
+    <kbd>
+        <img src="../../images/branbot/cb-to-battery-below.png" />
+    </kbd>
+</p>
+<p align="center">
+    <kbd>
+        <img src="../../images/branbot/cb-to-battery-battery.png" />
+    </kbd>
+</p>
 
 ### Connect the LED Driver to the IMU
 
@@ -274,23 +372,47 @@ __cb-to-battery-battery.png__
    functionality of the Driver, but attaching it the right side up is
    preferable.
 
-__led-driver-to-imu.png__
+<p align="center">
+    <kbd>
+        <img src="../../images/branbot/led-driver-to-imu.png" />
+    </kbd>
+</p>
 
 ### Connect the IMU to the Charlie Board
 
 1. Part: I2C Cable
 
-__imu-to-cb-above.png__
-__imu-to-cb-below.png__
+<p align="center">
+    <kbd>
+        <img src="../../images/branbot/imu-to-cb-above.png" />
+    </kbd>
+</p>
+<p align="center">
+    <kbd>
+        <img src="../../images/branbot/imu-to-cb-below.png" />
+    </kbd>
+</p>
 
 ### Connect the Motor Assembly's Wires to the Charlie Board
 
-__motor-to-cb.png__
+<p align="center">
+    <kbd>
+        <img src="../../images/branbot/motor-to-cb.png" />
+    </kbd>
+</p>
 
 ### Connect the LEDs to the LED Driver
 
-__led-to-driver-side.png__
-__led-to-driver-above.png__
+<p align="center">
+    <kbd>
+        <img src="../../images/branbot/led-to-driver-side.png" />
+    </kbd>
+</p>
+<p align="center">
+    <kbd>
+        <img src="../../images/branbot/led-to-driver-above.png" />
+    </kbd>
+</p>
 
 ### Connect the Camera to the Raspberry Pi
 
@@ -298,8 +420,16 @@ __led-to-driver-above.png__
 2. Note: Observe how the ribbon cable twists as it goes from the pi to the
    camera.
 
-__pi-to-cam-side.png__
-__pi-to-cam-front.png__
+<p align="center">
+    <kbd>
+        <img src="../../images/branbot/pi-to-cam-side.png" />
+    </kbd>
+</p>
+<p align="center">
+    <kbd>
+        <img src="../../images/branbot/pi-to-cam-front.png" />
+    </kbd>
+</p>
 
 ## Attach the Standoffs to the LAF
 
@@ -308,8 +438,16 @@ __pi-to-cam-front.png__
 3. Steps:
     1. Attach the standoffs to the appropriate holes on the LAF with the screws.
 
-__standoffs-to-laf-one.png__
-__standoffs-to-laf-two.png__
+<p align="center">
+    <kbd>
+        <img src="../../images/branbot/standoffs-to-laf-one.png" />
+    </kbd>
+</p>
+<p align="center">
+    <kbd>
+        <img src="../../images/branbot/standoffs-to-laf-two.png" />
+    </kbd>
+</p>
 
 ## Attach the Upper Acrylic Frame to the Standoffs
 
@@ -318,6 +456,14 @@ __standoffs-to-laf-two.png__
 3. Steps:
     1. Attach the Upper Acrylic Frame to the Standoffs with the M3x10 screws.
 
-__uaf-to-standoffs-one.png__
-__uaf-to-standoffs-two.png__
+<p align="center">
+    <kbd>
+        <img src="../../images/branbot/uaf-to-standoffs-one.png" />
+    </kbd>
+</p>
+<p align="center">
+    <kbd>
+        <img src="../../images/branbot/uaf-to-standoffs-two.png" />
+    </kbd>
+</p>
 
