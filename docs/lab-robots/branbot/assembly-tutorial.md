@@ -15,8 +15,37 @@ __WARNING__: Always be careful with tools. Safety comes first!
 
 - [Prepare Acrylic Frames](#prepare-acrylic-frames)
 - [Attach the LIDAR to the LAF](#attach-the-lidar-to-the-laf)
-
-
+- [Attach the LIDAR Board to the LAF](#attach-the-lidar-board-to-the-laf)
+- [Attach the Charlie Board to the LAF](#attach-the-charlie-board-to-the-laf)
+- [Attach the Raspberry Pi to the LAF](#attach-the-raspberry-pi-to-the-laf)
+- [Attach the IMU to the LAF](#attach-the-imu-to-the-laf)
+- [Attach the LED Driver to the LAF](#attach-the-led-driver-to-the-laf)
+- [Attach the Motor Brackets to the LAF](#attach-the-motor-brackets-to-the-laf)
+- [Attach the Motor Assemblies to the
+  Brackets](#attach-the-motor-assemblies-to-the-brackets)
+- [Attach the Wheel Adapters to the Motor
+  Assemblies](#attach-the-wheel-adapters-to-the-motor-assemblies)
+- [Attach the Fixed Wheels to the Wheel
+  Adapters](#attach-the-fixed-wheels-to-the-wheel-adapters)
+- [Attach the Caster Wheels to the LAF](#attach-the-caster-wheels-to-the-laf)
+- [Attach the Camera to the Camera
+  Mount](#attach-the-camera-to-the-camera-mount)
+- [Attach the Camera Mount to the LAF](#attach-the-camera-mount-to-the-laf)
+- [Attach the Battery Brackets to the
+  LAF](#attach-the-battery-brackets-to-the-laf)
+- [Attach the LED Holders to the LAF](#attach-the-led-holders-to-the-laf)
+- [Wiring](#wiring)
+    - [Connect the Raspberry Pi and the Teensy](#connect-the-raspberry-pi-and-the-teensy)
+    - [Connect the LED Board with the Raspberry Pi](#connect-the-led-board-with-the-raspberry-pi)
+    - [Connect the Raspberry Pi and the LIDAR Board to the Battery](#connect-the-raspberry-pi-and-the-lidar-board-to-the-battery)
+    - [Connect the battery to the Charlie Board Screw Terminal](#connect-the-battery-to-the-charlie-board-screw-terminal)
+    - [Connect the LED Driver to the IMU](#connect-the-led-driver-to-the-imu) 
+    - [Connect the IMU to the Charlie Board](#connect-the-imu-to-the-charlie-board)
+    - [Connect the Motor Assembly Wires to the Charlie Board](#connect-the-motor-assembly-wires-to-the-charlie-board)
+    - [Connect the LEDs to the LED Driver](#connect-the-leds-to-the-led-driver)
+    - [Connect the Camera to the Raspberry Pi](#connect-the-camera-to-the-raspberry-pi)
+- [Attach the Standoffs to the LAF](#attach-the-standoffs-to-the-laf)
+- [Attach the Upper Acrylic Frame to the Standoffs](#attach-the-upper-acrylic-frame-to-the-standoffs)
 ---
 
 ## Prepare Acrylic Frames
@@ -370,7 +399,7 @@ __WARNING__: Always be careful with tools. Safety comes first!
     </kbd>
 </p>
 
-### Connect the Battery to the Charlie Board's Screw Terminal 
+### Connect the Battery to the Charlie Board Screw Terminal 
 
 1. Part: Battery Power Cable
 
@@ -414,7 +443,7 @@ __WARNING__: Always be careful with tools. Safety comes first!
     </kbd>
 </p>
 
-### Connect the Motor Assembly's Wires to the Charlie Board
+### Connect the Motor Assembly Wires to the Charlie Board
 
 <p align="center">
     <kbd>
