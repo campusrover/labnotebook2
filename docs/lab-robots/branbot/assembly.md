@@ -1,4 +1,4 @@
----
+--
 title: BranBot Assembly
 desc: How to assemble the BranBot
 date: may-2024
@@ -29,7 +29,7 @@ type: tutorial
     1. Align the LIDAR to the correct holes on the LAF.
     2. Attach the LIDAR to the LAF with the 4 M2.5x6 bolts
 
-__PICTURE__
+__lidar.png__
 
 ## Attach the LIDAR Board to the LAF
 
@@ -41,7 +41,7 @@ __PICTURE__
     2. Insert the LIDAR Board onto the nylon standoffs via its 4 holes.
     3. Fix the LIDAR Board onto the nylon standoffs via the 4 nylon M2 nuts.
 
-__PICTURE__
+__lidar-board.png__
 
 ## Attach the Charlie Board to the LAF
 
@@ -53,9 +53,6 @@ __PICTURE__
        LAF as in the picture below.
     2. Attach the Charlie Board to the LAF using the nylon screws, standoffs,
        and nuts (cf. the LIDAR board to LAF attachment instructions).
-
-__PICTURE__
-       
 4. Notes:
     1. The Charlie Board should already have the Motor Driver, the Teensy, the
        Screw terminal, and the I2C right-angle connector soldered onto it. The
@@ -64,6 +61,8 @@ __PICTURE__
        soldered onto them, which should have been inserted into female plugs
        that have themselves been soldered to the Charlie Board.
     2. If the above is not the case, ask the Automation Lab for assistance.
+
+__charlie-board.png__
 
 ## Attach the Raspberry Pi to the LAF
 
@@ -74,7 +73,7 @@ __PICTURE__
     2. Attach the Pi to the LAF using the nylon screws, standoffs, and nuts (cf.
        the LIDAR board to LAF attachment instructions).
 
-__PICTURE__
+__raspberry-pi.png__
 
 ## Attach the IMU to the LAF
 
@@ -85,7 +84,7 @@ __PICTURE__
     2. Attach the IMU to the LAF using the nylon screws, standoffs, and nuts (cf.
        the LIDAR board to LAF attachment instructions).
 
-__PICTURE__
+__imu.png__
 
 ## Attach the LED Driver to the LAF 
 
@@ -100,7 +99,7 @@ __PICTURE__
    functionality of the Driver, but attaching it the right side up is
    preferable.
 
-__PICTURE__
+__led-driver.png__
 
 ## Attach the Motor Brackets to the LAF
 
@@ -113,7 +112,7 @@ __PICTURE__
        in place with a plier while screwing a bolt into it.
     3. Repeat for the other side.
 
-__PICTURE__ 
+__motor-bracket.png__
 
 ## Attach the Motor Assemblies to the Brackets
 
@@ -128,7 +127,7 @@ __PICTURE__
 4. Note: The length of the bolts should be no longer than 6mm. Otherwise, they
    might interfere with the functioning of the gear box in the Motor Assembly.
 
-__PICTURE__
+__motor-assembly.png__
 
 ## Attach the Wheel Adapters to the Motor Assemblies
 
@@ -147,7 +146,7 @@ __PICTURE__
     3. Insert two stud bolts into the two holes to fix the adapter to the shaft.
     4. Repeat for the other side.
 
-__PICTURE__
+__wheel-adapter-thick.png__
 
 ## Attach the Fixed Wheels to the Wheel Adapters
 
@@ -165,7 +164,8 @@ __PICTURE__
 4. Note: The length of the bolts should be no longer than 20mm. Otherwise, they
    might interfere with the rotation of the Motor Assembly's shaft. 
 
-__PICTURE: Thin part of wheel adapter__
+__wheel-adapter-thin.png__
+__fixed-wheel.png__
 
 ## Attach the Caster Wheels to the LAF
 
@@ -183,7 +183,7 @@ __PICTURE: Thin part of wheel adapter__
 4. Notes:
     1. The Caster Wheel Offsets are manufactured by MakerLab. 
 
-__PICTURE__
+__caster-wheels.png__
 
 ## Attach the Camera to the Camera Mount
 
@@ -193,7 +193,7 @@ __PICTURE__
     1. Fasten the Camera to the Camera Mount with the screws.
 4. Note: Camera Mounts are printed by the MakerLab.
 
-__PICTURE__
+__camera-to-mount.png__
 
 ## Attach the Camera Mount to the LAF
 
@@ -203,7 +203,7 @@ __PICTURE__
     1. Fasten the Camera Mount to the LAF using the bolts and nylon nuts. Hold
        the nylon nut in place with a plier when fastening the bolt. 
 
-__PICTURE__
+__mount-to-laf.png__
 
 ## Attach the Battery Brackets to the LAF
 
@@ -212,15 +212,16 @@ __PICTURE__
 3. Steps:
     1. Observe the orientation of the battery relative to the brackets in the
        pictures below.
-    2. __RESUME HERE__ Battery and Foam into brackets
+    2. Insert the battery into the brackets, using the foam inserts to secure it
+       in place. 
+    3. Attach the battery to the LAF using the 4 M3x9 bolts
 4. Notes:
     1. The battery brackets should already have heat-set nuts set into them. If
        this isn't the case, ask for assistance from the MakerLab.
     2. The MakerLab is also responsible for providing the foam inserts.
-
-__PICTURE 1__
-__PICTURE 2__
-__PICTURE 3__
+__bracket-one.png__
+__bracket-two.png__
+__bracket-to-laf.png__
 
 ## Attach the LED Holders to the LAF
 
@@ -279,6 +280,12 @@ __PICTURE__
 __PICTURE__
 
 ### Connect the LEDs to the LED Driver
+
+__PICTURE__
+
+### Connect the Camera to the Raspberry Pi
+
+1. Part: Raspberry Pi Camera Ribbon Cable
 
 __PICTURE__
 
