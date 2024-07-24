@@ -62,11 +62,7 @@ __WARNING__: Always be careful with tools. Safety comes first!
     1. Align the LIDAR to the correct holes on the LAF.
     2. Attach the LIDAR to the LAF with the 4 M2.5x6 bolts
 
-<p align="center">
-    <kbd>
-        <img src="../../images/branbot/lidar.png" />
-    </kbd>
-</p>
+![Branbot](/labnotebook2/images/branbot/lidar.png){: .center}
 
 ## Attach the LIDAR Board to the LAF
 
@@ -78,11 +74,8 @@ __WARNING__: Always be careful with tools. Safety comes first!
     2. Insert the LIDAR Board onto the nylon standoffs via its 4 holes.
     3. Fix the LIDAR Board onto the nylon standoffs via the 4 nylon M2 nuts.
 
-<p align="center">
-    <kbd>
-        <img src="../../images/branbot/lidar-board.png" />
-    </kbd>
-</p>
+![Branbot](/labnotebook2//images/branbot/lidar-board.png){: .center}
+
 
 ## Attach the Charlie Board to the LAF
 

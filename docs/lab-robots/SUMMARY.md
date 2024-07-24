@@ -1,13 +1,16 @@
-* [Intro](intro.md)
+* [Lab Robots](intro.md)
 * Current Robots
     * Turtlebot3
         * tb3/*
-    * Linorobot
-        * linorobot/*
     * Platform
         * platform/*
-* Older Robots!
+    * Branbot
+        * branbot/*
+* Older Robots!!
     * MiniRover
         * minirover/*
     * Pupper
         * pupper/*
+    * Linorobot
+        * linorobot/*
+

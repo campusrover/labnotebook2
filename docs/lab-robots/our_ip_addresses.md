@@ -1,5 +1,5 @@
 ---
-title: Lab Robot Information
+title: Lab Robot InformationXX
 author: Pito Salas
 updated: apr-2024
 ---
