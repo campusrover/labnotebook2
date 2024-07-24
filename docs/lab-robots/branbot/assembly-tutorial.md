@@ -4,7 +4,6 @@ desc: How to assemble the BranBot
 date: may-2024
 status: updated
 author: James Lee
-type: tutorial
 ---
 
 # Instructions
