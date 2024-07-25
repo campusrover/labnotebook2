@@ -3,7 +3,6 @@ title: Configuring Wifi for Eduroam
 author: Pito Salas
 updated: march-2024
 ---
-
 ## Setting up an Eduroam connection via Command Line Interface on Linux
 
 Often in robotics, you will find that it is necessary to configure wifi through a terminal interface rather than a GUI. This is often due to the fact that many on-board operating systems for robots lack a desktop environment, and the only way to interface with them is through a terminal.

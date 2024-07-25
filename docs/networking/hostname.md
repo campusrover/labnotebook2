@@ -2,6 +2,7 @@
 title: Hostnames
 author: Pito Salas
 date: apr-2024
+status: current
 ---
 # Hostnames
 
