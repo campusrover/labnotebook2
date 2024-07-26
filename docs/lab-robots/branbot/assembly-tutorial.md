@@ -96,11 +96,7 @@ __WARNING__: Always be careful with tools. Safety comes first!
        that have themselves been soldered to the Charlie Board.
     2. If the above is not the case, ask the Automation Lab for assistance.
 
-<p align="center">
-    <kbd>
-        <img src="../../images/branbot/charlie-board.png" />
-    </kbd>
-</p>
+![Branbot](/labnotebook2/images/branbot/charlie-board.png){:.center}
 
 ## Attach the Raspberry Pi to the LAF
 
