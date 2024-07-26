@@ -62,7 +62,7 @@ __WARNING__: Always be careful with tools. Safety comes first!
     1. Align the LIDAR to the correct holes on the LAF.
     2. Attach the LIDAR to the LAF with the 4 M2.5x6 bolts
 
-![Branbot](/labnotebook2/images/branbot/lidar.png){:.center}
+![Branbot](/labnotebook2/images/branbot/lidar.png){: .center}
 
 ## Attach the LIDAR Board to the LAF
 
