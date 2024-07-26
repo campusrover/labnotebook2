@@ -10,7 +10,7 @@ author: James Lee
 
 ## Introduction
 
-This list supercedes all other lists that have been created before it.
+This list is superceded by the [google sheets listing](https://docs.google.com/spreadsheets/d/1KHxlxyU0QRJ_e02RQXr9uzFyhdwMWywhvQMOESOrvJs/edit?usp=sharing).
 
 ## List
 
