@@ -1,6 +1,8 @@
 * [Home](home.md)
 * [Knowledge Base](faq/home.md)
     * faq/*
+* [Cheat Sheets](cheatsheets/home.md)
+    * cheatsheets/*.md
 * [BRU](bru/home.md)
     * bru/*.md
 * [Networking](networking/SUMMARY.md)
