@@ -140,7 +140,7 @@ __WARNING__: Always be careful with tools. Safety comes first!
 
 ## Attach the Motor Brackets to the LAF
 
-1. Parts: 2 Motor Brackets, 8 M3x11 bolts, 8 M3 nuts
+1. Parts: 2 Motor Brackets, 8 M3x10 bolts, 8 M3 nuts
 2. Tools: Screwdriver, Plier
 3. Steps:
     1. Align a bracket's four holes that form a square with appropriate holes
@@ -244,14 +244,14 @@ __WARNING__: Always be careful with tools. Safety comes first!
 
 ## Attach the Battery Brackets to the LAF
 
-1. Parts: 2 Battery Brackets with heat-set nuts, 2 foam inserts, 4 M3x9 bolts
+1. Parts: 2 Battery Brackets with heat-set nuts, 2 foam inserts, 4 M3x10 bolts
 2. Tools: Screwdriver
 3. Steps:
     1. Observe the orientation of the battery relative to the brackets in the
        pictures below.
     2. Insert the battery into the brackets, using the foam inserts to secure it
        in place. 
-    3. Attach the battery to the LAF using the 4 M3x9 bolts
+    3. Attach the battery to the LAF using the 4 M3x10 bolts
 4. Notes:
     1. The battery brackets should already have heat-set nuts set into them. If
        this isn't the case, ask for assistance from the MakerLab.
@@ -263,7 +263,7 @@ __WARNING__: Always be careful with tools. Safety comes first!
 
 ## Attach the LED Holders to the LAF
 
-1. Parts: 4 M3x9 screws, 4 LED Holders
+1. Parts: 4 M3x10 screws, 4 LED Holders
 2. Tools: Screwdriver
 3. Steps:
     1. Insert the LED bulbs/wires into the LED holders.
