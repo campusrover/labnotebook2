@@ -9,5 +9,8 @@ date: jul-2024
 * cmsingle - catkin make a specifici package
 * myip - display local ip for me
 * myvpnip - display ip on vpn
+* cw - change to catkin_ws and set up environment
+
+
 
 
