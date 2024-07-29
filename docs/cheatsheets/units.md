@@ -5,7 +5,9 @@ status: current
 author: Pito Salas
 date: jul-2024
 ---
-* meters
-* meters per second
-* radians
-* quaternions
+* meters - distance
+* meters per second - velocity
+* radians - angle
+* quaternions - 3d angula positiom (in radians)
+* euler angles - 3d angular position (in rediance)
+

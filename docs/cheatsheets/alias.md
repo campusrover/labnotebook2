@@ -7,4 +7,7 @@ date: jul-2024
 ---
 * cm - catkin make - compile and build
 * cmsingle - catkin make a specifici package
+* myip - display local ip for me
+* myvpnip - display ip on vpn
+
 
