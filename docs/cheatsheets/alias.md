@@ -10,6 +10,8 @@ date: jul-2024
 * myip - display local ip for me
 * myvpnip - display ip on vpn
 * cw - change to catkin_ws and set up environment
+* stopnow - stop the connected robot immediately
+* teleop - run a generaic teleop client
 
 
 
