@@ -1,5 +1,7 @@
 # Specifications
 
+* Obsolete. Now this is maintained in this google sheet: https://docs.google.com/spreadsheets/d/130Y508Y508Y508Y508Y508Y508Y508Y508Y508Y508Y/edit?gid=0
+
 
 | hostname | maintainer | password | last updated | username | ros | OS | known problems | IMU | MAC/Lan | MAC/Wifi |
 | -------- | ---------- | -------- | ------------ | -------- | --- | -- | -------------- | --- |--- |--- |
