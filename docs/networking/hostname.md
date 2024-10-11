@@ -10,7 +10,34 @@ All computers (`hosts`) on the network have (or can have) a hostname. This is no
 
 ## Setting hostnames
 
-I will not repeat what I have found elsewhere but suffice it to say that there are many different explanations "out there" for setting the hostname.
+To change the hostname on an Ubuntu system, you need to modify it in several places. Here are the steps to change the hostname permanently:
 
-Here's the one I have been using succesffully: [Configuring Host Names Using hostnamectl](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/networking_guide/sec_configuring_host_names_using_hostnamectl)
+1. Edit the `/etc/hostname` file:
+   ```bash
+   sudo nano /etc/hostname
+   ```
+   Replace the current hostname with the new one you want.
+
+2. Update the `/etc/hosts` file:
+   ```bash
+   sudo nano /etc/hosts
+   ```
+   Find the line with the old hostname and update it to the new hostname.
+
+3. Use the `hostnamectl` command to set the new hostname:
+   ```bash
+   sudo hostnamectl set-hostname new-hostname
+   ```
+   Replace `new-hostname` with your desired hostname.
+
+4. To prevent cloud services from resetting the hostname, you may need to modify cloud-init configuration:
+   ```bash
+   sudo nano /etc/cloud/cloud.cfg
+   ```
+   Find the line `preserve_hostname: false` and change it to `preserve_hostname: true`.
+
+5. Reboot your system to apply all changes:
+   ```bash
+   sudo reboot
+   ```
 

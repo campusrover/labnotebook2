@@ -7,7 +7,9 @@ status: dated
 ---
 !!! Important
     We don't use nmcli on the Brandeis Robots. This is informational only
+    Here is how to uninstall NetworkManager:
 
+    
 # Using NMCLI
  
 `nmcli` is a command line tool used for networking on Linux machines. It is typically installed by default on Ubuntu Linux, so you should not need to connect your machine through 
