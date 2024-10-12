@@ -13,6 +13,15 @@ systemd-analyze blame
 snap list
 Snap services
 ```
+
+## Remove multipath-service
+
+This is safe on a raspberry Pi
+
+```
+sudo systemctl disable multipathd.service
+```
+
 ## Disable cloud services
 Which we dont need
 ```
