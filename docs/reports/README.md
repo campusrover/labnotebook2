@@ -7,7 +7,7 @@ description: A folder containing all the project reports
 The following pages are each a project report by a student in Autonomous Robotics at Brandeis University. Here's how to add your content:
 
 1. Git clone this repository to your computer: 
-1. In the directory structure, find the folder called reports. In it find the .md file for your project. If you can't find it, then create it.
+1. In the directory structure, find the folder called reports. In the 2024 folder, create an .md for your report. 
 1. Write your project report using markdown. You can include images as well as links. There are many tutorials on Markdown but you most likely already know it.
 1. Use the template below as a starting point
 1. Git add, commit and push your changes
