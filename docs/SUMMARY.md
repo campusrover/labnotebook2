@@ -1,6 +1,8 @@
 * [Home](home.md)
-* [Knowledge Base](faq/home.md)
+* [FAQs](faq/home.md)
     * faq/*
+* [Cosi119 Projects](reports/home.md)
+    * reports/*
 * [Cheat Sheets](cheatsheets/home.md)
     * cheatsheets/*.md
 * [BRU](bru/home.md)
