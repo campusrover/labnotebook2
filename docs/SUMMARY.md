@@ -1,7 +1,7 @@
 * [Home](home.md)
 * [FAQs](faq/home.md)
     * faq/*
-* [Cosi119 Projects](reports/home.md)
+* [Cosi119 Projects](reports/README.md)
     * reports/*
 * [Cheat Sheets](cheatsheets/home.md)
     * cheatsheets/*.md
