@@ -17,6 +17,13 @@ The following pages are each a project report by a student in Autonomous Robotic
 
 # Template for your report
 
+
+```
+---
+title: Campus Rover Project
+author: Pito Salas
+date: Dec 5 2024
+---
 ## Introduction
 1. Problem statement, including original objectives
 1. Relevant literature
@@ -30,4 +37,4 @@ The following pages are each a project report by a student in Autonomous Robotic
 1. How it unfolded, how the team worked together
 1. Your own assessment
 1. problems that were solved, pivots that had to be taken
-
+```
