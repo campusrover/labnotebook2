@@ -1,4 +1,4 @@
-# Graph-Based Navigation for Autonomous Navigation
+# Graph-Based Mapping for Navigation
 
 ## Overview
 
