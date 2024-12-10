@@ -147,7 +147,7 @@ For object detection, the robot uses both camera and LIDAR data to detect and ap
 ---
 ### Clear description and tables of source files, nodes, messages, actions and so on
 
-## **1. Overview of Source Files**
+**1. Overview of Source Files**
 | **File Name**                  | **Description**                                                                                         |
 |--------------------------------|---------------------------------------------------------------------------------------------------------|
 | `interface.py`                 | Flask-based web interface allowing users to interact with the system by selecting cheese colors and viewing game results. |
@@ -160,7 +160,7 @@ For object detection, the robot uses both camera and LIDAR data to detect and ap
 
 ---
 
-## **2. Nodes and Topics**
+**2. Nodes and Topics**
 
 | **Node Name**         | **File**                          | **Published Topics**       | **Subscribed Topics**      | **Description**                                              |
 |-----------------------|-----------------------------------|----------------------------|----------------------------|--------------------------------------------------------------|
@@ -174,7 +174,7 @@ For object detection, the robot uses both camera and LIDAR data to detect and ap
 
 ---
 
-## **3. Messages and Topics**
+**3. Messages and Topics**
 
 | **Topic**            | **Type**                        | **Publisher**            | **Subscriber**            | **Purpose**                                               |
 |----------------------|---------------------------------|--------------------------|--------------------------|-----------------------------------------------------------|
@@ -188,7 +188,7 @@ For object detection, the robot uses both camera and LIDAR data to detect and ap
 
 ---
 
-## **4. Actions Performed**
+**4. Actions Performed**
 
 | **Action**                        | **Initiated By**         | **Details**                                                                 |
 |-----------------------------------|--------------------------|-----------------------------------------------------------------------------|
