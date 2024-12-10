@@ -17,12 +17,12 @@ In this example, the robot uses **Breadth-First Search (BFS)** to find the short
 
 ### How BFS Works
 
-1. **Initialization**: BFS starts by visiting the source node and marking it as visited. The node is then added to a queue.
-2. **Exploring Neighbors**: The algorithm dequeues a node and explores all of its unvisited "neighbors". Each unvisited neighbor is added to the queue and marked as visited.
-3. **Path Construction**: BFS tracks the path taken to each node. Once the target node is eventually reached, the algorithm reconstructs the path by backtracking.
-4. **Termination**: The algorithm terminates when it finds the destination node.
+1. **Initialization**: BFS starts by visiting the starting node and marking it as visited. This node is then added to the queue.
+2. **Exploring Closest Nodes Outward**: The algorithm dequeues a node and explores all of its unvisited nearby nodes. Each unvisited node is added to the queue and marked as visited.
+3. **Path Creation**: BFS tracks the path taken to each node. Once the target node is eventually reached, the algorithm reconstructs the path by backtracking thanks to the queue. 
+4. **Termination**: The algorithm terminates when it finds the destination node once more. We are guaranteed to find the shortest path, because it explores nodes in order of how many epochs it takes to reach them. 
 
-### Basic Code Implementation
+### Basic Implementation
 
 ```python
 from collections import deque
