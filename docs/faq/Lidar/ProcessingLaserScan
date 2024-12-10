@@ -1,4 +1,5 @@
 # Processing Lidar
+## Author: Jungju Lee
 
 This is a good example of how to process lidar information from /scan topic.
 
