@@ -3,7 +3,6 @@
 **Team and members:**
 
 - **Pang Liu**: Brandeis MSCS student
-- 
 - **Zhenxu Chen**: Brandeis MSCS student
 
 ## **Overview**
