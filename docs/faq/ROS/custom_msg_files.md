@@ -95,3 +95,4 @@ Edit the `package.xml` file to include the message generation dependencies:
     catkin_make
     ```
 
+And you've successfully created your own message type!
