@@ -111,7 +111,8 @@ We will define the bomb sites using our script and `rviz`.
 
 The coordinates saved in `points.csv` can be used by other nodes later.
 
-<!-- fig -->
+![](../../images/csbot/slam.jpg)
+
 
 ### Launch Game
 ---
@@ -120,7 +121,7 @@ Run the game by launching 2v2_scenario.launch, which launches all the nodes requ
 roslaunch cs_bot 2v2_scenario.launch
 ```
 
-
+![](../../images/csbot/robot.jpg)
 
 ## Story of the Project:
 This was an ambitious and challenging project that required the team to pivot multiple times to achieve successful completion. Our initial concept was to create a complex 2v2 robot gunfight game, with a server node managing critical elements such as health, player location, game state, round timer, alongside player-side hit detection to simulate real-world game mechanics. While the idea appeared straightforward in theory, implementing server-based gunfight mechanics proved unreliable, with inaccuracies in hit detection leading to significant challenges. This prompted our first pivot: shifting from server-based hit detection to relying solely on the shooter robot’s perception of its enemy for accuracy.
