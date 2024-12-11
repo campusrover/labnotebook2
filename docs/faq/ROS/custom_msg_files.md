@@ -8,10 +8,6 @@ date: Dec 10 2024
 * Harry Yu
 * Dec 10 2024
 
-## Summary
-
-Installing and Building Custom Message Files in ROS
-
 ## Overview
 
 In ROS, custom message files allow you to define your own message types for communication between nodes. This guide will walk you through the process of creating, installing, and building custom message files in a ROS package.
@@ -43,7 +39,7 @@ In ROS, custom message files allow you to define your own message types for comm
 
 Edit the `CMakeLists.txt` file in your package to include the message generation dependencies:
 
-1. **Find and uncomment/add the following lines:**
+**Find and uncomment/add the following lines:**
 
    ```cmake
    find_package(catkin REQUIRED COMPONENTS
@@ -52,7 +48,7 @@ Edit the `CMakeLists.txt` file in your package to include the message generation
    )
    ```
 
-2. **Add your message files:**
+**Add your message files:**
 
    ```cmake
    add_message_files(
@@ -61,7 +57,7 @@ Edit the `CMakeLists.txt` file in your package to include the message generation
    )
    ```
 
-3. **Generate messages:**
+**Generate messages:**
 
    ```cmake
    generate_messages(
@@ -70,7 +66,7 @@ Edit the `CMakeLists.txt` file in your package to include the message generation
    )
    ```
 
-4. **Include `message_runtime` in `catkin_package`:**
+**Include `message_runtime` in `catkin_package`:**
 
    ```cmake
    catkin_package(
@@ -90,7 +86,7 @@ Edit the `package.xml` file to include the message generation dependencies:
    ```
 
 ## Step 5: Build Your Package
-    ```bash
+    ```
     ws
     catkin_make
     ```
