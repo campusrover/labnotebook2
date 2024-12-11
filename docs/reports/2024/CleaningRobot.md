@@ -98,6 +98,8 @@ sudo shutdown -h now
 
 <img src="CleaningRobot_Pictures/Slide4.png" alt="GUI Screenshot" style="max-width: 100%; height: auto;">
 
+![image](CleaningRobot_Pictures/Slide4.png)
+
 ### **Directory Structure**
 
 <img src="CleaningRobot_Pictures/Slide5.png" alt="GUI Screenshot" style="max-width: 100%; height: auto;">
