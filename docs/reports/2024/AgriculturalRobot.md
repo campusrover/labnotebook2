@@ -394,7 +394,7 @@ There are three main components that goes into making the sprayer remote control
 
 1. arduino uno
    The arduino is responsible for receiving messages from rasberry pi and controlling the relay.
-   <img src="./AgriculturalRobot_Pictures/arduino.png" alt="arduino" width: "400px">
+   ![alt](./AgriculturalRobot_Pictures/arduino.png)
 
 2. rasberry pi
    The rasberry pi is where the ROS subscriber is run. It listens to published messages and passes it down to arduino uno.
@@ -411,7 +411,7 @@ COM: Connects to the live wire or signal going to the load (e.g., a light bulb o
 NO: The load should be OFF by default and turn ON when the relay is activated.
 NC: Since we want the relay to be OFF by default, this port is not necessary.
 
-<img src="./AgriculturalRobot_Pictures/relay.png" alt="relay" width: "400px">
+![alt](./AgriculturalRobot_Pictures/relay.png)
 
 ### Soldering
 
@@ -419,7 +419,7 @@ We also learned soldering in part of this modification.
 
 To control the sprayer with the relay, we need to intercept the power source of the sprayer. Since the sprayer is powered by serial connection batteries, we can just cut the wires and reconnect both ends to the relay COM and NO ports. When the relay is on, the connection will be established, completing the circuit loop and trigger the sprayer.
 
-<img src="./AgriculturalRobot_Pictures/solder.png" alt="solder" width: "400px">
+![alt](./AgriculturalRobot_Pictures/solder.png)
 
 More details on our code implementation in the faq section.
 [details](docs/faq/hardware/external_actuator_control.md)
