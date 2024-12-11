@@ -24,7 +24,7 @@ self.div_cost = {"0": 0, "1": 1, "2": 2, "3": 3, "4": 4, "5": -3, "6": -2, "7": 
 
 ## Using scan_cb to populate div_distance
 
-scan_cb is the callback function to the /scan Subscriber, and is used to populate div_distance. Obstacles or LIDAR readings closer than `OBJ_THRESHOLD` are stored in div_distance and used to update the robot state and decide whether the robot is facing an obstacle. Adjust `OBJ_THRESHOLD` based on how much distance you want your robot to maintain from the obstacles.
+scan_cb is the callback function to the /scan Subscriber, and is used to populate div_distance. Obstacles or LIDAR readings closer than `OBJ_THRESHOLD` are stored in div_distance and used to update the robot state and decide whether the robot is facing an obstacle. Adjust `OBJ_THRESHOLD` based on how much distance you want your robot to maintain from the obstacles. `ANGLE_THRESHOLD` is the angular width of each region. For my case, it was set to 45 degrees.
 
 ```Python
 def scan_cb(self, msg):
