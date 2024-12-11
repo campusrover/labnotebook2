@@ -394,7 +394,7 @@ There are three main components that goes into making the sprayer remote control
 
 1. arduino uno
    The arduino is responsible for receiving messages from rasberry pi and controlling the relay.
-   ![alt](./AgriculturalRobot_Pictures/arduino.png)
+   ![alt](./AgriculturalRobot_Pictures/arduino.jpeg)
 
 2. rasberry pi
    The rasberry pi is where the ROS subscriber is run. It listens to published messages and passes it down to arduino uno.
@@ -404,14 +404,14 @@ There are three main components that goes into making the sprayer remote control
 
 There are 6 ports on the relay. Each of them except NC is required for our setup
 
-IN: Connects to the Arduino's GPIO pin (e.g., pin 7), this port handles recieving commands from arduino uno.
-DC+: Connects to Arduino 5V, along with DC- this port provides the power to trigger the relay.
-DC-: Connects to Arduino GND.
-COM: Connects to the live wire or signal going to the load (e.g., a light bulb or motor).
-NO: The load should be OFF by default and turn ON when the relay is activated.
-NC: Since we want the relay to be OFF by default, this port is not necessary.
+- IN: Connects to the Arduino's GPIO pin (e.g., pin 7), this port handles recieving commands from arduino uno.
+- DC+: Connects to Arduino 5V, along with DC- this port provides the power to trigger the relay.
+- DC-: Connects to Arduino GND.
+- COM: Connects to the live wire or signal going to the load (e.g., a light bulb or motor).
+- NO: The load should be OFF by default and turn ON when the relay is activated.
+- NC: Since we want the relay to be OFF by default, this port is not necessary.
 
-![alt](./AgriculturalRobot_Pictures/relay.png)
+![alt](./AgriculturalRobot_Pictures/relay.jpeg)
 
 ### Soldering
 
@@ -419,7 +419,7 @@ We also learned soldering in part of this modification.
 
 To control the sprayer with the relay, we need to intercept the power source of the sprayer. Since the sprayer is powered by serial connection batteries, we can just cut the wires and reconnect both ends to the relay COM and NO ports. When the relay is on, the connection will be established, completing the circuit loop and trigger the sprayer.
 
-![alt](./AgriculturalRobot_Pictures/solder.png)
+![alt](./AgriculturalRobot_Pictures/solder.jpeg)
 
 More details on our code implementation in the faq section.
 [details](docs/faq/hardware/external_actuator_control.md)
