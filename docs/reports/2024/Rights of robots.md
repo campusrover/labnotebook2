@@ -84,6 +84,8 @@ In this case, we have the main robot robA as the master robot, and Rafael as the
 
 Each robot is split into 4 stages: Entering, Waiting, Passing, and Left. Initially, all robots were in the “Entering” stage which means they would move until they reached the cross. Then, they will turn into “Waiting” stage. The robot in the waiting stage will be stored in a queue in scheduler.py After all robot enters the queue. The scheduler will send a signal to the first robot which turns its stage to Passing. In the passing stage, the robot will perform cross-road action, and then enter the “Left” stage. The robot in the “Left” stage will be removed from the queue which allow the following robot to do a cross-road action similar to the above until all robots leave the queue. Theoretically, we can run as many robots as we can if there are enough robots available.
 
+
+
 ### Navigation Challenges & Solutions
 
 #### We need the robot to move along the center of the space between the red and the black lines
