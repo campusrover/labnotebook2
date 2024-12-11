@@ -1,4 +1,4 @@
-# Line Follower Advanced  
+# Follow Partial Line
 
 **Author:** Eric Hurchey  
 **Date:** Dec 2024  
