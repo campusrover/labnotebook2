@@ -1,15 +1,15 @@
 ---
-title: Starship Delivery Robot Clone
-author: Ephraim Zimmerman, Zach Hovatter, Artem Lavrov
+title: Starship Delivery Robot Clone  
+authors: Ephraim Zimmerman, Zach Hovatter, Artem Lavrov  
 date: Dec 10 2024
-—--
+-
 
 [Github Repo](https://github.com/EphraimJZimmerman/ros_mapping)
 
 ## Team Members
-Ephraim Zimmerman - ezimmerman@brandeis.edu
-Zach Hovatter - zhovatter@brandeis.edu
-Artem Lavrov - artemlavrov@brandeis.edu
+Ephraim Zimmerman - ezimmerman@brandeis.edu  
+Zach Hovatter - zhovatter@brandeis.edu  
+Artem Lavrov - artemlavrov@brandeis.edu  
 
 ## Introduction
 
