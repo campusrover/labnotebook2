@@ -1,5 +1,5 @@
 ---
-title: General Implementation/Workflow for Reinforcement Learning with OpenAI Gymnasium, Gazebo, and RViz (and of course ROS)
+title: General Impl./Workflow for RL with OpenAI Gymnasium, Gazebo, ROS, and RViz
 author: Alex Danilkovas
 date: Dec 10 2024
 ---
