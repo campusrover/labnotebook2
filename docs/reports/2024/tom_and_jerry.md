@@ -1,10 +1,10 @@
 ---
-title: Starship Delivery Robot Clone  
+title: Tom and Jerry
 authors: Vedanshi Shah and Parthiv Ganguly
 date: Dec 10 2024
 -
 
-[Github Repo](https://github.com/EphraimJZimmerman/ros_mapping)
+[Github Repo](https://github.com/campusrover/tom_and_jerry)
 
 # Tom and Jerry: The Cheese Napping
 
