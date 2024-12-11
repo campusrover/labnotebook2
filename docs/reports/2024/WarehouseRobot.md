@@ -1,7 +1,6 @@
 # Warehouse Robot Project
 
 **Author:** Eric Hurchey  
-**Date:** Dec 10, 2024  
 
 ## Introduction
 
