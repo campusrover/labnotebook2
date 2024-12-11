@@ -4,6 +4,8 @@ author: Ephraim Zimmerman, Zach Hovatter, Artem Lavrov
 date: Dec 10 2024
 —--
 
+[Github Repo](https://github.com/EphraimJZimmerman/ros_mapping)
+
 ## Team Members
 Ephraim Zimmerman - ezimmerman@brandeis.edu
 Zach Hovatter - zhovatter@brandeis.edu
