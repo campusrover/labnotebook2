@@ -23,7 +23,7 @@ Check that the ribbon cable is correctly attached to both ends. (Both ends of th
     ![Bad ribbon cable](../../images/Incorrect_ribbon_cable.png)
 #### Step 3:
 If the cable is not correctly inserted pop out the white tab on the desired outlet by using your fingers to lift up the small knobs on both sides of that outlet. (Note it will only lift up a small amount).
-####Step 4:
+#### Step 4:
 Carefully insert the ribbon cable (with the correct orientation as described in **part 1 of step 2**), making sure that the cable is pushed all the way down into the outlet. It won't go very deep or click, so don't use too much force.
 #### Step 5:
 Once the ribbon cable has been inserted correctly into the outlet, snap both sides of the white tab back into place. This step can be a bit finicky as one side of the ribbon cable can become loose while snapping the other side into place, so ensure the cable doesn't become disloged during this step and that both tabs are locked in place. To verify that the cable is secure you can give it a slight tug to ensure that the cable is locked into the outlet.
