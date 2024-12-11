@@ -35,6 +35,7 @@ the gazebo world simulation
 | **gun.py** | Defines weapon types and their characteristics (rifle, sniper, SMG). Manages weapon properties like damage, fire rate, and accuracy. Handles ammo management and reload timers. Provides shooting mechanics with accuracy calculations. Returns damage values based on successful hits. |
 
 Topics published:
+
 | **File/Component**   | **Type**     | **Topic**                  |
 |----------------------|--------------|----------------------------|
 | **map_manager.py**   | Publishes    | /game/map_markers          |
