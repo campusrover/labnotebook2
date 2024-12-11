@@ -1,4 +1,11 @@
-# Controlling an External Actuator with a ROS Publisher
+---
+title: Controlling an External Actuator with a ROS Publisher
+date: dec-2024
+author: ming
+type: faq
+status: new
+---
+
 
 ## Requirements
 - Arduino (optional)
