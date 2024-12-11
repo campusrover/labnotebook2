@@ -1,6 +1,6 @@
 # Counter-Strike Bot
 
-Github repo: https://github.com/HandsomeHarry/cs_bot
+![Github repo](https://github.com/HandsomeHarry/cs_bot)
 
 Harry Yu, Zared Cohen, TsonOn Kwok
 
