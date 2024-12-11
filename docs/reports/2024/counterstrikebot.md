@@ -24,38 +24,28 @@ the gazebo world simulation
 
 ### Files Overview
 
-| **File/Component** |  **Node** | **Topic** | **Messages** | **Description** |
-|---------------------------|-------------------------------------------------------------------------------|--|--| - |
-| **world3.world**         ||| | A gazebo world map. Simplified version of Inferno, a site in Counter-Strike. |
-| **publish_point.py**       | point_recorder | Subscriber | /clicked_point | Tool for generating map configuration points.  |
-|                           |||| - Records clicked points in RViz for map setup.                              |
-|                           |||| - Saves spawn points and bomb site locations to CSV.|
-|                           |||| - Launches map server and RViz for point selection.                          |
-|                           |||| - Used during the map setup/configuration phase.                             |
-| **map_manager.py**        | map_manager | Publisher | /game/map_markers| Loads and manages map configuration from CSV files.                           |
-|                           | | Publisher | /game/map | - Handles bomb site locations and spawn points.                               | 
-|                           |||| - Publishes visualization markers for map features.                          |
-|                           |||| - Creates RViz markers for bomb sites and spawn locations.                   |
-|                           |||| - Manages map coordinate system and point conversions.                       |
-| **game_manager.py**      | game_manager | Publisher | /game/state | The central server node that manages the game state.                         |
-|                           | |Subscriber | /game/robot_states | - Handles round timers, bomb events, and robot health.                       |
-|                           | |Subscriber | /game/shoots |- Publishes game state updates to all robots.         |Subscriber | /game/bomb_events |
-|                           |||| - Manages combat events and damage calculations.                             |
-|                           |||| - Tracks dead players and round winners.                                     |
-|                           |||| - Controls round phases (PREP, ACTIVE, BOMB_PLANTED).                        |
-| **robot_controller.py**   | cs_robot_controller | Publisher | /{robot_name}/cmd_vel |  Base class for all robot behaviors.                                          |
-|                           | | Publisher | /game/robot_states | - Handles movement, combat, and state management.                            |
-|                           | | Publisher | /game/shoot | - Processes visual detection of enemies.                                     |
-|                           | | Subscriber| /{robot_name}/camera/image_raw | - Manages navigation and pathfinding.                                        |
-|                           | | Subscriber| /map | - Interfaces with ROS navigation stack.                                      |
-|                           | | Subscriber| /{robot_name}/robot_state | - Parent class for personality-specific behaviors.                           |
-|                           | | Subscriber| /game/state | |
-| **CT_normie.py, T_aggressive.py, etc.** | ct_normie_controller | | | Child classes of `robot_controller.py`. Inherits all combat management and specific behavior. |
-| **gun.py**                | | | | Defines weapon types and their characteristics (rifle, sniper, SMG).         |
-|                           | | | | - Manages weapon properties like damage, fire rate, and accuracy.            |
-|                           | | | | - Handles ammo management and reload timers.                                 |
-|                           | | | | - Provides shooting mechanics with accuracy calculations.                    |
-|                           | | | | - Returns damage values based on successful hits.                            |
+| **File/Component** | **Description** |
+|-------------------|-----------------|
+| **world3.world** | A gazebo world map of a simplified version of Inferno A site in Counter-Strike. |
+| **publish_point.py** | Tool for generating map configuration points. Subscribes to /clicked_point. Records clicked points in RViz for map setup, saves spawn points and bomb site locations to YAML config file, launches map server and RViz for point selection. Used during the map setup/configuration phase. |
+| **map_manager.py** | Loads and manages map configuration from CSV files. Node: map_manager. Publishes to /game/map_markers and /game/map. Handles bomb site locations and spawn points. Publishes visualization markers for map features. Creates RViz markers for bomb sites and spawn locations. Manages map coordinate system and point conversions. |
+| **game_manager.py** | The central 'server' node that manages the game state. Handles round timers, bomb events, and robot health. Publishes game state updates to all robots. Manages combat events and damage calculations, tracks dead players and round winners. Controls round phases (PREP, ACTIVE, BOMB_PLANTED). |
+| **robot_controller.py** | Base class for all robot behaviors. Handles movement, combat, and state management. Processes visual detection of enemies. Manages navigation and pathfinding. Interfaces with ROS navigation stack. Parent class for personality-specific behaviors. |
+| **CT_normie.py, T_aggressive.py, etc.** | Child classes of `robot_controller.py`. Inherits all combat management and specific behavior, and uses FSMs to manage different states for different behaviors and teams. |
+| **gun.py** | Defines weapon types and their characteristics (rifle, sniper, SMG). Manages weapon properties like damage, fire rate, and accuracy. Handles ammo management and reload timers. Provides shooting mechanics with accuracy calculations. Returns damage values based on successful hits. |
+
+Topics published:
+| **File/Component**   | **Type**     | **Topic**                  |
+|----------------------|--------------|----------------------------|
+| **map_manager.py**   | Publishes    | /game/map_markers          |
+|                      | Publishes    | /game/map                  |
+| **game_manager.py**  | Publishes    | /game/state                |
+|                      | Subscribes   | /game/robot_states         |
+|                      | Subscribes   | /game/shoots               |
+|                      | Subscribes   | /game/bomb_events          |
+| **robot_controller.py** | Publishes | /game/robot_states         |
+|                      | Publishes    | /{robot_name}/cmd_vel      |
+|                      | Publishes    | /game/shoot                |
 
 
 ## How to Run the Game (in Gazebo)
@@ -107,9 +97,9 @@ We will define the bomb sites using our script and `rviz`.
    rosrun cs_bot publish_point.py
    ```
 
-2. Click on the map according to the prompt. The results will be saved to `points.csv`.
+2. Click on the map according to the prompt. The results will be saved to `/config/points.yaml`.
 
-The coordinates saved in `points.csv` can be used by other nodes later.
+The coordinates saved in `/config/points.yaml` can be used by other nodes later.
 
 ![](../../images/csbot/slam.jpg)
 
