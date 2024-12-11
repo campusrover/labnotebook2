@@ -211,7 +211,7 @@ To control the sprayer with the relay, we need to intercept the power source of 
 
 
 More details on our code implementation in the faq section.
-[details](faq/hardware/external_actuator_control.md)
+[details](../faq/hardware/external_actuator_control.md)
 
 ## Water Spraying Mechanism Control: 
 Verifying that the water spraying actuator can be accurately triggered at the right time and location. The challenge is to time the activation properly and test its range to ensure it only targets specific areas.
