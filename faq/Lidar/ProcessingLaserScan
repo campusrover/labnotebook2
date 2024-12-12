@@ -1,0 +1,209 @@
+# Processing Lidar
+## Author: Jungju Lee
+
+This is a good example of how to process lidar information from /scan topic.
+
+# Code
+
+```Python
+import rospy
+from sensor_msgs.msg import LaserScan
+
+class YourClass :
+
+	def __init__(self) :
+	
+		#LIDAR Subscriber
+		self.scan_sub = rospy.Subscriber('/scan', LaserScan, self.scan_cb)
+
+		#Datastructure to store processed Lidar information
+		self.degrees = None
+
+	def scan_cb(self, msg) :
+		
+		R = len(msg.ranges)
+
+		tmp = [
+			list(range(int(R - (R * 20 / 360)), R)) + list(range(0, int(R * 20 / 360))), #-20 - 20 deg
+			list(range(int(R * 25 / 360), int(R * 65 / 360))), #25 - 65
+			list(range(int(R * 70 / 360), int(R * 110 / 360))), #70 - 110
+			list(range(int(R * 115 / 360), int(R * 155 / 360))), #115 - 155
+			list(range(int(R * 160 / 360), int(R * 200 / 360))),  #160 - 200
+			list(range(int(R * 205 / 360), int(R * 245 / 360))), #205 - 245
+			list(range(int(R * 250 / 360), int(R * 290 / 360))), #250 - 290
+			list(range(int(R * 295 / 360), int(R * 335 / 360))) #295 - 335
+		]
+
+		for i in  range(len(tmp)) :
+
+			tmp2 = [msg.ranges[j] for j in tmp[i]]
+
+			tmp[i] = [k for k in tmp2 if msg.range_min < k < msg.range_max]
+
+		DegreesMap = {
+			"Deg0" : [None, None, None],
+			"Deg45" : [None, None, None],
+			"Deg90" : [None, None, None],
+			"Deg135" : [None, None, None],
+			"Deg180" : [None, None, None],
+			"Deg225" : [None, None, None],
+			"Deg270" : [None, None, None],
+			"Deg315" : [None, None, None]
+		}
+
+		j = 0
+
+		for i in DegreesMap :
+
+			if tmp[j]:
+
+				#AVG
+				DegreesMap[i][0] = sum(Degs[j]) / len(Degs[j])
+
+				#MIN
+				DegreesMap[i][1] = min(Degs[j])
+	
+				#MAX
+				DegreesMap[i][2] = max(Degs[j])
+
+			else:
+
+				DegreesMap[i][0] = False
+				DegreesMap[i][1] = False
+				DegreesMap[i][2] = False
+
+			j += 1
+		
+		self.Degs = DegreesMap
+			
+```
+
+## Code Explain  - _\_init\_\_
+
+```Python
+...
+	def __init__(self) :
+	
+		#LIDAR Subscriber
+		self.scan_sub = rospy.Subscriber('/scan', LaserScan, self.scan_cb)
+
+		#Datastructure to store processed Lidar information
+		self.degrees = None
+...
+```
+Here you subscribe to ***/scan*** topic.
+We also declare a variable where we will be storing a processed lidar information
+
+## Code Explain - scan_cb
+
+```Python
+...
+	def scan_cb(self, msg) :
+		
+		R = len(msg.ranges)
+
+		tmp = [
+			list(range(int(R - (R * 20 / 360)), R)) + list(range(0, int(R * 20 / 360))), #-20 - 20 deg
+			list(range(int(R * 25 / 360), int(R * 65 / 360))), #25 - 65
+			list(range(int(R * 70 / 360), int(R * 110 / 360))), #70 - 110
+			list(range(int(R * 115 / 360), int(R * 155 / 360))), #115 - 155
+			list(range(int(R * 160 / 360), int(R * 200 / 360))),  #160 - 200
+			list(range(int(R * 205 / 360), int(R * 245 / 360))), #205 - 245
+			list(range(int(R * 250 / 360), int(R * 290 / 360))), #250 - 290
+			list(range(int(R * 295 / 360), int(R * 335 / 360))) #295 - 335
+		]
+		...
+```
+This part is where we porportionally map the value so it fits the range 360 degree
+Sometimes, ***/scan*** topic returns list of less than size of 360 but rather more or less.
+We divide 360 degree into 8 sections with each being 45 degrees apart.
+Then from each sector, we will be including +-20 degrees before and after.
+
+So the range is -20 to 20 degree which is +-20 degree from 0
+then 25 to 65 degree which is +-20 degree from 45
+this continues until the whole 360 degree is covered.
+
+Note that from 0 degree, incrementing degree means counter-clockwise or left direction from 0.
+
+```Python
+...
+	def scan_cb(self, msg) :
+
+		...
+	
+		for i in  range(len(tmp)) :
+
+				tmp2 = [msg.ranges[j] for j in tmp[i]]
+
+				tmp[i] = [k for k in tmp2 if msg.range_min < k < msg.range_max]
+	
+		...
+...
+```
+This part is where we map each direction index with the scan value that is within the minimum or maximum range.
+
+Min range and Max range vaue differes by device. Should not matter so much when actually implementing algorithms.
+
+```Python
+...
+	def scan_cb(self, msg) :
+
+		...
+		
+		DegreesMap = {
+			"Deg0" : [None, None, None],
+			"Deg45" : [None, None, None],
+			"Deg90" : [None, None, None],
+			"Deg135" : [None, None, None],
+			"Deg180" : [None, None, None],
+			"Deg225" : [None, None, None],
+			"Deg270" : [None, None, None],
+			"Deg315" : [None, None, None]
+		}
+
+		j = 0
+
+		for i in DegreesMap :
+
+			if tmp[j]:
+
+				#AVG
+				DegreesMap[i][0] = sum(Degs[j]) / len(Degs[j])
+
+				#MIN
+				DegreesMap[i][1] = min(Degs[j])
+	
+				#MAX
+				DegreesMap[i][2] = max(Degs[j])
+
+			else:
+
+				DegreesMap[i][0] = False
+				DegreesMap[i][1] = False
+				DegreesMap[i][2] = False
+
+			j += 1
+			
+			self.degrees = DegreesMap
+...
+```
+This part is where you process each information and save it into a datastructure.
+
+I used dictionary, each using the section degree as key, and a list as value.
+
+Zero index of list contains the ***average*** scan value within the range
+```Python
+self.degrees["Deg0"][0] #Average scan value from the range -20 to 20 degree
+```
+First index of list contains the ***minimum*** scan value within the range
+```Python
+self.degrees["Deg0"][1] #Minimum scan value from the range -20 to 20 degree
+```
+Second index of list contains the ***maximum*** scan value within the range
+```Python
+self.degrees["Deg0"][2] #Maximum scan value from the range -20 to 20 degree
+```
+
+Note that if value was out of Min or Max range of ***/scan***, then you instead get ```False```
+
+***By Jungju Lee, superjames19@brandeis.edu, 26'***
