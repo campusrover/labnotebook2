@@ -111,19 +111,25 @@ sudo shutdown -h now
 
 For the final demonstration at lab, we will replicate a realistic cleaning scenario in a controlled environment. The setup ensures seamless communication and modular scalability, simulating a robust system for future multi-robot collaboration.
 
-**Hardware Configuration:**
+**Hardware Configuration**
 
-* TurtleBot3 (Cleaning Robot)
-  * Role: A single cleaning robot performing mapping, exploration, and cleaning tasks.
-  * Connectivity: Communicates with the central system via the router's local network.
-* No Internet Access Local Network Router (Network Center)
-  * Role: Acts as the network center to establish a local LAN for communication.
-  * Features: Provides stable IP addresses for devices, enabling consistent communication across the network.
-* Computer with Linux OS (Computing Center and Control Terminal):
-  * Role: Acts as the central computing tower and the portable control panel
-    * Running the GUI control panel, represents portable control panel
-    * Managing mapping, exploration, and cleaning processes
-    * Collecting and visualizing data in real-time.
+- **TurtleBot3 (Cleaning Robot)**
+  - **Role**: A single cleaning robot performing mapping, exploration, and cleaning tasks.
+  - **Connectivity**: Communicates with the central system via the router's local network.
+
+- **No Internet Access Local Network Router (Network Center)**
+  - **Role**: Acts as the network center to establish a local LAN for communication.
+  - **Features**:
+    - Provides stable IP addresses for devices.
+    - Enables consistent communication across the network.
+
+- **Computer with Linux OS (Computing Center and Control Terminal)**
+  - **Role**: Acts as the central computing tower and the portable control panel.
+    - Running the GUI control panel (represents portable control panel).
+    - Managing mapping, exploration, and cleaning processes.
+    - Collecting and visualizing data in real-time.
+
+
 
 ## Essential Algorithms (Self Designed)
 
@@ -279,35 +285,51 @@ def visualize_plan(self, processed_map, path_points):
 Initialization → Load Path Points → Start Route Following Loop:
 
 1. Check localization accuracy
+
 2. Find next target point:
-   - Priority: follow planned route order
-   - Fallback: find nearest accessible point
+
+Priority: follow planned route order
+
+Fallback: find nearest accessible point
+
 3. Check path safety (obstacle avoidance)
+
 4. Move to target point:
-   - First rotate to target orientation
-   - Then move in straight line
+
+First rotate to target orientation
+
+Then move in straight line
+
 5. Update point status (visited/obstacle)
+
 6. Repeat loop until all points are completed
+
 
 **Special Features**
 
 1. State Machine
 
-- Uses enumerated states (UNVISITED/VISITED/OBSTACLE) for point tracking
-- Enables systematic progress monitoring and recovery
+Uses enumerated states (UNVISITED/VISITED/OBSTACLE) for point tracking
+
+Enables systematic progress monitoring and recovery
 
 2. Visualization Capabilities
 
-- Real-time display of point status and path connections
-- Color-coded visualization for different point states
-- Path visualization with directional indicators
+Real-time display of point status and path connections
+
+Color-coded visualization for different point states
+
+Path visualization with directional indicators
 
 3. Real-time Safety Monitoring
 
-- Continuous LiDAR data processing for obstacle detection
-- Dynamic path adjustment for obstacle avoidance
-- Safety distance maintenance for pedestrian protection
-- Configurable safety parameters for different environments
+Continuous LiDAR data processing for obstacle detection
+
+Dynamic path adjustment for obstacle avoidance
+
+Safety distance maintenance for pedestrian protection
+
+Configurable safety parameters for different environments
 
 ***Note: The codes here are simplified and hide some lines to focus on algorithm ideas.***
 
