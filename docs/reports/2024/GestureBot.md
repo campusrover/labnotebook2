@@ -106,149 +106,89 @@ Sample Code:
 
 
 # Navigation
-In order for the robot to accurately be able to get from one pose to another with object avoidance, we needed to implement a form of SLAM (Simultaneous Localization and Mapping). This is because the robot needs to accurately move around, which requires a map. However, in order to build a map, the robot needs to move around. 
+The navigation system described here is a modular framework that combines SLAM, path planning, exploration, and manual waypoint navigation. These components work in concert to allow a robot to autonomously explore an unknown environment, plan efficient paths, and adapt to changes in real-time. The framework is based on the ROS (Robot Operating System), which ensures flexibility and scalability.
+Navigation in robotics requires precise localization, obstacle avoidance, and path planning. Implementing Simultaneous Localization and Mapping (SLAM) is critical because it enables the robot to build and maintain a map of an unknown environment while determining its position within that map. This capability forms the backbone of autonomous navigation, especially in dynamic or previously uncharted environments.
+## SLAM gmapping
 
-## Frontier search
+In environments where no pre-existing maps are available, the robot needs to simultaneously map the surroundings and localize itself.\
+SLAM solves the "chicken and egg" problem: you need a map to localize and localization to create a map.\
+SLAM allows for adaptability in dynamic environments where obstacles or features may change over time. 
 
-In order for us to have a way to create a live map, each possible point that the robot can move to needs to be able to be kept track of live. So first we would find frontier cells in an occupancy grid which would represent where we have and haven’t explored. After we have attained the grid, we would use BFS to traverse the grid and collect a series of points to create a meaningful “frontier”. A frontier is a cell that represents the boundary between the known and unknown parts of the map and need to be identified. Each frontier would be filtered by their size, classified by the number of cells. The centroid for each frontier is then calculated by taking the average of all cell coordinates within the cluster which provides a goal point for the robot to navigate. 
-```python
-def search(
-    mapdata: OccupancyGrid,
-    start: "tuple[int, int]",
-    include_frontier_cells: bool = False,
-) -> "tuple[FrontierList, list[tuple[int, int]]]":
-    MIN_FRONTIER_SIZE = 8  
-    queue = [start]  
-    visited = {start: True}  
-    frontiers = []
-    frontier_cells = []  
+Purpose: To create a map of the environment while simultaneously determining the robot’s location within it. \
+Importance: Maps are essential for navigation in unknown environments. \
+Localization is key to determining the robot's pose relative to obstacles and goals.
 
-    while queue:
-        current = queue.pop(0)
-        for neighbor in PathPlanner.neighbors_of_4(mapdata, current):
-            neighbor_value = PathPlanner.get_cell_value(mapdata, neighbor)
-            if neighbor_value >= 0 and neighbor not in visited:
-                visited[neighbor] = True
-                queue.append(neighbor)
-            elif FrontierSearch.is_new_frontier_cell(mapdata, neighbor, is_frontier):
-                is_frontier[neighbor] = True
-                new_frontier, new_frontier_cells = (
-                    FrontierSearch.build_new_frontier(
-                        mapdata, neighbor, is_frontier, include_frontier_cells
-                    )
-                )
-                if new_frontier.size >= MIN_FRONTIER_SIZE:
-                    frontiers.append(new_frontier)
-                    if include_frontier_cells:
-                        frontier_cells.extend(new_frontier_cells)
-    return (FrontierList(frontiers=frontiers), frontier_cells)
-```
-Starting from the robot’s current pose, it would perform bfs to all mappable cells and identify frontiers by checking unknown cells that have a free neighbor.
-
-For frontier search, you would need to pass an occupancy grid to the search method along with the robot's starting grid coordinates and then the class would return a list of frontiers which contains the number of cells and the centroid which is the goal for navigation. 
-
-## Path Planner
-With all these points, you need to plan the way to get to the goal pose. This class would implement the path planning using an A* algorithm to compute optimal paths between two points as well as generating cost maps. 
-```python
-@staticmethod
-def a_star(mapdata: OccupancyGrid, cost_map: np.ndarray, start: "tuple[int, int]", goal: "tuple[int, int]"):
-    COST_MAP_WEIGHT = 1000
-    if not PathPlanner.is_cell_walkable(mapdata, start):
-        start = PathPlanner.get_first_walkable_neighbor(mapdata, start)
-    if not PathPlanner.is_cell_walkable(mapdata, goal):
-        goal = PathPlanner.get_first_walkable_neighbor(mapdata, goal)
-
-    pq = PriorityQueue()
-    pq.put(start, 0)
-    cost_so_far = {start: 0}
-    came_from = {start: None}
-
-    while not pq.empty():
-        current = pq.get()
-        if current == goal:
-            break
-        for neighbor, distance in PathPlanner.neighbors_and_distances_of_8(mapdata, current):
-            new_cost = cost_so_far[current] + distance + COST_MAP_WEIGHT * PathPlanner.get_cost_map_value(cost_map, neighbor)
-            if neighbor not in cost_so_far or new_cost < cost_so_far[neighbor]:
-                cost_so_far[neighbor] = new_cost
-                priority = new_cost + PathPlanner.euclidean_distance(neighbor, goal)
-                pq.put(neighbor, priority)
-                came_from[neighbor] = current
-
-    path = []
-    cell = goal
-    while cell:
-        path.insert(0, cell)
-        cell = came_from.get(cell)
-    return path
-
-```
-This algorithm combines the cost to get to where the node currently is and also the estimated cost to the goal. Essentially, this means it gets the sum of distances travelled along with the euclidean distance to the goal. In order to avoid obstacles, the cost map would inflate the cost of them to make sure that the path would be a safe distance away from them. 
-
-Use grid_to_world and world_to_grid to convert between map coordinates and robot frame.
-Call a_star with start and goal coordinates to compute the optimal path.
-Use calc_cost_map to preprocess the occupancy grid before planning.
-
-## Pure Pursuit
-
-Now that you have the path and be able to calculate the costs to go to the goal point, how would we be able to successfully move there? What pure pursuit does is that it takes the planned path from frontier exploration and converts it to velocity commands for the robot. This ensures smooth path following, real time adaptation, and obstacle avoidance. 
-
-```python
-def find_lookahead(self, nearest_waypoint_index, lookahead_distance) -> Point:
-    i = nearest_waypoint_index
-    while (
-        i < len(self.path.poses)
-        and self.get_distance_to_waypoint_index(i) < lookahead_distance
-    ):
-        i += 1
-    return self.path.poses[i - 1].pose.position
-
-```
-This algorithm uses a point ahead of the path that the robot aims for which ensures smooth trajectory tracking. If it is too close the changes would be too abrupt and if it is too far the path could possibly be cutting corners or may stray from the actual path. 
-
-```python
-steering_adjustment = self.calculate_steering_adjustment()
-turn_speed = self.TURN_SPEED_KP * drive_speed / radius_of_curvature
-turn_speed += steering_adjustment
-```
-This would adjust the bot’s heading based on the lookahead point. 
-
-```python
-
-for dx in range(-self.FOV_DISTANCE, self.FOV_DISTANCE + 1):
-    for dy in range(-self.FOV_DISTANCE, self.FOV_DISTANCE + 1):
-        cell = (robot_cell[0] + dx, robot_cell[1] + dy)
-        distance = PathPlanner.euclidean_distance(robot_cell, cell)
-        if not PathPlanner.is_cell_walkable(self.map, cell):
-            # Adjust steering based on proximity to obstacles
-
-```
-This uses a field of view approach to make the bot avoid walls or obstacles. 
-
-The best way is to experiment with Lookahead_distance and obstacle_avoidance_gain values for optimal performance. 
+How it Works: \
+The Gmapping node subscribes to sensor data (e.g., laser scans) and odometry data to update the map. \
+`odom_frame`: Tracks the robot’s movement relative to the map. \
+`map_update_interval`: Adjusts how often the map is updated, balancing accuracy and computation cost. 
 
 
-## Frontier Exploration
+##  Frontier Exploration
 
-In order to coordinate the frontiers that are being generated as well as the path planning algorithm, frontier exploration is essential to have autonomic exploration in an unknown environment. It serves to coordinate between frontier detection, path planning, and navigation execution. What it does is that it would explore frontiers which are unexplored regions, then it would compute the optimal paths to reach them, and then command the robot to go there. 
+While SLAM enables mapping, the robot needs to autonomously decide where to explore next to cover the environment effectively.
+Frontier exploration identifies regions that are on the boundary between explored and unexplored areas, allowing the robot to focus on expanding the map systematically.
 
-```python
-def find_next_frontier(self, map_data: OccupancyGrid):
-    start = PathPlanner.world_to_grid(map_data, self.pose.position)
-    frontier_list, _ = FrontierSearch.search(map_data, start, self.is_in_debug_mode)
-    if frontier_list is None or not frontier_list.frontiers:
-        rospy.logwarn("No frontiers found.")
-        return None
-    largest_frontier = max(frontier_list.frontiers, key=lambda frontier: frontier.size)
-    return largest_frontier.centroid
-
-```
-This uses the FrontierSearch class to identify the most promising frontier and then converts the frontier centroid to a goal position in the occupancy grid.
+Purpose: Autonomous exploration of an unknown environment. \
+Importance: Automates navigation to unvisited areas by identifying frontiers which are boundaries between known and unknown regions. \
+Saves manual effort and accelerates mapping of the environment. \
+How it Works: \
+The `explore_lite` node generates navigation goals to frontiers. \
+These goals are sent to the `move_base` node for execution.
 
 
-Afterwards, it uses pathplanner to compute an optimal path to the selected frontier and uses a cost map to account for obstacles. When all frontiers are explored, it would stop exploring. 
 
-The robot should be publishing to /map and /odom with frontier search and path planner implemented and imported and be able to publish the path for pure pursuit. 
+## Costmaps
+
+Navigation requires both global and local planning to ensure safety and efficiency:
+The global costmap is used for long-term planning and navigation across large areas.
+The local costmap is used for real-time adjustments to avoid dynamic obstacles like people or moving objects.
+
+Costmaps are grid-based representations of the environment, used for path planning and obstacle avoidance.
+
+Global Costmap: \
+Purpose: Provides a high-level view of the entire environment for long-distance path planning. \
+global_frame: Uses the map frame to align with SLAM-generated maps. \
+static_map: Indicates the use of a prebuilt map for planning. \
+Importance: Enables efficient navigation to distant goals while avoiding large obstacles. 
+
+Local Costmap: \
+Purpose: Provides a localized, real-time view for immediate obstacle avoidance. \
+rolling_window: Updates the local costmap as the robot moves. \
+width, height: Define the area covered by the local costmap. \
+Importance: Ensures the robot avoids unexpected obstacles in its immediate vicinity. 
+
+Common Costmap Parameters: \
+Define how obstacles are detected and inflated for safety: \
+obstacle_range: Maximum detection range for obstacles. \
+inflation_radius: Adds a buffer zone around obstacles for safety. \
+robot_radius: defines how large the robot is so it knows which path is safe and where to make it more costly. 
+
+## Path Planning 
+
+Robots need to compute paths that are both efficient (shortest path) and safe (avoiding obstacles).
+Integration of SLAM and costmaps allows the robot to dynamically adapt its path when new obstacles are detected.
+
+Purpose: To compute and execute paths from the robot’s current position to a specified goal. \
+Importance: \
+Integrates global and local planning for robust navigation.  
+Adapts dynamically to changes in the environment using costmaps. \
+How it Works: \
+Global planner for high-level paths. \
+Local planner for immediate movements and obstacle avoidance. \
+Configurations (base_local_planner_params.yaml): \
+max_vel_x: 0.45 \
+min_vel_x: 0.1 \
+max_vel_theta: 1.0 \
+acc_lim_theta: 3.2 \
+acc_lim_x: 2.5 \
+These ensure smooth and safe movement by limiting velocities and accelerations.
+
+## Manual Waypoint Navigation
+Purpose: Allows users to manually save poses and command the robot to navigate to those poses. \
+Importance: \
+Used for our gesture recognition to remember a specific pose when it recognizes an object and be able to navigate back to it. \
+Specific gestures allow it to save the specific position and navigate back. 
 
 # Usage
 
