@@ -406,17 +406,16 @@ transmission type: ROS -> serial -> GPIO pin
 
 There are three main components that goes into making the sprayer remote controllable using ROS publisher.
 
-1. arduino uno
+#### 1. arduino uno
    
    The arduino is responsible for receiving messages from rasberry pi and controlling the relay.
-   ![alt](./AgriculturalRobot_Pictures/arduino.jpeg){:style="display:block; margin-left:auto; margin-right:auto"}
+   ![alt](./AgriculturalRobot_Pictures/arduino.jpeg)
 
-2. rasberry pi
+#### 2. rasberry pi
    
    The rasberry pi is where the ROS subscriber is run. It listens to published messages and passes it down to arduino uno. 
 
-
-3. relay
+#### 3. relay
    
    The relay is responsible for controlling the open and close of the circuit loop which triggers the power of the sprayer.
 
