@@ -16,7 +16,7 @@ type: report
     - [Flask Server](#flask-server)
     - [Plant Detection](#plant-detection)
     - [Water Sprayer Signaling](#water-sprayer-signaling-system)
-    - [Autonomous Navigation](#autonomous-navigation)
+    - [Autonomous Navigation](#autonomous-navigation-and-spraying)
 - [ROS Structure](#ros-structure)
 - [Project Story](#story-of-the-project)
 
@@ -477,7 +477,7 @@ To tackle this, we
 
 | **Node Name**         | **File**                          | **Published Topics**       | **Subscribed Topics**      | **Description**                                              |
 |-----------------------|-----------------------------------|----------------------------|----------------------------|--------------------------------------------------------------|
-| `/relay_subscriber`          | `relay_subscriber.py`                   | N/A                        | 'String'                        | Located on rasberry pi, sends the recieved message to arduino              |
+| `/relay_subscriber`          | `relay_subscriber.py`                   | N/A                        | `/String`                        | Located on rasberry pi, sends the recieved message to arduino              |
 | `/relay_publisher`         | `/relay_publisher`                  | `/String`              | `/odom`                   | publishes "RELAY_ON"/"RELAY_OFF" message              |
 
 ---
