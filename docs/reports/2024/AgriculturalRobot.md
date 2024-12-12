@@ -6,6 +6,20 @@ status: new
 type: report
 ---
 
+## Table of Contents
+
+- [Introduction](#introduction)
+    -[Project Goals](#project-goals)
+    -[Inspiration](#inspiration)
+    -[Objective](#objective)
+- [Challenges](#challenges)
+    -[Flask Server](#flask-server)
+    -[Plant Detection](#plant-detection)
+    -[Water Sprayer Signaling](#water-sprayer-signaling-system)
+    -[Autonomous Navigation](#autonomous-navigation)
+- [ROS Structure](#ros-structure)
+- [Project Story](#story-of-the-project)
+
 # Introduction
 
 ### Autonomous Turtlebot with Precision Watering System
@@ -287,7 +301,7 @@ The React frontend fetches data from the Flask API and provides an interactive U
 4. **Safe requests**:
    - Make sure the robot ensures its in idle state before sending instructions
 
-### Plant Detection
+## Plant Detection
 
 Ensuring that the Turtlebot reliably detects the target plant under varying lighting conditions (e.g., shadows or brightness changes) is a critical component of this project. The initial approach involved integrating a YOLOv5 model for real-time plant detection, leveraging resources such as the [Plant Leaf Detection and Classification model](https://huggingface.co/foduucom/plant-leaf-detection-and-classification). However, this approach revealed several limitations:
 
@@ -393,13 +407,18 @@ transmission type: ROS -> serial -> GPIO pin
 There are three main components that goes into making the sprayer remote controllable using ROS publisher.
 
 1. arduino uno
+   
    The arduino is responsible for receiving messages from rasberry pi and controlling the relay.
-   ![alt](./AgriculturalRobot_Pictures/arduino.jpeg)
+   ![alt](./AgriculturalRobot_Pictures/arduino.jpeg){:style="display:block; margin-left:auto; margin-right:auto"}
 
 2. rasberry pi
-   The rasberry pi is where the ROS subscriber is run. It listens to published messages and passes it down to arduino uno.
+   
+   The rasberry pi is where the ROS subscriber is run. It listens to published messages and passes it down to arduino uno. 
+
+   One
 
 3. relay
+   
    The relay is responsible for controlling the open and close of the circuit loop which triggers the power of the sprayer.
 
 There are 6 ports on the relay. Each of them except NC is required for our setup
@@ -411,7 +430,7 @@ There are 6 ports on the relay. Each of them except NC is required for our setup
 - NO: The load should be OFF by default and turn ON when the relay is activated.
 - NC: Since we want the relay to be OFF by default, this port is not necessary.
 
-![alt](./AgriculturalRobot_Pictures/relay.jpeg)
+![alt](./AgriculturalRobot_Pictures/relay.jpeg){:style="display:block; margin-left:auto; margin-right:auto"}
 
 ### Soldering
 
@@ -419,34 +438,55 @@ We also learned soldering in part of this modification.
 
 To control the sprayer with the relay, we need to intercept the power source of the sprayer. Since the sprayer is powered by serial connection batteries, we can just cut the wires and reconnect both ends to the relay COM and NO ports. When the relay is on, the connection will be established, completing the circuit loop and trigger the sprayer.
 
-![alt](./AgriculturalRobot_Pictures/solder.jpeg)
+![alt](./AgriculturalRobot_Pictures/solder.jpeg){:style="display:block; margin-left:auto; margin-right:auto"}
 
-More details on our code implementation in the faq section.
-[details](docs/faq/hardware/external_actuator_control.md)
+Below is a visual representation of what's happening to the circuit loop.
 
-## Water Spraying Mechanism Control:
+![alt](./AgriculturalRobot_Pictures/circuit-loop.png){:style="display:block; margin-left:auto; margin-right:auto"}
 
-Verifying that the water spraying actuator can be accurately triggered at the right time and location. The challenge is to time the activation properly and test its range to ensure it only targets specific areas.
+More details on how we implemented this including the code implementation is in the faq section.
+[external_actuator_control](../../faq/hardware/external_actuator_control.md)
 
-## Autonomous Navigation:
+## Autonomous Navigation and Spraying:
 
-Testing the Turtlebot’s ability to navigate and avoid obstacles reliably.
-(Fiducial nav / user gets to decide which to navigate to)
+To enable users to freely navigate the robot to a desired object to spray water shown in [Flask Server](#flask-server), fiducials are used to keep track of the location and the type of the plant that the robot has interacted.
 
-## Software
+### Water Spraying Mechanism Control:
 
-Technical descriptions, illustrations
-Discussion of interesting algorithms, modules, techniques
-Guide on how to use the code written
-Tables listing names and one sentence purpose of each of these:
-Python source files
-Nodes created
-Topics and their messages
+Verifying that the water spraying actuator can be accurately triggered at the right time and location. The challenge is to time the activation properly and test its range to ensure it only targets specific areas. 
+
+To tackle this, we 
+1. Fine tuned the robot navigation algorithm from the mapped fiducial coordinates to the robots current position so that it is precisely a set distance away from the plant.
+2. Move the robot to the fiducial, turn the robot facing slightly away from the fidcuial so the sprayer is pointing at the plant, initiate the plant detection. 
+
+# ROS structure
+
+---
+### Clear description and tables of source files, nodes, messages, actions and so on
+
+**1. Overview of Source Files**
+| **File Name**                  | **Description**                                                                                         |
+|--------------------------------|---------------------------------------------------------------------------------------------------------|
+| `camera_control.py`            | Subscribes to `/raspicam_node/image/compressed` and generates a snapshot for image detection |
+| `detector.py`                  | A script that sends the captured images to open API obejct detection   |
+| `mapper_real.py`               | Maps scanned fiducials to the tf tree so we can retreive the scanned frames |
+| `my_odom.py`                   | A helper node that returns the distance travelled and yaw|
+| `sprayer_publisher.py`         | Composes by the majority of our application logic, including server interaction, navigation, sprayer control, and detection.|
+
+---
+
+**2. Nodes and Topics**
+
+| **Node Name**         | **File**                          | **Published Topics**       | **Subscribed Topics**      | **Description**                                              |
+|-----------------------|-----------------------------------|----------------------------|----------------------------|--------------------------------------------------------------|
+| `/relay_subscriber`          | `relay_subscriber.py`                   | N/A                        | 'String'                        | Located on rasberry pi, sends the recieved message to arduino              |
+| `/relay_publisher`         | `/relay_publisher`                  | `/String`              | `/odom`                   | publishes "RELAY_ON"/"RELAY_OFF" message              |
+
+---
 
 # Story of the project.
 
-How it unfolded, how the team worked together
-Your own assessment
-problems that were solved, pivots that had to be taken
+The original approach to a sprayer bot was to utilize the claw robot to squeeze the trigger of the sprayer, but there are no existing sprayer that could be used by the claw, and we wanted to explore hardware level even more. We connected with the head of the automation lab at Brandeis Unverisity, Tim Herbert. We spent 50% of our time building our project in the automation lab.
 
-pivoting from using a claw to
+
+
