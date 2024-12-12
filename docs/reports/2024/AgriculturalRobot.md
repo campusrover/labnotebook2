@@ -9,14 +9,14 @@ type: report
 ## Table of Contents
 
 - [Introduction](#introduction)
-    -[Project Goals](#project-goals)
-    -[Inspiration](#inspiration)
-    -[Objective](#objective)
+    - [Project Goals](#project-goals)
+    - [Inspiration](#inspiration)
+    - [Objective](#objective)
 - [Challenges](#challenges)
-    -[Flask Server](#flask-server)
-    -[Plant Detection](#plant-detection)
-    -[Water Sprayer Signaling](#water-sprayer-signaling-system)
-    -[Autonomous Navigation](#autonomous-navigation)
+    - [Flask Server](#flask-server)
+    - [Plant Detection](#plant-detection)
+    - [Water Sprayer Signaling](#water-sprayer-signaling-system)
+    - [Autonomous Navigation](#autonomous-navigation)
 - [ROS Structure](#ros-structure)
 - [Project Story](#story-of-the-project)
 
@@ -415,7 +415,6 @@ There are three main components that goes into making the sprayer remote control
    
    The rasberry pi is where the ROS subscriber is run. It listens to published messages and passes it down to arduino uno. 
 
-   One
 
 3. relay
    
@@ -430,7 +429,7 @@ There are 6 ports on the relay. Each of them except NC is required for our setup
 - NO: The load should be OFF by default and turn ON when the relay is activated.
 - NC: Since we want the relay to be OFF by default, this port is not necessary.
 
-![alt](./AgriculturalRobot_Pictures/relay.jpeg){:style="display:block; margin-left:auto; margin-right:auto"}
+![alt](./AgriculturalRobot_Pictures/relay.jpeg)
 
 ### Soldering
 
@@ -438,11 +437,11 @@ We also learned soldering in part of this modification.
 
 To control the sprayer with the relay, we need to intercept the power source of the sprayer. Since the sprayer is powered by serial connection batteries, we can just cut the wires and reconnect both ends to the relay COM and NO ports. When the relay is on, the connection will be established, completing the circuit loop and trigger the sprayer.
 
-![alt](./AgriculturalRobot_Pictures/solder.jpeg){:style="display:block; margin-left:auto; margin-right:auto"}
+![alt](./AgriculturalRobot_Pictures/solder.jpeg)
 
 Below is a visual representation of what's happening to the circuit loop.
 
-![alt](./AgriculturalRobot_Pictures/circuit-loop.png){:style="display:block; margin-left:auto; margin-right:auto"}
+![alt](./AgriculturalRobot_Pictures/circuit-loop.png)
 
 More details on how we implemented this including the code implementation is in the faq section.
 [external_actuator_control](../../faq/hardware/external_actuator_control.md)
