@@ -38,7 +38,9 @@ roslaunch ros_auto_taxi ros_auto_taxi.launch
 
 To run the program by itself with demo passenger locations, use this command after run
 ```
-rosrun ros_auto_taxi demo_day.py
+rosrun ros_auto_taxi way_point.py
+
+It will lead the robot to passenger position and take it back to start postition.
 ```
 
 ### Clear description and tables of source files, nodes, messages, actions and so on
