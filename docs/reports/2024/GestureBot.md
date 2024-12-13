@@ -39,8 +39,11 @@ Logging to CSV:
 The real GOAT’s implementation involved object segmentation and depth estimation to produce an estimation of the object’s position on the map, and then used a system extremely similar to move_base to go to the object. We wanted to implement this from scratch, so we decided to first follow in their footsteps and see where we could go from there.
 
 We found that there were three major issues:
+
 * Accurate depth estimation is NOT possible using a single camera. 
+
     * Multiple different real-time monocular depth algorithms were tested with the robot (https://github.com/nianticlabs/monodepth2, https://github.com/Ecalpal/RT-MonoDepth, https://github.com/atapour/monocularDepth-Inference to list a few), and all of them were either too slow or infeasible for the project for various reasons.
+    
 * Object segmentation does not differentiate between unique objects.
     * If there were 20 unique books in front of the robot, it will not remember the difference between book 1 and book 20
 * These algorithms are very expensive.
