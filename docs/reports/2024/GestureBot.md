@@ -11,6 +11,8 @@ Our basic instructions were simple movement commands. However, for complex instr
 # What was created:
 ## Gestures:
 The primary feature of our robot is its ability to recognize gestures. Our original idea for implementing this was using object segmentation to find the hand, and then another algorithm for figuring out the gestures: but this would likely use up an enormous amount of processing power. After further research, we found a better solution using Google’s MediaPipe Hand Landmarker tool combined with a custom neural network made with Keras for simplicity. The hand landmarker takes in an image and produces an output of the hand’s “key points”, which are mainly the joints in each finger and the wrist of the hand. Given that this produces exactly 21 points every time it finds a hand in the image, we could create a neural network that takes in these 21 inputs and produces an output gesture based on hand training data that we could create. 
+
+
 Model layers:
 ```
 model = tf.keras.models.Sequential([
@@ -22,13 +24,10 @@ model = tf.keras.models.Sequential([
    tf.keras.layers.Dense(NUM_CLASSES, activation='softmax')
 ])
 ```
+
 To obtain our training data, we filled a CSV file with a list of keypoints and a class binded to a key that we would press to add a new datapoint to the file. We did this until we had around 5000 data points. Our neural network’s layers were chosen by trial and error - we began with a neural network that had already been written in an older project written by us for classification and then changed the parameters until it worked consistently. After training the model, it can be used for gesture classification.
+
 Logging to CSV:
-
-
-
-
-
 ```csv_path = /csv_path
            with open(csv_path, 'a', newline="") as f:
                writer = csv.writer(f)
