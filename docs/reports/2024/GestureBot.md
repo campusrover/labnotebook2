@@ -108,7 +108,7 @@ def non_max_suppression(self, boxes, scores, threshold):
 ```
 
 # Navigation
-The navigation system combines SLAM mapping and movebase. These components work together to allow a robot to autonomously explore an unknown environment, plan efficient paths, and adapt to changes in real-time. By Implementing Simultaneous Localization and Mapping (SLAM), the robot was able to build and maintain a map of an unknown environment and be able to recognize where it was located within the dynamically made map. Combined together with the built-in amcl within move base using global and local costmaps based on odom and lidar scans, it was able to effectively navgiate to saved objects.
+The navigation system combines SLAM mapping and movebase. These components work together to allow a robot to autonomously explore an unknown environment, plan efficient paths, and adapt to changes in real-time. By Implementing Simultaneous Localization and Mapping (SLAM), the robot was able to build and maintain a map of an unknown environment and be able to recognize where it was located within the dynamically made map. Combined together with the built-in amcl within move base using global and local costmaps based on odom and lidar scans, it was able to effectively navigate to saved objects.
 
 
 ## SLAM gmapping
