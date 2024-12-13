@@ -485,7 +485,11 @@ To tackle this, we
 
 # Story of the project.
 
-The original approach to a sprayer bot was to utilize the claw robot to squeeze the trigger of the sprayer, but there are no existing sprayer that could be used by the claw, and we wanted to explore hardware level even more. We connected with the head of the automation lab at Brandeis Unverisity, Tim Herbert. We spent 50% of our time building our project in the automation lab.
+We started by planning to use the Turtlebot's robotic claw to operate a handheld sprayer. However, we couldn't find suitable sprayers and wanted to push beyond simple mechanical solutions into custom hardware integration.
+
+We connected with Tim Herbert, head of the Automation Lab at Brandeis University, who became our project mentor. The Automation Lab became our workshop, where we spent half our development time learning hardware modifications. We mastered soldering and hardware-ROS integration, evolving our project from basic robotics into a custom hardware-software system with reliable relay-controlled spraying.
+
+As we built momentum, we decided to develop a complete full-stack solution. We built a Flask backend server, React frontend, and implemented real-time communication protocols to create a web interface for controlling the robot. Users can now monitor plants, control the robot, and manage watering operations through their browser. The project grew from a simple robotics exercise into a professional-grade agricultural automation system, combining hardware engineering, robotics, and web development into one cohesive platform.
 
 
 
