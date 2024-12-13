@@ -71,7 +71,8 @@ This section explains how to integrate a Flask backend with a React frontend to 
 The Flask server provides APIs for handling robot instructions and plant data. It also serves the React frontend and handles cross-origin requests using `flask_cors`.
 
 ### System Overview
-![alt text](./AgriculturalRobot_Pictures/diagram.png)
+<img width="1049" alt="system" src="https://github.com/user-attachments/assets/9d3c870b-44d7-4f49-842d-79e480d3658b" />
+
 
 ### Key Features of the Flask Server
 
