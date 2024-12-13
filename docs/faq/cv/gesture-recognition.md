@@ -6,7 +6,8 @@ date: Dec 10 2024
 # Using OpenCV and Neural Networks for hand landmarking with Google MediaPipe
 ### Leo Gao
 
-Here is the process of utilizing the ROS camera's images to be able to get recognized as gestures. 
+Here is the process of utilizing raspicam's images to get recognized as gestures. 
+
 # Summary
 ## After you have properly subscribed to the camera:
 ```python
@@ -68,10 +69,6 @@ def draw_landmarks(self, image, landmark_list):
 
 ```
 
-
-
-
-
 ## Combining it together by first tidying up the image by flipping it and then converting from BGR to RGB for mediapipe you would be able to achieve your processed gesture:
 
 ```python
@@ -102,7 +99,7 @@ def process_frame(self):
         cv.imshow("Gesture Recognition", debug_image)
         cv.waitKey(1)
 ```
-## These would be the inputs to the neural network which would have been pre trained by you. 
+## These would be the outputs to the neural network which would have been pre-trained by you. 
 
 ```python
         hand_sign_id = self.keypoint_classifier(preprocessed_landmarks)
@@ -114,11 +111,11 @@ These landmarks are detected using MediaPipe and processed to remove variations 
 
 self.keypoint_classifier:
 
-This is a neural network thatwas trained on a dataset of hand landmarks corresponding to various gestures.
+This is a neural network thatwas trained on a dataset of hand landmarks corresponding to various gestures. 
 Input: Normalized landmarks (e.g., [x1, y1, x2, y2, ..., x21, y21]).
 Output: Gesture ID (e.g., 0 for "Fist").
 
-When called, the neural network takes the normalized coordinates as input and outputs a gesture class ID (an integer representing a specific gesture). based on the input landmarks.
+When called, the neural network takes the normalized coordinates as input and outputs a gesture class ID (an integer representing a specific gesture) based on the input landmarks.
 
 
 ## The run method continuously checks for new frames in self.cv_image and calls process_frame when available:
@@ -138,5 +135,3 @@ def run(self):
 
 
 
-## Details
-....
