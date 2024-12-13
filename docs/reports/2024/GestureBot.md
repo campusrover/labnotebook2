@@ -16,23 +16,24 @@ The primary feature of our robot is its ability to recognize gestures. Our origi
 Model layers:
 ```
 model = tf.keras.models.Sequential([
-   tf.keras.layers.Input((21 * 2, )),
-   tf.keras.layers.Dropout(0.2),
-   tf.keras.layers.Dense(20, activation='relu'),
-   tf.keras.layers.Dropout(0.4),
-   tf.keras.layers.Dense(10, activation='relu'),
-   tf.keras.layers.Dense(NUM_CLASSES, activation='softmax')
+    tf.keras.layers.Input((21 * 2, )),
+    tf.keras.layers.Dropout(0.2),
+    tf.keras.layers.Dense(20, activation='relu'),
+    tf.keras.layers.Dropout(0.4),
+    tf.keras.layers.Dense(10, activation='relu'),
+    tf.keras.layers.Dense(NUM_CLASSES, activation='softmax')
 ])
 ```
 
 To obtain our training data, we filled a CSV file with a list of keypoints and a class binded to a key that we would press to add a new datapoint to the file. We did this until we had around 5000 data points. Our neural network’s layers were chosen by trial and error - we began with a neural network that had already been written in an older project written by us for classification and then changed the parameters until it worked consistently. After training the model, it can be used for gesture classification.
 
 Logging to CSV:
-```csv_path = /csv_path
-           with open(csv_path, 'a', newline="") as f:
-               writer = csv.writer(f)
-               writer.writerow([number, *landmark_list])
-               print(f"logged {number}")
+```
+csv_path = /csv_path
+with open(csv_path, 'a', newline="") as f:
+    writer = csv.writer(f)
+    writer.writerow([number, *landmark_list])
+    print(f"logged {number}")
 ```
 
 ## Mini GOAT command:
@@ -43,7 +44,7 @@ We found that there were three major issues:
 * Accurate depth estimation is NOT possible using a single camera. 
 
     * Multiple different real-time monocular depth algorithms were tested with the robot (https://github.com/nianticlabs/monodepth2, https://github.com/Ecalpal/RT-MonoDepth, https://github.com/atapour/monocularDepth-Inference to list a few), and all of them were either too slow or infeasible for the project for various reasons.
-    
+
 * Object segmentation does not differentiate between unique objects.
     * If there were 20 unique books in front of the robot, it will not remember the difference between book 1 and book 20
 * These algorithms are very expensive.
