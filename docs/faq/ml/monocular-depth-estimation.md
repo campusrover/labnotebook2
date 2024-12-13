@@ -12,14 +12,16 @@ Let's suppose you don't have/don't want to use a depth camera, and only have one
 We will use the MiDaS model for this tutorial for pytorch. 
 
 In your code, do the following:
-```midas = torch.hub.load("intel-isl/MiDaS", "MiDaS_small")
+```
+midas = torch.hub.load("intel-isl/MiDaS", "MiDaS_small")
 midas_transforms = torch.hub.load("intel-isl/MiDaS", "transforms")
 
 device = torch.device("cpu")
 midas.to(device)
 midas.eval()
 
-transform = midas_transforms.small_transform```
+transform = midas_transforms.small_transform
+```
 
 This loads the model and necessary image transformers. This is recommended to be put into the top of a class, so that it only needs to be loaded once. 
 It is not necessary to use MiDaS_small, you can choose whatever model you want. However, this one worked particularly well and without significant lag.
@@ -27,17 +29,19 @@ It is not necessary to use MiDaS_small, you can choose whatever model you want. 
 The device MUST be cpu, unless you are running this on a device with a Nvidia GPU.
 
 Next, we apply transforms to our image before predicting:
-```input_batch = transform(cv_image).to(self.device)
+```
+input_batch = transform(cv_image).to(self.device)
 
-        with torch.no_grad():
-            prediction = midas(input_batch)
+with torch.no_grad():
+    prediction = midas(input_batch)
 
-            prediction = torch.nn.functional.interpolate(
-                prediction.unsqueeze(1),
-                size=cv_image.shape[:2],
-                mode="bicubic",
-                align_corners=False,
-            ).squeeze()```
+    prediction = torch.nn.functional.interpolate(
+        prediction.unsqueeze(1),
+        size=cv_image.shape[:2],
+        mode="bicubic",
+        align_corners=False,
+    ).squeeze()
+```
 
 Note that the image must be a CV image, so don't forget to do 
 ```cv_bridge.imgmsg_to_cv2(image)```

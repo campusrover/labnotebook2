@@ -11,44 +11,47 @@ Our basic instructions were simple movement commands. However, for complex instr
 # What was created:
 ## Gestures:
 The primary feature of our robot is its ability to recognize gestures. Our original idea for implementing this was using object segmentation to find the hand, and then another algorithm for figuring out the gestures: but this would likely use up an enormous amount of processing power. After further research, we found a better solution using Google’s MediaPipe Hand Landmarker tool combined with a custom neural network made with Keras for simplicity. The hand landmarker takes in an image and produces an output of the hand’s “key points”, which are mainly the joints in each finger and the wrist of the hand. Given that this produces exactly 21 points every time it finds a hand in the image, we could create a neural network that takes in these 21 inputs and produces an output gesture based on hand training data that we could create. 
+
+
 Model layers:
 ```
 model = tf.keras.models.Sequential([
-   tf.keras.layers.Input((21 * 2, )),
-   tf.keras.layers.Dropout(0.2),
-   tf.keras.layers.Dense(20, activation='relu'),
-   tf.keras.layers.Dropout(0.4),
-   tf.keras.layers.Dense(10, activation='relu'),
-   tf.keras.layers.Dense(NUM_CLASSES, activation='softmax')
+    tf.keras.layers.Input((21 * 2, )),
+    tf.keras.layers.Dropout(0.2),
+    tf.keras.layers.Dense(20, activation='relu'),
+    tf.keras.layers.Dropout(0.4),
+    tf.keras.layers.Dense(10, activation='relu'),
+    tf.keras.layers.Dense(NUM_CLASSES, activation='softmax')
 ])
 ```
+
 To obtain our training data, we filled a CSV file with a list of keypoints and a class binded to a key that we would press to add a new datapoint to the file. We did this until we had around 5000 data points. Our neural network’s layers were chosen by trial and error - we began with a neural network that had already been written in an older project written by us for classification and then changed the parameters until it worked consistently. After training the model, it can be used for gesture classification.
+
 Logging to CSV:
-
-
-
-
-
-```csv_path = /csv_path
-           with open(csv_path, 'a', newline="") as f:
-               writer = csv.writer(f)
-               writer.writerow([number, *landmark_list])
-               print(f"logged {number}")
+```
+csv_path = /csv_path
+with open(csv_path, 'a', newline="") as f:
+    writer = csv.writer(f)
+    writer.writerow([number, *landmark_list])
+    print(f"logged {number}")
 ```
 
 ## Mini GOAT command:
 The real GOAT’s implementation involved object segmentation and depth estimation to produce an estimation of the object’s position on the map, and then used a system extremely similar to move_base to go to the object. We wanted to implement this from scratch, so we decided to first follow in their footsteps and see where we could go from there.
 
 We found that there were three major issues:
+
 * Accurate depth estimation is NOT possible using a single camera. 
-    * Multiple different real-time monocular depth algorithms were tested with the robot (https://github.com/nianticlabs/monodepth2, https://github.com/Ecalpal/RT-MonoDepth, https://github.com/atapour/monocularDepth-Inference to list a few), and all of them were either too slow or infeasible for the project for various reasons.
+
+    * Multiple different real-time monocular depth algorithms were tested with the robot (<https://github.com/nianticlabs/monodepth2>, <https://github.com/Ecalpal/RT-MonoDepth>, <https://github.com/atapour/monocularDepth-Inference> to list a few), and all of them were either too slow or infeasible for the project for various reasons.
+
 * Object segmentation does not differentiate between unique objects.
     * If there were 20 unique books in front of the robot, it will not remember the difference between book 1 and book 20
 * These algorithms are very expensive.
     * The object segmentation algorithm takes 1.5 seconds to run.
     * This was the fastest algorithm that we found that had OK accuracy.
 
-We will address them in order, beginning with our issues with depth estimation. The original GOAT used depth estimation in order to accurately localize the object within its map. This is not possible for us because real-time monocular depth algorithms with metric depth do not exist (without taking 15 seconds to run) despite them claiming they do, such as this one by Apple (https://machinelearning.apple.com/research/depth-pro) that claims it can create a depth map in less than one second (many users with high quality GPUs reported they could not recreate the same speed). This poses a problem because we need to find a way to record the pose of the object in order to navigate to it.
+We will address them in order, beginning with our issues with depth estimation. The original GOAT used depth estimation in order to accurately localize the object within its map. This is not possible for us because real-time monocular depth algorithms with metric depth do not exist (without taking 15 seconds to run) despite them claiming they do, such as this one by [Apple](https://machinelearning.apple.com/research/depth-pro) that claims it can create a depth map in less than one second (many users with high quality GPUs reported they could not recreate the same speed). This poses a problem because we need to find a way to record the pose of the object in order to navigate to it.
 
 Our solution to this issue comes from the realization that the object’s pose is almost always going to be near the robot’s pose: and considering that the robot must be facing towards the object for the object segmentation algorithm to work, we can simply record the robot’s pose as the object’s pose. This allows us to travel back to the exact position where the robot sees the object, and then we can have the robot travel directly towards the object until we reach its actual position.
 
@@ -86,6 +89,7 @@ There are two steps to this process: memorization and navigation.
 Memorization only occurs when given a specific gesture. Upon recognition, the robot will immediately memorize eight objects within its view with the highest confidence scores, filtering out people, chairs, tables, and other common objects that are not to be remembered. It also filters out objects based on the relative depth estimates, so distant objects will not be relevant to prevent a fire extinguisher that is 20 feet away from being memorized as a bottle. After the filtering process, the remaining objects will become keys in a dictionary and assigned the robot’s pose as a value.
 
 For the filtering process, we had to implement Non-Maximum Suppression due to the many overlapping guesses that the segmentation algorithm produced. Non-Maximum Suppression is used to output the best “bounding box” out of a set of overlapping bounding boxes; where bounding box refers to a rectangle that represents the object’s location in the frame. This is done by calculating the Intersection over Union (Area of intersection / Combined Area) of all bounding boxes and taking the highest confidence box that is above the Intersection over Union “threshold”, which determines if a box is significantly overlapping or not.
+
 Sample Code:
 ```
 def non_max_suppression(self, boxes, scores, threshold):
@@ -113,91 +117,93 @@ The navigation system combines SLAM mapping and movebase. These components work 
 
 ## SLAM gmapping
 
-In environments where no pre-existing maps are available, the robot needs to simultaneously map the surroundings and localize itself.\
-SLAM solves the "chicken and egg" problem: you need a map to localize and localization to create a map.\
-SLAM allows for adaptability in dynamic environments where obstacles or features may change over time. 
+In environments where no pre-existing maps are available, the robot needs to simultaneously map the surroundings and localize itself.  
+SLAM solves the "chicken and egg" problem: you need a map to localize and localization to create a map.  
+SLAM allows for adaptability in dynamic environments where obstacles or features may change over time.   
 
-Purpose: To create a map of the environment while simultaneously determining the robot’s location within it. \
-Importance: Maps are essential for navigation in unknown environments. \
-Localization is key to determining the robot's pose relative to obstacles and goals.
+Purpose: To create a map of the environment while simultaneously determining the robot’s location within it.   
+Importance: Maps are essential for navigation in unknown environments.   
+Localization is key to determining the robot's pose relative to obstacles and goals.   
 
-How it Works: \
-The Gmapping node subscribes to sensor data (e.g., laser scans) and odometry data to update the map. \
-`odom_frame`: Tracks the robot’s movement relative to the map. \
-`map_update_interval`: Adjusts how often the map is updated, balancing accuracy and computation cost. \
+How it Works:   
+The Gmapping node subscribes to sensor data (e.g., laser scans) and odometry data to update the map.   
+`odom_frame`: Tracks the robot’s movement relative to the map.   
+`map_update_interval`: Adjusts how often the map is updated, balancing accuracy and computation cost.   
 
 
 
 
 ##  Frontier Exploration
 
-While SLAM enables mapping, the robot needs to autonomously decide where to explore next to cover the environment effectively.
-Frontier exploration identifies regions that are on the boundary between explored and unexplored areas, allowing the robot to focus on expanding the map systematically.
+While SLAM enables mapping, the robot needs to autonomously decide where to explore next to cover the environment effectively.  
+Frontier exploration identifies regions that are on the boundary between explored and unexplored areas, allowing the robot to focus on expanding the map systematically.  
 
-Purpose: Autonomous exploration of an unknown environment. \
-Importance: Automates navigation to unvisited areas by identifying frontiers which are boundaries between known and unknown regions. \
-Saves manual effort and accelerates mapping of the environment. \
-How it Works: \
-The `explore_lite` node generates navigation goals to frontiers. \
-These goals are sent to the `move_base` node for execution.
+Purpose: Autonomous exploration of an unknown environment.   
+Importance: Automates navigation to unvisited areas by identifying frontiers which are boundaries between known and unknown regions.   
+Saves manual effort and accelerates mapping of the environment.   
+How it Works:   
+The `explore_lite` node generates navigation goals to frontiers.   
+These goals are sent to the `move_base` node for execution.  
 
 
 
 ## Costmaps
 
-Navigation requires both global and local planning to ensure safety and efficiency:
-The global costmap is used for long-term planning and navigation across large areas.
-The local costmap is used for real-time adjustments to avoid dynamic obstacles like people or moving objects.
+Navigation requires both global and local planning to ensure safety and efficiency:  
+The global costmap is used for long-term planning and navigation across large areas.  
+The local costmap is used for real-time adjustments to avoid dynamic obstacles like people or moving objects.  
 
-Costmaps are grid-based representations of the environment, used for path planning and obstacle avoidance.
+Costmaps are grid-based representations of the environment, used for path planning and obstacle avoidance.  
 
-Global Costmap: \
-Purpose: Provides a high-level view of the entire environment for long-distance path planning. \
-global_frame: Uses the map frame to align with SLAM-generated maps. \
-static_map: Set to false in order to dynamically make the map \
-Importance: Enables efficient navigation to distant goals while avoiding large obstacles. 
+Global Costmap:   
+Purpose: Provides a high-level view of the entire environment for long-distance path planning.   
+global_frame: Uses the map frame to align with SLAM-generated maps.     
+static_map: Set to false in order to dynamically make the map   
+Importance: Enables efficient navigation to distant goals while avoiding large obstacles.   
 
-Local Costmap: \
-Purpose: Provides a localized, real-time view for immediate obstacle avoidance. \
-rolling_window: Updates the local costmap as the robot moves. \
-width, height: Define the area covered by the local costmap. \
-Importance: Ensures the robot avoids unexpected obstacles in its immediate vicinity. 
+Local Costmap:   
+Purpose: Provides a localized, real-time view for immediate obstacle avoidance.   
+rolling_window: Updates the local costmap as the robot moves.   
+width, height: Define the area covered by the local costmap.   
+Importance: Ensures the robot avoids unexpected obstacles in its immediate vicinity.   
 
-Common Costmap Parameters: \
-Define how obstacles are detected and inflated for safety: \
-obstacle_range: Maximum detection range for obstacles. \
-inflation_radius: Adds a buffer zone around obstacles for safety. \
-robot_radius: defines how large the robot is so it knows which path is safe and where to make it more costly. 
+Common Costmap Parameters:  
+Define how obstacles are detected and inflated for safety:   
+obstacle_range: Maximum detection range for obstacles.   
+inflation_radius: Adds a buffer zone around obstacles for safety.   
+robot_radius: defines how large the robot is so it knows which path is safe and where to make it more costly.   
 
 ## Path Planning 
 
-Robots need to compute paths that are both efficient (shortest path) and safe (avoiding obstacles). Integration of SLAM and costmaps allows the robot to dynamically adapt its path when new obstacles are detected. This is effectively and more optimally done within the movebase as it localizes itself using its odom and lidar sensors. 
+Robots need to compute paths that are both efficient (shortest path) and safe (avoiding obstacles). Integration of SLAM and costmaps allows the robot to dynamically adapt its path when new obstacles are detected. This is effectively and more optimally done within the movebase as it localizes itself using its odom and lidar sensors.   
 
 
-Purpose: To compute and execute paths from the robot’s current position to a specified goal. \
-Importance: \
-Integrates global and local planning for robust navigation.  
-Adapts dynamically to changes in the environment using costmaps. \
-How it Works: \
-Global planner for high-level paths. \
-Local planner for immediate movements and obstacle avoidance. \
-Configurations (base_local_planner_params.yaml): \
-max_vel_x: 0.45 \
-min_vel_x: 0.1 \
-max_vel_theta: 1.0 \
-acc_lim_theta: 3.2 \
-acc_lim_x: 2.5 \
-These ensure smooth and safe movement by limiting velocities and accelerations.
+Purpose: To compute and execute paths from the robot’s current position to a specified goal.   
+Importance:   
+Integrates global and local planning for robust navigation.    
+Adapts dynamically to changes in the environment using costmaps.   
+How it Works:   
+Global planner for high-level paths.   
+Local planner for immediate movements and obstacle avoidance.   
+Configurations (base_local_planner_params.yaml):   
+max_vel_x: 0.45   
+min_vel_x: 0.1   
+max_vel_theta: 1.0   
+acc_lim_theta: 3.2   
+acc_lim_x: 2.5   
+These ensure smooth and safe movement by limiting velocities and accelerations.  
 
-## Manual Waypoint Navigation
-Purpose: Allows users to manually save poses and command the robot to navigate to those poses. \
-Importance: \
-Used for our gesture recognition to remember a specific pose when it recognizes an object and be able to navigate back to it. \
+## Manual Waypoint Navigation  
+Purpose: Allows users to manually save poses and command the robot to navigate to those poses.   
+Importance:   
+Used for our gesture recognition to remember a specific pose when it recognizes an object and be able to navigate back to it.   
 
 
 # Usage
 
-To run the robot, simply run roscam.py (type “python3 roscam.py” into your terminal/cli).
+To run the robot, first bring up the master node on the robot.
+Then do ```cd movebase/launch``` and run ```roslaunch move_base.launch```.
+After, do ```cd real``` and run ```python3 roscam.py```.
 We only use an image subscriber and publisher for debugging.
 
 
