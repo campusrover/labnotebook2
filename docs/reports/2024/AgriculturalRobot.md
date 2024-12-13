@@ -208,7 +208,6 @@ The React frontend fetches data from the Flask API and provides an interactive U
       showNotification('Failed to fetch robot status');
     }
   };
-
   const handleBackToBase = () => {
     console.log('Sending instruction to go home');
     fetch(`${url}/update_instruction`, {
@@ -274,16 +273,17 @@ The React frontend fetches data from the Flask API and provides an interactive U
   };
 
   const resetRobot = () => {
-    fetch(`${url}/update_instruction`, {
+    fetch(`${url}/reset_all`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ instruction: 'NONE' }),
+      // body: JSON.stringify({ instruction: 'NONE' }),
     })
       .then(() => showNotification('Robot reset'))
       .catch(() => showNotification('Failed to reset robot'));
   };
+
 
   
 ```
