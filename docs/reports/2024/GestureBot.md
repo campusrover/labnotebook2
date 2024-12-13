@@ -106,8 +106,8 @@ Sample Code:
 
 
 # Navigation
-The navigation system described here is a modular framework that combines SLAM, path planning, exploration, and manual waypoint navigation. These components work in concert to allow a robot to autonomously explore an unknown environment, plan efficient paths, and adapt to changes in real-time. The framework is based on the ROS (Robot Operating System), which ensures flexibility and scalability.
-Navigation in robotics requires precise localization, obstacle avoidance, and path planning. Implementing Simultaneous Localization and Mapping (SLAM) is critical because it enables the robot to build and maintain a map of an unknown environment while determining its position within that map. This capability forms the backbone of autonomous navigation, especially in dynamic or previously uncharted environments.
+
+The navigation system used is a modular framework that combines SLAM mapping and movebase. These components work together to allow a robot to autonomously explore an unknown environment, plan efficient paths, and adapt to changes in real-time. Implementing Simultaneous Localization and Mapping (SLAM) was necessary because it allowwed the robot to build and maintain a map of an unknown environment and be able to recognize where it was located within that dynamically made map. 
 
 ## SLAM gmapping
 
