@@ -108,6 +108,7 @@ Sample Code:
 # Navigation
 The navigation system described here is a modular framework that combines SLAM, path planning, exploration, and manual waypoint navigation. These components work in concert to allow a robot to autonomously explore an unknown environment, plan efficient paths, and adapt to changes in real-time. The framework is based on the ROS (Robot Operating System), which ensures flexibility and scalability.
 Navigation in robotics requires precise localization, obstacle avoidance, and path planning. Implementing Simultaneous Localization and Mapping (SLAM) is critical because it enables the robot to build and maintain a map of an unknown environment while determining its position within that map. This capability forms the backbone of autonomous navigation, especially in dynamic or previously uncharted environments.
+
 ## SLAM gmapping
 
 In environments where no pre-existing maps are available, the robot needs to simultaneously map the surroundings and localize itself.\
@@ -121,7 +122,9 @@ Localization is key to determining the robot's pose relative to obstacles and go
 How it Works: \
 The Gmapping node subscribes to sensor data (e.g., laser scans) and odometry data to update the map. \
 `odom_frame`: Tracks the robot’s movement relative to the map. \
-`map_update_interval`: Adjusts how often the map is updated, balancing accuracy and computation cost. 
+`map_update_interval`: Adjusts how often the map is updated, balancing accuracy and computation cost. \
+
+
 
 
 ##  Frontier Exploration
@@ -149,7 +152,7 @@ Costmaps are grid-based representations of the environment, used for path planni
 Global Costmap: \
 Purpose: Provides a high-level view of the entire environment for long-distance path planning. \
 global_frame: Uses the map frame to align with SLAM-generated maps. \
-static_map: Indicates the use of a prebuilt map for planning. \
+static_map: Set to false in order to dynamically make the map \
 Importance: Enables efficient navigation to distant goals while avoiding large obstacles. 
 
 Local Costmap: \
@@ -166,8 +169,8 @@ robot_radius: defines how large the robot is so it knows which path is safe and 
 
 ## Path Planning 
 
-Robots need to compute paths that are both efficient (shortest path) and safe (avoiding obstacles).
-Integration of SLAM and costmaps allows the robot to dynamically adapt its path when new obstacles are detected.
+Robots need to compute paths that are both efficient (shortest path) and safe (avoiding obstacles). Integration of SLAM and costmaps allows the robot to dynamically adapt its path when new obstacles are detected. This is effectively and more optimally done within the movebase as it localizes itself using its odom and lidar sensors. 
+
 
 Purpose: To compute and execute paths from the robot’s current position to a specified goal. \
 Importance: \
@@ -188,7 +191,7 @@ These ensure smooth and safe movement by limiting velocities and accelerations.
 Purpose: Allows users to manually save poses and command the robot to navigate to those poses. \
 Importance: \
 Used for our gesture recognition to remember a specific pose when it recognizes an object and be able to navigate back to it. \
-Specific gestures allow it to save the specific position and navigate back. 
+
 
 # Usage
 
@@ -241,7 +244,7 @@ Integrating SLAM with gesture-based navigation required careful tuning of parame
 Transitioning from Leap Motion to MediaPipe for gesture recognition due to hardware limitations since leap was purchased by another company and the old software no longer worked.
 Added a monocular depth estimation algorithm to detect how close the robot is relative to the object in the final stages of going back to the object so it is able to "fetch" more accurately.
 
-Also, the original idea was to create our own slam algorithm in which we created our own Frontier search algorithm, which looked for frontiers,the boundary points, using bfs on the map. As well as Path planner, in which it used A* to plan paths. Pure pursuit, which would follow the path following a bit in front of the robot, and frontier exploration which coordinated these three classes. \
+Also, the original idea was to create our own slam algorithm in which we created our own Frontier search algorithm, which looked for frontiers,the boundary points, using bfs on the map. Within frontier search we originally had to create our own occupancy grid and custom messages to publish, however, this lead to all sorts of overhead which is one of the main reasons we had to pivot. Path planner, which used A* to plan paths. Pure pursuit, which would follow the path using a point slightly in front of the robot, and frontier exploration which coordinated these three classes. \
 However, we found that this caused the robot to malfunction and have increased latency because of the amount of overhead and it would only work sometimes. This caused us to pivot to using movebase with slam gmapping and explorelite nodes with yaml costmaps because it was more optimally written and created less overhead in the robot. Slam gmapping used lidar and odom to keep track of where the robot was relative to its surrounding as well as creating the map and by combining that with the explorelite node it would know where is the least explored area which allows the robot to active search for more of the map autonomously. Essentially the robot greedily search for all frontiers and can be used or not used based on the gestures. 
 
 ## Self Assessment
