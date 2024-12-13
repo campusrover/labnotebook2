@@ -40,35 +40,40 @@ Logging to CSV:
 The real GOAT’s implementation involved object segmentation and depth estimation to produce an estimation of the object’s position on the map, and then used a system extremely similar to move_base to go to the object. We wanted to implement this from scratch, so we decided to first follow in their footsteps and see where we could go from there.
 
 We found that there were three major issues:
-Accurate depth estimation is NOT possible using a single camera. 
-Multiple different real-time monocular depth algorithms were tested with the robot (https://github.com/nianticlabs/monodepth2, https://github.com/Ecalpal/RT-MonoDepth, https://github.com/atapour/monocularDepth-Inference to list a few), and all of them were either too slow or infeasible for the project for various reasons.
-Object segmentation does not differentiate between unique objects.
-If there were 20 unique books in front of the robot, it will not remember the difference between book 1 and book 20
-These algorithms are very expensive.
-The object segmentation algorithm takes 1.5 seconds to run.
-This was the best and fastest algorithm that we found.
+* Accurate depth estimation is NOT possible using a single camera. 
+    * Multiple different real-time monocular depth algorithms were tested with the robot (https://github.com/nianticlabs/monodepth2, https://github.com/Ecalpal/RT-MonoDepth, https://github.com/atapour/monocularDepth-Inference to list a few), and all of them were either too slow or infeasible for the project for various reasons.
+* Object segmentation does not differentiate between unique objects.
+    * If there were 20 unique books in front of the robot, it will not remember the difference between book 1 and book 20
+* These algorithms are very expensive.
+    * The object segmentation algorithm takes 1.5 seconds to run.
+    * This was the fastest algorithm that we found that had OK accuracy.
 
-We will address them in order, beginning with our issues with depth estimation. The original GOAT used depth estimation in order to accurately localize the object within its map. This is not possible for us because real-time monocular depth algorithms with metric depth do not exist (without taking 15 seconds to run) despite them claiming they do, such as this one by Apple https://machinelearning.apple.com/research/depth-pro that claims it can create a depth map in less than one second (many users with high quality GPUs reported they could not recreate the same speed). This poses a problem because we need to find a way to record the pose of the object in order to navigate to it.
+We will address them in order, beginning with our issues with depth estimation. The original GOAT used depth estimation in order to accurately localize the object within its map. This is not possible for us because real-time monocular depth algorithms with metric depth do not exist (without taking 15 seconds to run) despite them claiming they do, such as this one by Apple (https://machinelearning.apple.com/research/depth-pro) that claims it can create a depth map in less than one second (many users with high quality GPUs reported they could not recreate the same speed). This poses a problem because we need to find a way to record the pose of the object in order to navigate to it.
+
 Our solution to this issue comes from the realization that the object’s pose is almost always going to be near the robot’s pose: and considering that the robot must be facing towards the object for the object segmentation algorithm to work, we can simply record the robot’s pose as the object’s pose. This allows us to travel back to the exact position where the robot sees the object, and then we can have the robot travel directly towards the object until we reach its actual position.
+
 This poses another problem: some objects are not within the LiDAR’s range; that is, they may be smaller than the robot or above the robot. In this instance, it will not be possible to use sensor distance as a metric to determine how close the robot is to the object. This is why we must still use the depth estimation algorithm to determine an extremely rough guess of how close the robot is. While it is impossible to obtain an accurate depth reading from a monocular depth algorithm, it is still possible to get a relative reading, where closer objects will have a high value and distant objects will have a low value. Additionally, our object segmentation algorithm provides bounding boxes that indicate where the object is in our camera frame, which allows us to select just the object’s relative depth. In this way we are able to get closer to the object by getting the bounding box of the object, calculating the average of the object’s depth, travelling towards it, and then making sure our relative depth estimate isn’t too high. In the case that the object disappears from view for too long or the depth estimate goes above the threshold, we simply stop the robot because we assume either we are too close or the object is no longer in our view due to elevation or movement.
 
 The object’s depth is calculated very simply: we take the median of all depths in the bounding box (the majority should obviously belong to the object) and filter out all depths less than the median. We are likely then left with all of the depths belonging to the object. We then take the mean of all those depths, and are left with our assumed relative distance of the object.
-Sample Code:
-```       box = self.predictions['bboxes'][object_prediction_index]
 
-           x_min = int(box[0])
-           y_min = int(box[1])
-           x_max = int(box[2])
-           y_max = int(box[3])
-           subarray = self.disparity_map[x_min:x_max, y_min:y_max]
-           median = np.median(subarray)
-           mask = subarray >= median
-           subarray = subarray[mask]
-           depth = np.mean(subarray)
+Sample Code:
 ```
+box = self.predictions['bboxes'][object_prediction_index]
+x_min = int(box[0])
+y_min = int(box[1])
+x_max = int(box[2])
+y_max = int(box[3])
+subarray = self.disparity_map[x_min:x_max, y_min:y_max]
+median = np.median(subarray)
+mask = subarray >= median
+subarray = subarray[mask]
+depth = np.mean(subarray)
+```
+
 Our second issue is, unfortunately, a restriction on the robot’s ability. If we wanted to add unique object mapping to the robot, we would have to add feature recognition in some way to evaluate traits of objects and assign them to some sort of dictionary or tree to “recall” previous unique objects. This would add to the already high computational cost of a depth, classification and segmentation algorithm running at the same time. So unfortunately, it will not be feasible to add this to the robot.
 
 Our third issue can only be resolved by decreasing the callback rate of our functions. Limiting the object segmentation algorithm to one call every 1.5 seconds helps in preventing constant expensive operations. Additionally, the algorithm is only ever called when either searching for the object after navigation or when memorizing an object’s position. The depth algorithm is forced to run only when the segmentation algorithm runs, so it does not take up resources. The gesture recognition must be on constantly, but the callback rate can be reduced so that it does not become too expensive. 
+
 We used rospy.Timer to change the callback rate:
 ```
 rospy.Timer(rospy.Duration(1.5), self.segmentation_callback) #start object recognition callback
@@ -82,28 +87,25 @@ Memorization only occurs when given a specific gesture. Upon recognition, the ro
 
 For the filtering process, we had to implement Non-Maximum Suppression due to the many overlapping guesses that the segmentation algorithm produced. Non-Maximum Suppression is used to output the best “bounding box” out of a set of overlapping bounding boxes; where bounding box refers to a rectangle that represents the object’s location in the frame. This is done by calculating the Intersection over Union (Area of intersection / Combined Area) of all bounding boxes and taking the highest confidence box that is above the Intersection over Union “threshold”, which determines if a box is significantly overlapping or not.
 Sample Code:
-```def non_max_suppression(self, boxes, scores, threshold):
-       order = sorted(range(len(scores)), key=lambda i: scores[i], reverse=True)
-       keep = []
-       while order:
-           i = order.pop(0)
-           keep.append(i)
-           for j in order:
-               # iou between the two boxes
-               intersection = max(0, min(boxes[i][2], boxes[j][2]) - max(boxes[i][0], boxes[j][0])) * \
-                           max(0, min(boxes[i][3], boxes[j][3]) - max(boxes[i][1], boxes[j][1]))
-               union = (boxes[i][2] - boxes[i][0]) * (boxes[i][3] - boxes[i][1]) + \
-                       (boxes[j][2] - boxes[j][0]) * (boxes[j][3] - boxes[j][1]) - intersection
-               iou = intersection / union
-
-               if iou > threshold:
-                   order.remove(j)
-       return keep
 ```
+def non_max_suppression(self, boxes, scores, threshold):
+    order = sorted(range(len(scores)), key=lambda i: scores[i], reverse=True)
+    keep = []
+    while order:
+        i = order.pop(0)
+        keep.append(i)
+        for j in order:
+            # iou between the two boxes
+            intersection = max(0, min(boxes[i][2], boxes[j][2]) - max(boxes[i][0], boxes[j][0])) * 
+                            max(0, min(boxes[i][3], boxes[j][3]) - max(boxes[i][1], boxes[j][1]))
+            union = (boxes[i][2] - boxes[i][0]) * (boxes[i][3] - boxes[i][1]) + 
+                    (boxes[j][2] - boxes[j][0]) * (boxes[j][3] - boxes[j][1]) - intersection
+            iou = intersection / union
 
-
-
-
+            if iou > threshold:
+                order.remove(j)
+    return keep
+```
 
 # Navigation
 The navigation system combines SLAM mapping and movebase. These components work together to allow a robot to autonomously explore an unknown environment, plan efficient paths, and adapt to changes in real-time. By Implementing Simultaneous Localization and Mapping (SLAM), the robot was able to build and maintain a map of an unknown environment and be able to recognize where it was located within the dynamically made map. Combined together with the built-in amcl within move base using global and local costmaps based on odom and lidar scans, it was able to effectively navgiate to saved objects.
