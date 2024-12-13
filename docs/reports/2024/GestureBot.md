@@ -238,9 +238,11 @@ SLAM Integration:
 Integrating SLAM with gesture-based navigation required careful tuning of parameters like obstacle inflation and robot dimensions. By balancing accuracy and computational efficiency, we ensured that the robot could navigate dynamic environments without frequent errors.
 
 ## Pivots
-Transitioning from Leap Motion to MediaPipe for gesture recognition due to hardware limitations.
-Replacing direct depth estimation with a pose-recording strategy to address monocular camera constraints.
-Simplifying object differentiation processes to prioritize system performance over advanced features.
+Transitioning from Leap Motion to MediaPipe for gesture recognition due to hardware limitations since leap was purchased by another company and the old software no longer worked.
+Added a monocular depth estimation algorithm to detect how close the robot is relative to the object in the final stages of going back to the object so it is able to "fetch" more accurately.
+
+Also, the original idea was to create our own slam algorithm in which we created our own Frontier search algorithm, which looked for frontiers,the boundary points, using bfs on the map. As well as Path planner, in which it used A* to plan paths. Pure pursuit, which would follow the path following a bit in front of the robot, and frontier exploration which coordinated these three classes. \
+However, we found that this caused the robot to malfunction and have increased latency because of the amount of overhead and it would only work sometimes. This caused us to pivot to using movebase with slam gmapping and explorelite nodes with yaml costmaps because it was more optimally written and created less overhead in the robot. Slam gmapping used lidar and odom to keep track of where the robot was relative to its surrounding as well as creating the map and by combining that with the explorelite node it would know where is the least explored area which allows the robot to active search for more of the map autonomously. Essentially the robot greedily search for all frontiers and can be used or not used based on the gestures. 
 
 ## Self Assessment
 The project achieved its goals of gesture recognition and autonomous navigation to an object. We did not expect the cluster to be able to handle multiple heavy algorithms at the same time, so being able to successfully run object segmentation, depth estimation and gesture recognition at the same time on top of a ROS navigation stack is quite unexpected. Most of the time, a lot of issues occur when translating outputs between algorithms, so it was very pleasing to see that most of the data was actually extremely organized and very easy to both use and interpret. Because of this, the way that the algorithms interact is actually quite smooth. Overall, given our limitations and workarounds, we are happy to see that the robot works and functions as intended. 
