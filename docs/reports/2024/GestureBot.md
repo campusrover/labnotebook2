@@ -206,27 +206,13 @@ Then do ```cd movebase/launch``` and run ```roslaunch move_base.launch```.
 After, do ```cd real``` and run ```python3 roscam.py```.
 We only use an image subscriber and publisher for debugging.
 
+## Story
 
-# Story:
-Neither Jeffrey nor I have ever been a pet owner of dogs and so we thought it would be really interesting if we were to create a robot that could follow gestures since it wouldn’t really be able to listen to our voices. 
+The GestureBot project began with a straightforward idea: combining gesture recognition with basic movement commands to emulate a robot that responds to human gestures. The initial inspiration stemmed from the desire to create a robot with functionality akin to a pet: intelligent and interactive, but devoid of auditory command reliance. Jeffrey and I both lacked firsthand experience with pets, particularly dogs, which made the concept of creating a robot capable of "fetching" or "following" based on gestures an exciting challenge.
 
-The initial outline for the project was to use neural networks combined with google media pipe to recognize and train gestures and gesture recognition. Then, it would perform pre programmed commands such as to move around, spin, or to go back to an original position.
-
-However, it wouldn’t have the self navigating aspect that an actual dog would have. 
-
-This gave us the idea to implement the GOAT (go to any thing) from class, because it was interesting and it would also be able to replicate fetching. This required us to have object recognition, depth recognition, and SLAM. After deciding on doing these implementations, we needed to do extensive research on what we could do to reduce overhead on the bot since if it was too demanding many errors could occur while running. 
-
-
-
-
-## How it unfolded
-
-The GestureBot project began with a straightforward idea: combining gesture recognition with basic movement commands to emulate a robot that responds to human gestures. The initial inspiration stemmed from the desire to create a robot with functionality akin to a pet—intelligent and interactive but devoid of auditory command reliance. Jeffrey and I both lacked firsthand experience with pets, particularly dogs, which made the concept of creating a robot capable of "fetching" or "following" based on gestures an exciting challenge.
-
-We initiated the project with an extensive research phase. Gesture recognition stood out as the project's backbone, so we explored various methodologies, including Leap Motion sensors. However, after discovering that the Leap device we had access to was incompatible due to proprietary changes, we pivoted to a solution involving Google MediaPipe. This tool, combined with a custom neural network built using Keras, enabled efficient and lightweight gesture classification.
+We initiated the project with an extensive research phase. Gesture recognition stood out as the project's base, so we explored various methodologies, such as Leap Motion sensors. However, after discovering that the Leap device we had access to was incompatible due to proprietary changes, we pivoted to a solution involving Google MediaPipe. This tool, combined with a custom neural network built using Keras, enabled efficient and lightweight gesture classification.
 
 Once gesture recognition was operational, we expanded the project's scope to include elements inspired by the GOAT ("Go to Any Thing") system from class. This involved implementing advanced features like object recognition, depth estimation, and autonomous navigation. At this point, we divided responsibilities: Jeffrey focused on object recognition and depth estimation, while I worked on live mapping, localization, and path planning. This division of labor allowed us to address the project's complex requirements in parallel.
-
 
 Our teamwork was characterized by clear communication and mutual respect for each other's expertise. Although we worked on separate components, we regularly synchronized our efforts to ensure seamless integration. Debugging sessions became collaborative problem-solving exercises, where one person's fresh perspective often revealed overlooked issues.
 
@@ -234,7 +220,7 @@ This collaboration extended beyond technical implementation. For example, Jeffre
 
 ## Problems That Were Solved:
 Gesture Recognition and Data Collection:
-Initial attempts at gesture recognition revealed a need for consistent and comprehensive training data. Using Google MediaPipe's keypoint detection, we logged thousands of datapoints in a custom CSV file to train a neural network. This required refining our approach to data labeling and augmentation to improve accuracy.
+Initial attempts at gesture recognition revealed a need for consistent and comprehensive training data. We decided to use a CSV file to spam thousands of datapoints to train our neural network. A simple function was created that, upon pressing a number on the keyboard, would write all keypoints that the camera identified along with the pressed number into the CSV file, which represented the inputs for the neural network and the output class. This way, we were able to log datapoints with the press of a button.
 
 Depth Estimation Challenges:
 Depth estimation emerged as a major hurdle due to the limitations of monocular camera systems. After testing multiple algorithms, we realized that accurate metric depth could not be achieved in real-time. Our workaround involved recording the robot's pose as a proxy for the object's location and using relative depth estimation to refine navigation.
@@ -249,11 +235,11 @@ SLAM Integration:
 Integrating SLAM with gesture-based navigation required careful tuning of parameters like obstacle inflation and robot dimensions. By balancing accuracy and computational efficiency, we ensured that the robot could navigate dynamic environments without frequent errors.
 
 ## Pivots
-Transitioning from Leap Motion to MediaPipe for gesture recognition due to hardware limitations since leap was purchased by another company and the old software no longer worked.
-Added a monocular depth estimation algorithm to detect how close the robot is relative to the object in the final stages of going back to the object so it is able to "fetch" more accurately.
+We knew that there were sensors that performed gesture recognition, so initially we wanted to use the LeapMotion sensor for that part of our project. However, the sensor did not work with our laptops, and we figured that it would be far too much work to try and get it working, especially since we did not know whether or not the sensor was actually any good. We decided to look for a software solution instead, which is where we found Google's Hand Landmarking tool from MediaPipe Solutions. It is a very fast, very accurate model that identifies "keypoints" in the hand, which are mostly just joints. From this, we decided that combining it with a neural network would give relatively decent outputs in a short period of time. 
 
-Also, the original idea was to create our own slam algorithm in which we created our own Frontier search algorithm, which looked for frontiers,the boundary points, using bfs on the map. Within frontier search we originally had to create our own occupancy grid and custom messages to publish, however, this lead to all sorts of overhead which is one of the main reasons we had to pivot. Path planner, which used A* to plan paths. Pure pursuit, which would follow the path using a point slightly in front of the robot, and frontier exploration which coordinated these three classes. \
-However, we found that this caused the robot to malfunction and have increased latency because of the amount of overhead and it would only work sometimes. This caused us to pivot to using movebase with slam gmapping and explorelite nodes with yaml costmaps because it was more optimally written and created less overhead in the robot. Slam gmapping used lidar and odom to keep track of where the robot was relative to its surrounding as well as creating the map and by combining that with the explorelite node it would know where is the least explored area which allows the robot to active search for more of the map autonomously. Essentially the robot greedily search for all frontiers and can be used or not used based on the gestures. 
+Our original idea for mapping was to create our own SLAM algorithm, where we would use a "frontier search" algorithm, which looked for frontiers (or the boundaries of the map), using BFS (Breadth First Search). We also needed to create a path planner, which would use A* to plan paths; a path following algorithm, which would follow the path using a point slightly in front of the robot; and a "frontier exploration" algorithm, which would coordinate these three classes. It was also necessary to create a custom occupancy grid and custom messages for the frontier search algorithm.
+
+However, we found that implementing these four classes ourselves caused the robot to malfunction and have increased latency because of the amount of overhead; it also only worked 50% of the time. This caused us to pivot to using movebase with SLAM gmapping and yaml costmaps because it was more optimally written and created less overhead in the robot. SLAM gmapping used lidar and odom to keep track of where the robot was relative to its surroundings, as well as creating the map that was used by move base in the global and local costmaps for autonomous navigatation to the object. 
 
 ## Self Assessment
 The project achieved its goals of gesture recognition and autonomous navigation to an object. We did not expect the cluster to be able to handle multiple heavy algorithms at the same time, so being able to successfully run object segmentation, depth estimation and gesture recognition at the same time on top of a ROS navigation stack is quite unexpected. Most of the time, a lot of issues occur when translating outputs between algorithms, so it was very pleasing to see that most of the data was actually extremely organized and very easy to both use and interpret. Because of this, the way that the algorithms interact is actually quite smooth. Overall, given our limitations and workarounds, we are happy to see that the robot works and functions as intended. 
