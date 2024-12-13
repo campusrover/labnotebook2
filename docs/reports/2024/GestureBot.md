@@ -198,7 +198,11 @@ We only use an image subscriber and publisher for debugging.
 
 # Story:
 Neither Jeffrey nor I have ever been a pet owner of dogs and so we thought it would be really interesting if we were to create a robot that could follow gestures since it wouldn’t really be able to listen to our voices. 
-The initial outline for the project was to use neural networks combined with google media pipe to recognize and train gestures and gesture recognition. Then, it would perform pre programmed commands such as to move around, spin, or to go back to an original position. However, it wouldn’t have the self navigating aspect that an actual dog would have. 
+
+The initial outline for the project was to use neural networks combined with google media pipe to recognize and train gestures and gesture recognition. Then, it would perform pre programmed commands such as to move around, spin, or to go back to an original position.
+
+However, it wouldn’t have the self navigating aspect that an actual dog would have. 
+
 This gave us the idea to implement the GOAT (go to any thing) from class, because it was interesting and it would also be able to replicate fetching. This required us to have object recognition, depth recognition, and SLAM. After deciding on doing these implementations, we needed to do extensive research on what we could do to reduce overhead on the bot since if it was too demanding many errors could occur while running. 
 
 
@@ -206,14 +210,41 @@ This gave us the idea to implement the GOAT (go to any thing) from class, becaus
 
 ## How it unfolded
 
-Initially, we began by researching ways to implement gesture recognition and we tried to use different ways to send this information to the bot. There was a leap camera in the lab that we tackled but since it was purchased by a different company this version no longer worked. Then we decided to combine neural networks, open cv, and google media pipe which would create landmarks on our hands and then calculated the position of the landmarks relative to the wrist which would give us outputs of ids which mean certain gestures. 
+The GestureBot project began with a straightforward idea: combining gesture recognition with basic movement commands to emulate a robot that responds to human gestures. The initial inspiration stemmed from the desire to create a robot with functionality akin to a pet—intelligent and interactive but devoid of auditory command reliance. Jeffrey and I both lacked firsthand experience with pets, particularly dogs, which made the concept of creating a robot capable of "fetching" or "following" based on gestures an exciting challenge.
 
-Then, we branched off to work on different parts that, when it came together, would be able to replicate aspects of the GOAT system. 
+We initiated the project with an extensive research phase. Gesture recognition stood out as the project's backbone, so we explored various methodologies, including Leap Motion sensors. However, after discovering that the Leap device we had access to was incompatible due to proprietary changes, we pivoted to a solution involving Google MediaPipe. This tool, combined with a custom neural network built using Keras, enabled efficient and lightweight gesture classification.
 
-Jeffrey worked on implementing a depth estimation algorithm to estimate depth based on images from the raspicam, as well as object segmentation to classify objects.
+Once gesture recognition was operational, we expanded the project's scope to include elements inspired by the GOAT ("Go to Any Thing") system from class. This involved implementing advanced features like object recognition, depth estimation, and autonomous navigation. At this point, we divided responsibilities: Jeffrey focused on object recognition and depth estimation, while I worked on live mapping, localization, and path planning. This division of labor allowed us to address the project's complex requirements in parallel.
 
-Leo worked on live mapping, localization, and path following so that the bot can see an object, save its frame as a pose and then be able to go back to it when it moves to another location. 
 
+Our teamwork was characterized by clear communication and mutual respect for each other's expertise. Although we worked on separate components, we regularly synchronized our efforts to ensure seamless integration. Debugging sessions became collaborative problem-solving exercises, where one person's fresh perspective often revealed overlooked issues.
+
+This collaboration extended beyond technical implementation. For example, Jeffrey's insights into reducing computation overhead significantly influenced my approach to SLAM and costmap configurations. Similarly, my work on creating a modular navigation framework informed Jeffrey's decisions regarding depth estimation and object segmentation integration.
+
+## Problems That Were Solved:
+Gesture Recognition and Data Collection:
+Initial attempts at gesture recognition revealed a need for consistent and comprehensive training data. Using Google MediaPipe's keypoint detection, we logged thousands of datapoints in a custom CSV file to train a neural network. This required refining our approach to data labeling and augmentation to improve accuracy.
+
+Depth Estimation Challenges:
+Depth estimation emerged as a major hurdle due to the limitations of monocular camera systems. After testing multiple algorithms, we realized that accurate metric depth could not be achieved in real-time. Our workaround involved recording the robot's pose as a proxy for the object's location and using relative depth estimation to refine navigation.
+
+Resource Management:
+The computational demands of running multiple algorithms simultaneously posed a risk to system stability. We optimized callback rates for object segmentation and depth estimation, reducing resource usage without compromising functionality. This adjustment was crucial for maintaining smooth robot operations.
+
+Object Recognition and Differentiation:
+The segmentation algorithm's inability to distinguish unique objects led us to implement Non-Maximum Suppression (NMS) to refine bounding box selections. Although true object differentiation remained beyond our scope, the NMS-based filtering significantly improved recognition reliability.
+
+SLAM Integration:
+Integrating SLAM with gesture-based navigation required careful tuning of parameters like obstacle inflation and robot dimensions. By balancing accuracy and computational efficiency, we ensured that the robot could navigate dynamic environments without frequent errors.
+
+## Pivots
+Transitioning from Leap Motion to MediaPipe for gesture recognition due to hardware limitations.
+Replacing direct depth estimation with a pose-recording strategy to address monocular camera constraints.
+Simplifying object differentiation processes to prioritize system performance over advanced features.
+
+## Self Assessment
 The project achieved its goals of gesture recognition and autonomous navigation to an object. We did not expect the cluster to be able to handle multiple heavy algorithms at the same time, so being able to successfully run object segmentation, depth estimation and gesture recognition at the same time on top of a ROS navigation stack is quite unexpected. Most of the time, a lot of issues occur when translating outputs between algorithms, so it was very pleasing to see that most of the data was actually extremely organized and very easy to both use and interpret. Because of this, the way that the algorithms interact is actually quite smooth. Overall, given our limitations and workarounds, we are happy to see that the robot works and functions as intended. 
+
+GestureBot represents a synthesis of cutting-edge techniques in gesture recognition, object segmentation, and autonomous navigation. By tackling real-world constraints with creative solutions, we transformed an ambitious idea into a functional prototype. Beyond the technical achievements, this project underscored the value of teamwork, adaptability, and the iterative design process in robotics development.
 
 
