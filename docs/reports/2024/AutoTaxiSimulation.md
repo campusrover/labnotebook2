@@ -56,6 +56,12 @@ For stop sign management, the system maintains an array of vehicles waiting at t
 3. Pickup passengers
 For passenger management, the system maintains a queue of pickup and dropoff locations read from a text file, each stored as XY coordinates. The robot processes these locations sequentially, navigating to each pickup/drop off point in order. Once a passenger location is reached, that destination is removed from the queue, and the robot proceeds to the next location. This simple yet effective system ensures orderly passenger service on a first-come-first-served basis.
 
+### Demo Video for Real Life demo
+
+https://drive.google.com/file/d/1nfp36Xyu62P1gIS2hcw-TmGPWURKG40f/view?usp=sharing
+I also explained my program logic in the video.
+This first half of demo video contain green light scenario for traffic signal. The later half contain red light scenario.
+
 ### Guide on how to use the code written in real life
 
 To map the environment, use command
