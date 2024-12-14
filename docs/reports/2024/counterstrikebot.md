@@ -100,24 +100,29 @@ We will define the bomb sites using our script and `rviz`.
 
 2. Click on the map according to the prompt. The results will be saved to `/config/points.yaml`.
 
-The coordinates saved in `/config/points.yaml` can be used by other nodes later.
+Then run `rosrun cs_bot launch.py` to load the yaml file into the launch file. 
+The coordinates saved in `/config/points.yaml` will also be used by other nodes later.
 
 ![](../../images/csbot/slam.jpg)
 
 
 ### Launch Game
 ---
-Run the game by launching 2v2_scenario.launch, which launches all the nodes required including launching 4 robots and starting the game server node:
+Run the game by launching sim_2v2.launch, which launches all the nodes required including launching 4 robots and starting the game server node:
 ```
-roslaunch cs_bot 2v2_scenario.launch
+roslaunch cs_bot sim_2v2.launch
 ```
-
+This launch file calls a few other launch files and sets up a 2v2 environment.
 ![](../../images/csbot/robot.jpg)
 
+Below is an image of the game running, with the T robots moving to site and planting, and the CT robots defending and dealing damage to robb(T) bot and a UI interface written in Qt.
+![](../../images/csbot/1.png)
+Here is the multi-robot AMCL working:
+![](../../images/csbot/3.png)
+
 ## Story of the Project:
-This was an ambitious and challenging project that required the team to pivot multiple times to achieve successful completion. Our initial concept was to create a complex 2v2 robot gunfight game, with a server node managing critical elements such as health, player location, game state, round timer, alongside player-side hit detection to simulate real-world game mechanics. While the idea appeared straightforward in theory, implementing server-based gunfight mechanics proved unreliable, with inaccuracies in hit detection leading to significant challenges. This prompted our first pivot: shifting from server-based hit detection to relying solely on the shooter robot’s perception of its enemy for accuracy.
+This was an extremely ambitious and challenging project that required the team to pivot multiple times to achieve successful completion. Our initial concept was to create a complex 2v2 robot gunfight game, with a server node managing critical elements such as health, player location, game state, round timer, alongside player-side hit detection to simulate real-world game mechanics. While the idea appeared straightforward in theory, implementing server-based gunfight mechanics proved unreliable, with inaccuracies in hit detection leading to significant challenges. This prompted our first pivot: shifting from server-based hit detection to relying solely on the shooter robot’s perception of its enemy for accuracy.
 
 Implementing shooting mechanics was another major hurdle. The robots' cameras were mounted on their undersides, which complicated aiming while moving. Adjustments required the gun's angle to align dynamically with the target, introducing numerous variables, such as gun_angle, enemy_to_center_angle (calculated using OpenCV), and current_speed. These complexities made fine-tuning exponentially harder. To address this, we simplified the shooting mechanic by fixing the gun’s aim to the robot’s center of view. While this reduced the computational burden, it required robots to remain stationary while shooting—a limitation reminiscent of the strategic elements in the original Counter-Strike game.
 
-Our second pivot involved adapting the real-world implementation. Due to high demand for the lab’s robots and the logistical challenges of running four robots simultaneously, we transitioned from a 2v2 format to a 1v1 demo for the physical implementation. A full 2v2 version was instead demonstrated in the simulation environment using Gazebo. This compromise allowed us to showcase the core mechanics effectively while accounting for resource constraints and fine-tuning time.
-
+Despite delays in real-life deployment, we believe the project achieved a high success rate, and the demo's performance exceeded our expectations. Throughout this journey, we gained valuable insights into SLAM mapping, the nuances of AMCL, the limitations of the ROS system, server-client communications, multiple complex FSM implementation for different player personalities, server-side data management and resource allocation, defining and building custom message types, reading and writing to launch files directly, fine-tuning move_base parameters, optimizing color detection, and managing Gazebo physics challenges. However, the most significant skill we developed was debugging and problem-solving. Debugging accounted for approximately 70% of our total project time due to the ambitious nature of the project and the meticulous implementation of its various components. We wish for more time to work on the project to make it perfect, but we are satisfied of what we created as is.
