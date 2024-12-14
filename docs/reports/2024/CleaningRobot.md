@@ -1,3 +1,11 @@
+---
+title: Cleaning Robot
+author: Pang Liu, Zhenxu Chen
+date: Dec-2024
+status: new
+type: report
+---
+
 # Smart Cleaning Robot Final Report
 
 This is the final report of project Smart Cleaning Robot, in this report, you will know:
