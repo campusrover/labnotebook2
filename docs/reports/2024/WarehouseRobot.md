@@ -172,4 +172,4 @@ The project required significant time investment, particularly in:
 This extensive testing and debugging phase, while time-consuming, was crucial for ensuring reliable robot behavior and robust navigation capabilities.
 
 ## Contributors
-Eric Hurchey
+Eric Hurchey (erichurchey@brandeis.edu)
