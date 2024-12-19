@@ -1,11 +1,7 @@
 ---
-
 title: Calculating coordinates using AMCL and LiDAR
-
 author: Chloe Wahl-Dassule
-
 date: Dec 9 2024
-
 ---
 
 ## Author
